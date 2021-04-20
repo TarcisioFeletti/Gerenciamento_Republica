@@ -9,6 +9,10 @@ package model;
  *
  * @author Davidson
  */
-public abstract class Conta {
+public abstract class Lancamento {
+    private String descricao;
+    private int valor;
+    private int periocidade;
+    
     
 }

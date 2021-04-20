@@ -10,5 +10,9 @@ package model;
  * @author Davidson
  */
 public class SemTeto extends Pessoa {
+
+    public SemTeto(String nome, String apelido, int telefone, int cpf, String redesSociais, int contato1, int contat2) {
+        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2);
+    }
     
 }

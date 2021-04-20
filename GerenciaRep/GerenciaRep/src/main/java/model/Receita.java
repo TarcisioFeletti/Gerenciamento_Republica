@@ -9,6 +9,6 @@ package model;
  *
  * @author Davidson
  */
-public class Receita extends Conta {
+public class Receita extends Lancamento {
     
 }
