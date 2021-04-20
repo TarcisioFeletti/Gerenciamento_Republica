@@ -35,6 +35,9 @@ public class P0202 extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jLabel1.setText("Nome:");
 
         jTextField1.setEnabled(false);

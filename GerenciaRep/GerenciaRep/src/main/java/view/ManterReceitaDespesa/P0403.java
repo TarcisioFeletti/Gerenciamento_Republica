@@ -53,6 +53,9 @@ public class P0403 extends javax.swing.JInternalFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jRadioButton4.setText("Semanal");
         jRadioButton4.setEnabled(false);
 

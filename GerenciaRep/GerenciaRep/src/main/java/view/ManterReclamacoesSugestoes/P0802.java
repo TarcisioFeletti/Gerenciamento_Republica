@@ -46,6 +46,9 @@ public class P0802 extends javax.swing.JInternalFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jFormattedTextField1.setEditable(false);
         try {
             jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));

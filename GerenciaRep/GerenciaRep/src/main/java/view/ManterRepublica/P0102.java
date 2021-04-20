@@ -64,6 +64,9 @@ public class P0102 extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
