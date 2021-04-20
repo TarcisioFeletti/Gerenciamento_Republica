@@ -54,6 +54,9 @@ public class P0201 extends javax.swing.JInternalFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
+        setClosable(true);
+        setMaximizable(true);
+
         jButton4.setText("Convidar Morador / Sem Teto");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

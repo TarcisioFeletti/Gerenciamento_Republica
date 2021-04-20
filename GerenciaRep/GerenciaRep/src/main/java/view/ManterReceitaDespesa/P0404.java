@@ -59,6 +59,9 @@ public class P0404 extends javax.swing.JInternalFrame {
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton4 = new javax.swing.JRadioButton();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jLabel2.setText("Justificativa:");
 
         jButton3.setText("Confirmar");

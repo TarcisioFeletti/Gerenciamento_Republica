@@ -34,6 +34,9 @@ public class P1801 extends javax.swing.JInternalFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jLabel3.setText("Mês / Ano");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Barra", "Pizza" }));

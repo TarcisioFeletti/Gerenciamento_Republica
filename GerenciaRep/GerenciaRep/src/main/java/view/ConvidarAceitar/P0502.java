@@ -32,6 +32,9 @@ public class P0502 extends javax.swing.JInternalFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

@@ -44,6 +44,9 @@ public class P0702 extends javax.swing.JInternalFrame {
         jLabel14 = new javax.swing.JLabel();
         jFormattedTextField5 = new javax.swing.JFormattedTextField();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jLabel15.setText("Telefone do Responsável 2:");
 
         jLabel16.setText("Perfil:");
@@ -102,7 +105,7 @@ public class P0702 extends javax.swing.JInternalFrame {
                             .addGap(12, 12, 12)
                             .addComponent(jRadioButton2))
                         .addComponent(jLabel16))
-                    .addContainerGap(6, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

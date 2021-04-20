@@ -48,6 +48,9 @@ public class P0701 extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jFormattedTextField3.setEditable(false);
 
         jFormattedTextField4.setEditable(false);

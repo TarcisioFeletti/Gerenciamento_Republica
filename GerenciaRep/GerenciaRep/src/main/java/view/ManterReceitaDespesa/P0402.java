@@ -54,6 +54,9 @@ public class P0402 extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jButton3.setText("Confirmar");
 
         jLabel5.setText("Tipo:");
