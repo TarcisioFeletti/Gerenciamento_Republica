@@ -45,6 +45,9 @@ public class P0803 extends javax.swing.JInternalFrame {
         jList2 = new javax.swing.JList<>();
         jLabel8 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jLabel1.setText("Descrição da Reclamação/Sugestão:");
 
         jLabel3.setText("Data Realizada:");

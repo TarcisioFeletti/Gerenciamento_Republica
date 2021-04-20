@@ -42,6 +42,9 @@ public class P0302 extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jList3.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Morador 1", "Morador 2", "Morador 3", "Morador 4", "Morador 5" };
             public int getSize() { return strings.length; }

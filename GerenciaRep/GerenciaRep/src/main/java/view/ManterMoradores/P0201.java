@@ -36,6 +36,9 @@ public class P0201 extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
+        setClosable(true);
+        setMaximizable(true);
+
         jButton4.setText("Convidar Morador / Sem Teto");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
