@@ -5,6 +5,11 @@
  */
 package view.ManterMoradores;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static view.TelaInicial.Desktop;
 
 /**
@@ -36,6 +41,7 @@ public class P0201 extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -88,12 +94,16 @@ public class P0201 extends javax.swing.JInternalFrame {
 
         jButton3.setText("Ver Histórico");
 
+        btnFechar.setText("Fechar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(272, 272, 272)
+                .addGap(181, 181, 181)
+                .addComponent(btnFechar)
+                .addGap(18, 18, 18)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
@@ -118,7 +128,8 @@ public class P0201 extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(btnFechar))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -135,8 +146,17 @@ public class P0201 extends javax.swing.JInternalFrame {
         a.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+  
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt){
+        try {
+            this.setClosed(true);
+        } catch (PropertyVetoException ex) {
+            
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFechar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
