@@ -9,6 +9,11 @@ package model;
  *
  * @author Davidson
  */
-public abstract class Conta {
+public abstract class Lancamento {
+    private String descricao;
+    private int valor;
+    private String periocidade;
+    private Republica republica;
     
+    /*Lançamento ainda está incompleto*/
 }
