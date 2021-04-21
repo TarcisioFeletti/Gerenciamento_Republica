@@ -5,10 +5,20 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Davidson
  */
 public class Log {
+    private LocalDate data;
+    private int hora;
+    private String usuario;
+    private String nome;
+    private String mensagem;
+    private String operacao;
+    
+    /* Log ainda está incompleto*/
     
 }

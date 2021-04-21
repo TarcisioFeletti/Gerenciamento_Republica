@@ -10,5 +10,5 @@ package model;
  * @author Davidson
  */
 public class Despesa extends Lancamento {
-    
+    /*Lançamento ainda está incompleto*/
 }

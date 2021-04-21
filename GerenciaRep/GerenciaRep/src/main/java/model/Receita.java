@@ -10,5 +10,5 @@ package model;
  * @author Davidson
  */
 public class Receita extends Lancamento {
-    
+    /*Lançamento ainda está incompleto*/
 }

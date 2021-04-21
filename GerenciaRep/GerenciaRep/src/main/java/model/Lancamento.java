@@ -12,7 +12,8 @@ package model;
 public abstract class Lancamento {
     private String descricao;
     private int valor;
-    private int periocidade;
+    private String periocidade;
+    private Republica republica;
     
-    
+    /*Lançamento ainda está incompleto*/
 }
