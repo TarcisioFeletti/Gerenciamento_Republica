@@ -14,6 +14,7 @@ import java.util.List;
  * @author Davidson
  */
 public class Tarefa {
+    private int idTarefa;
     private LocalDate dataInicio;
     private String descricao;
     private LocalDate dataTermino;
@@ -40,6 +41,14 @@ public class Tarefa {
         return dataTermino;
     }
 
+    public int getIdTarefa() {
+        return idTarefa;
+    }
+
+    public void setIdTarefa(int idTarefa) {
+        this.idTarefa = idTarefa;
+    }
+    
     public void setDataTermino(LocalDate dataTermino) {
         this.dataTermino = dataTermino;
     }

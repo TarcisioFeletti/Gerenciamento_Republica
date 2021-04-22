@@ -26,6 +26,7 @@ public class Republica {
     private int vagasTotal;
     private int vagasOcupadas;
     private int vagasDisponiveis;
+    private int idRepublica;
 
     public String getNomeRepublica() {
         return nomeRepublica;
@@ -129,6 +130,14 @@ public class Republica {
 
     public void setVagasDisponiveis(int vagasDisponiveis) {
         this.vagasDisponiveis = vagasDisponiveis;
+    }
+
+    public int getIdRepublica() {
+        return idRepublica;
+    }
+
+    public void setIdRepublica(int idRepublica) {
+        this.idRepublica = idRepublica;
     }
     
     
