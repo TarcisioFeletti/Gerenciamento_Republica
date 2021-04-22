@@ -21,8 +21,8 @@ import model.Tarefa;
  * @author tarci
  */
 public class TarefasDAO {
-
-    public void adicionar(Tarefa tarefa) throws SQLException {
+    private TarefasMoradorDAO tarefaMorador = new TarefasMoradorDAO();
+    public void create(Tarefa tarefa) throws SQLException {
         Connection con = DBConnection.getConexao();
         PreparedStatement ps = null;
         try {
@@ -33,12 +33,14 @@ public class TarefasDAO {
             ps.setDate(3, Date.valueOf(tarefa.getDataTermino()));
             ps.setBoolean(4, tarefa.isTerminada());
             ps.execute();
+
+            tarefaMorador.adicionar(tarefa.getPessoaCollection(), tarefa);
         } catch (SQLException e) {
             throw new SQLException(e.toString());
         }
     }
 
-    public void remover(int id) throws SQLException {
+    public void delete(int id) throws SQLException {
         Connection con = DBConnection.getConexao();
         PreparedStatement ps = null;
         try {
@@ -49,11 +51,12 @@ public class TarefasDAO {
         } catch (SQLException e) {
             throw new SQLException(e.toString());
         } finally {
+            ps.close();
             DBConnection.fecharConexao();
         }
     }
 
-    public Tarefa buscar(int id) {
+    public Tarefa read(int id) throws SQLException {
         Connection con = DBConnection.getConexao();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -63,26 +66,27 @@ public class TarefasDAO {
             String query = "SELECT * FROM Tarefas WHERE (idTarefa = ?);";
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();
+            tarefa.setIdTarefa(rs.getInt("idTarefa"));
             tarefa.setDataInicio(LocalDate.parse(rs.getString("dataInicio")));
             tarefa.setDescricao(rs.getString("descricao"));
             tarefa.setDataTermino(LocalDate.parse(rs.getString("dataTermino")));
             tarefa.setTerminada(rs.getBoolean("terminada"));
 
         } catch (SQLException e) {
-            System.err.println(e.toString());
+            throw new SQLException(e.toString());
         } finally {
             try {
                 rs.close();
                 ps.close();
                 DBConnection.fecharConexao();
             } catch (SQLException e) {
-                System.out.println(e.toString());
+                throw new SQLException(e.toString());
             }
         }
         return tarefa;
     }
 
-    public List<Tarefa> getAll() {
+    public List<Tarefa> getAll() throws SQLException {
         Connection con = DBConnection.getConexao();
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -94,6 +98,7 @@ public class TarefasDAO {
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
+                tarefa.setIdTarefa(rs.getInt("idTarefa"));
                 tarefa.setDataInicio(LocalDate.parse(rs.getString("dataInicio")));
                 tarefa.setDescricao(rs.getString("descricao"));
                 tarefa.setDataTermino(LocalDate.parse(rs.getString("dataTermino")));
@@ -101,22 +106,22 @@ public class TarefasDAO {
                 tarefaCollection.add(tarefa);
             }
         } catch (SQLException e) {
-            System.err.println(e.toString());
+            throw new SQLException(e.toString());
         } finally {
             try {
                 rs.close();
                 ps.close();
                 DBConnection.fecharConexao();
             } catch (SQLException e) {
-                System.out.println(e.toString());
+                throw new SQLException(e.toString());
             }
         }
         return tarefaCollection;
     }
 
-    public void alterar(int id, Tarefa tarefa) throws SQLException {
+    public void update(int id, Tarefa tarefa) throws SQLException {
         Connection con = DBConnection.getConexao();
-        PreparedStatement ps = null;
+        PreparedStatement ps;
         try {
             String query = "UPDATE Tarefas SET dataInicio = ?, descricao = ?, dataTermino = ?, terminada = ? WHERE (idTarefa = ?);";
             ps = con.prepareStatement(query);

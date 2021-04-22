@@ -18,6 +18,7 @@ public abstract class Pessoa {
     private String redesSociais;
     private int contato1;
     private int contat2;
+    private int idPessoa;
 
     public String getNome() {
         return nome;
@@ -51,6 +52,14 @@ public abstract class Pessoa {
         this.cpf = cpf;
     }
 
+    public int getIdPessoa() {
+        return idPessoa;
+    }
+
+    public void setIdPessoa(int idPessoa) {
+        this.idPessoa = idPessoa;
+    }
+
     public String getRedesSociais() {
         return redesSociais;
     }
@@ -75,7 +84,7 @@ public abstract class Pessoa {
         this.contat2 = contat2;
     }
 
-    public Pessoa(String nome, String apelido, int telefone, int cpf, String redesSociais, int contato1, int contat2) {
+    public Pessoa(String nome, String apelido, int telefone, int cpf, String redesSociais, int contato1, int contat2, int id) {
         this.nome = nome;
         this.apelido = apelido;
         this.telefone = telefone;
@@ -83,6 +92,7 @@ public abstract class Pessoa {
         this.redesSociais = redesSociais;
         this.contato1 = contato1;
         this.contat2 = contat2;
+        this.idPessoa = id;
     }
      
     

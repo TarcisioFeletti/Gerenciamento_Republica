@@ -12,8 +12,8 @@ package model;
 public class Morador extends Pessoa {
     private Republica republicaAtual;
 
-    public Morador(Republica republicaAtual, String nome, String apelido, int telefone, int cpf, String redesSociais, int contato1, int contat2) {
-        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2);
+    public Morador(Republica republicaAtual, String nome, String apelido, int telefone, int cpf, String redesSociais, int contato1, int contat2, int id) {
+        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2,id);
         this.republicaAtual = republicaAtual;
     }
 

@@ -16,8 +16,8 @@ public class Representante extends Pessoa {
     private LocalDate dataInicio;
     private LocalDate dataFinal;
 
-    public Representante(Republica republicaAtual, LocalDate dataInicio, LocalDate dataFinal, String nome, String apelido, int telefone, int cpf, String redesSociais, int contato1, int contat2) {
-        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2);
+    public Representante(Republica republicaAtual, LocalDate dataInicio, LocalDate dataFinal, String nome, String apelido, int telefone, int cpf, String redesSociais, int contato1, int contat2, int id) {
+        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2, id);
         this.republicaAtual = republicaAtual;
         this.dataInicio = dataInicio;
         this.dataFinal = dataFinal;
