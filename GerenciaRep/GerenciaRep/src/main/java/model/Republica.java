@@ -28,6 +28,39 @@ public class Republica {
     private int vagasDisponiveis;
     private int idRepublica;
 
+    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, LocalDate dataExtincao, String bairro, String pontoReferencia, String localizacaoGeografica, String vantagens, int numero, float despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis, int idRepublica, String codigoEtica) {
+        this.nomeRepublica = nomeRepublica;
+        this.endereco = endereco;
+        this.dataFundacao = dataFundacao;
+        this.dataExtincao = dataExtincao;
+        this.bairro = bairro;
+        this.pontoReferencia = pontoReferencia;
+        this.localizacaoGeografica = localizacaoGeografica;
+        this.vantagens = vantagens;
+        this.numero = numero;
+        this.despesasMediasPorMorador = despesasMediasPorMorador;
+        this.vagasTotal = vagasTotal;
+        this.vagasOcupadas = vagasOcupadas;
+        this.vagasDisponiveis = vagasDisponiveis;
+        this.idRepublica = idRepublica;
+    }
+
+    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, LocalDate dataExtincao, String bairro, String pontoReferencia, String vantagens, int numero, float despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis, int idRepublica) {
+        this.nomeRepublica = nomeRepublica;
+        this.endereco = endereco;
+        this.dataFundacao = dataFundacao;
+        this.dataExtincao = dataExtincao;
+        this.bairro = bairro;
+        this.pontoReferencia = pontoReferencia;
+        this.vantagens = vantagens;
+        this.numero = numero;
+        this.despesasMediasPorMorador = despesasMediasPorMorador;
+        this.vagasTotal = vagasTotal;
+        this.vagasOcupadas = vagasOcupadas;
+        this.vagasDisponiveis = vagasDisponiveis;
+        this.idRepublica = idRepublica;
+    }
+  
     public String getNomeRepublica() {
         return nomeRepublica;
     }
