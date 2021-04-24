@@ -31,7 +31,7 @@ public class P0101 extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        logradouro = new javax.swing.JTextField();
+        endereco = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         bairro = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -41,6 +41,8 @@ public class P0101 extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         localizacaoGeografica = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        numero = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
@@ -68,9 +70,9 @@ public class P0101 extends javax.swing.JInternalFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
 
-        logradouro.addActionListener(new java.awt.event.ActionListener() {
+        endereco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logradouroActionPerformed(evt);
+                enderecoActionPerformed(evt);
             }
         });
 
@@ -108,6 +110,8 @@ public class P0101 extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Localização Geográfica:");
 
+        jLabel14.setText("Número");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -115,7 +119,6 @@ public class P0101 extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -123,7 +126,7 @@ public class P0101 extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel7)
-                                    .addGap(0, 370, Short.MAX_VALUE))
+                                    .addGap(0, 0, Short.MAX_VALUE))
                                 .addComponent(localizacaoGeografica))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -133,15 +136,29 @@ public class P0101 extends javax.swing.JInternalFrame {
                                 .addComponent(cep)))
                         .addComponent(pontoDeReferencia, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(bairro, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(logradouro, javax.swing.GroupLayout.Alignment.LEADING)))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(endereco)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addGap(566, 566, 566)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel14)
+                                .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel14))
                 .addGap(3, 3, 3)
-                .addComponent(logradouro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addGap(3, 3, 3)
@@ -208,6 +225,7 @@ public class P0101 extends javax.swing.JInternalFrame {
             }
         });
 
+        vagasDisponiveis.setEditable(false);
         vagasDisponiveis.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 vagasDisponiveisActionPerformed(evt);
@@ -327,9 +345,9 @@ public class P0101 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logradouroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logradouroActionPerformed
+    private void enderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enderecoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_logradouroActionPerformed
+    }//GEN-LAST:event_enderecoActionPerformed
 
     private void bairroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bairroActionPerformed
         // TODO add your handling code here:
@@ -423,12 +441,12 @@ public class P0101 extends javax.swing.JInternalFrame {
         this.localizacaoGeografica = localizacaoGeografica;
     }
 
-    public JTextField getLogradouro() {
-        return logradouro;
+    public JTextField getEndereco() {
+        return endereco;
     }
 
-    public void setLogradouro(JTextField logradouro) {
-        this.logradouro = logradouro;
+    public void setEndereco(JTextField endereco) {
+        this.endereco = endereco;
     }
 
     public JTextField getNome() {
@@ -479,6 +497,14 @@ public class P0101 extends javax.swing.JInternalFrame {
         this.vantagens = vantagens;
     }
 
+    public JTextField getNumero() {
+        return numero;
+    }
+
+    public void setNumero(JTextField numero) {
+        this.numero = numero;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairro;
@@ -487,11 +513,13 @@ public class P0101 extends javax.swing.JInternalFrame {
     private javax.swing.JButton confirmar;
     private javax.swing.JTextField dataFundacao;
     private javax.swing.JTextField despesasMediasMorador;
+    private javax.swing.JTextField endereco;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -505,8 +533,8 @@ public class P0101 extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField localizacaoGeografica;
-    private javax.swing.JTextField logradouro;
     private javax.swing.JTextField nome;
+    private javax.swing.JTextField numero;
     private javax.swing.JTextField pontoDeReferencia;
     private javax.swing.JTextField totalVagas;
     private javax.swing.JTextField vagasDisponiveis;
