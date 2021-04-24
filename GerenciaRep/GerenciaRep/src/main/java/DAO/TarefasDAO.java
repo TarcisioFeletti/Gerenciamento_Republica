@@ -34,7 +34,7 @@ public class TarefasDAO {
             ps.setBoolean(4, tarefa.isTerminada());
             ps.execute();
 
-            tarefaMorador.adicionar(tarefa.getPessoaCollection(), tarefa);
+        //    tarefaMorador.adicionar(tarefa.getPessoaCollection(), tarefa);
         } catch (SQLException e) {
             throw new SQLException(e.toString());
         }

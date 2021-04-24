@@ -12,10 +12,17 @@ package model;
 public class Morador extends Pessoa {
     private Republica republicaAtual;
 
-    public Morador(Republica republicaAtual, String nome, String apelido, int telefone, int cpf, String redesSociais, int contato1, int contat2, int id) {
-        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2,id);
+    public Morador(Republica republicaAtual, String nome, String apelido, String telefone, String cpf, String redesSociais, String contato1, String contat2, int idPessoa, boolean semTeto, boolean morador, boolean representante, String login, String senha) {
+        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2, idPessoa, semTeto, morador, representante, login, senha);
         this.republicaAtual = republicaAtual;
     }
+
+    public Morador(Republica republicaAtual, String nome, String apelido, String telefone, String cpf, String redesSociais, String contato1, String contat2, boolean semTeto, boolean morador, boolean representante, String login, String senha) {
+        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2, semTeto, morador, representante, login, senha);
+        this.republicaAtual = republicaAtual;
+    }
+
+    
 
     public Republica getRepublicaAtual() {
         return republicaAtual;
@@ -23,5 +30,5 @@ public class Morador extends Pessoa {
 
     public void setRepublicaAtual(Republica republicaAtual) {
         this.republicaAtual = republicaAtual;
-    }    
+    }
 }

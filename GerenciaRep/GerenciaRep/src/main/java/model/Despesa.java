@@ -5,10 +5,25 @@
  */
 package model;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Davidson
  */
 public class Despesa extends Lancamento {
+    private LocalDate dataVencimento;
+    
     /*Lançamento ainda está incompleto*/
+
+    public Despesa(LocalDate dataVencimento, String descricao, double valor, String periocidade, Republica republica) {
+        super(descricao, valor, periocidade, republica);
+        this.dataVencimento = dataVencimento;
+    }
+
+    public LocalDate getDataVencimento() {
+        return dataVencimento;
+    }
+    
+    
 }

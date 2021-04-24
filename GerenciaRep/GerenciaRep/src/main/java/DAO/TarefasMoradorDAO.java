@@ -26,7 +26,7 @@ public class TarefasMoradorDAO {
     private TarefasDAO functions = new TarefasDAO();
 
     //Create
-    public void adicionar(List<Pessoa> moradorCollection, Tarefa tarefa) throws SQLException {
+ /*   public void adicionar(List<Pessoa> moradorCollection, Tarefa tarefa) throws SQLException {
         Connection con = DBConnection.getConexao();
         PreparedStatement ps = null;
         try {
@@ -105,10 +105,7 @@ public class TarefasMoradorDAO {
             ps = con.prepareStatement(sql);
             ps.setInt(1, ids[1]);
             rs = ps.executeQuery();
-            pessoa = new SemTeto(rs.getString("p.nome"), rs.getString("p.apelido"), rs.getInt("p.telefone"),
-                    rs.getInt("p.cpf"), rs.getString("p.redesSociais"), rs.getInt("p.contato1"),
-                    rs.getInt("p.contato2"), rs.getInt("p.idSemTeto"));
-            lista.add(pessoa);
+            
         } catch (SQLException e) {
             throw new SQLException(e.toString());
         } finally {
@@ -165,7 +162,9 @@ public class TarefasMoradorDAO {
             rep.setVantagens(rs.getString("vantagens"));
             pessoa = new Morador(rep, rs.getString("p.nome"), rs.getString("p.apelido"),
                     rs.getInt("p.telefone"), rs.getInt("p.cpf"), rs.getString("p.redesSociais"),
-                    rs.getInt("p.contato1"), rs.getInt("p.contato2"), rs.getInt("p.idPessoa"));
+                    rs.getInt("p.contato1"), rs.getInt("p.contato2"), rs.getInt("p.idPessoa"),
+                    rs.getBoolean("SemTeto"), rs.getBoolean("Morador"), rs.getBoolean("Representante"),
+                    rs.getString("login"), rs.getString("senha"));
             lista.add(pessoa);
         } catch (SQLException e) {
             throw new SQLException(e.toString());
@@ -300,5 +299,5 @@ public class TarefasMoradorDAO {
         }
         return lista;
     }
-
+*/
 }
