@@ -28,7 +28,7 @@ public class Republica {
     private int vagasDisponiveis;
     private int idRepublica;
 
-    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, LocalDate dataExtincao, String bairro, String pontoReferencia, String localizacaoGeografica, String vantagens, int numero, float despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis, int idRepublica, String codigoEtica) {
+    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, LocalDate dataExtincao, String bairro, String pontoReferencia, String localizacaoGeografica, String vantagens, int numero, float despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis, int idRepublica) {
         this.nomeRepublica = nomeRepublica;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;

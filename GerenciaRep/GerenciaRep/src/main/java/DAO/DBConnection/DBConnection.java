@@ -16,14 +16,13 @@ import java.util.logging.Logger;
  * @author tarci
  */
 public class DBConnection {
-
+    
     private static Connection conexao;
 
     private static void conectar() {
         try {
-            Connection con = null;
             Class.forName("org.sqlite.JDBC");
-            conexao = DriverManager.getConnection("jdbc:sqlite:gerenciamento-republica.db");
+            conexao = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\tarci\\OneDrive\\Documentos\\Estudos\\2020 2\\PSS\\TrabalhoFinal\\gerenciamento-republica\\GerenciaRep\\GerenciaRep\\src\\main\\java\\DAO\\DBConnection\\gerenciamento-republica.db");
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,9 +48,11 @@ public class DBConnection {
             }else if(conexao == null){
                 conectar();
             }
-        } catch (SQLException e) {
+            return conexao;
+        } catch (SQLException | NullPointerException e) {
             System.err.println(e.toString());
         }
-        return conexao;
+        return null;
     }
+
 }
