@@ -31,9 +31,9 @@ public class P1301 extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        buscarRepublica = new javax.swing.JButton();
+        solicitarMoradia = new javax.swing.JButton();
+        informacoesRepublica = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -71,24 +71,24 @@ public class P1301 extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Buscar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buscarRepublica.setText("Buscar");
+        buscarRepublica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buscarRepublicaActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Solicitar Moradia");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        solicitarMoradia.setText("Solicitar Moradia");
+        solicitarMoradia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                solicitarMoradiaActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Ver Informações");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        informacoesRepublica.setText("Ver Informações");
+        informacoesRepublica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                informacoesRepublicaActionPerformed(evt);
             }
         });
 
@@ -106,13 +106,13 @@ public class P1301 extends javax.swing.JInternalFrame {
                             .addGap(6, 6, 6)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(4, 4, 4)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buscarRepublica, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 718, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(478, 478, 478)
-                            .addComponent(jButton5)
+                            .addComponent(informacoesRepublica)
                             .addGap(9, 9, 9)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(solicitarMoradia, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -124,13 +124,13 @@ public class P1301 extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2))
+                        .addComponent(buscarRepublica))
                     .addGap(20, 20, 20)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(13, 13, 13)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton5)
-                        .addComponent(jButton4))
+                        .addComponent(informacoesRepublica)
+                        .addComponent(solicitarMoradia))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -141,26 +141,26 @@ public class P1301 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buscarRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarRepublicaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buscarRepublicaActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void solicitarMoradiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarMoradiaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_solicitarMoradiaActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void informacoesRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informacoesRepublicaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_informacoesRepublicaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton buscarRepublica;
+    private javax.swing.JButton informacoesRepublica;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton solicitarMoradia;
     // End of variables declaration//GEN-END:variables
 }

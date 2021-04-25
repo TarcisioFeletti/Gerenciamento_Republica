@@ -27,7 +27,7 @@ public class P0402 extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton3 = new javax.swing.JButton();
+        confirmarSolicitacaoPagamento = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -45,8 +45,8 @@ public class P0402 extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        adicionarPagamentoMorador = new javax.swing.JButton();
+        removerPagamentoMorador = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jLabel8 = new javax.swing.JLabel();
@@ -57,7 +57,12 @@ public class P0402 extends javax.swing.JInternalFrame {
         setClosable(true);
         setMaximizable(true);
 
-        jButton3.setText("Confirmar");
+        confirmarSolicitacaoPagamento.setText("Confirmar");
+        confirmarSolicitacaoPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarSolicitacaoPagamentoActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Tipo:");
 
@@ -108,9 +113,19 @@ public class P0402 extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jList3);
 
-        jButton1.setText("->");
+        adicionarPagamentoMorador.setText("->");
+        adicionarPagamentoMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarPagamentoMoradorActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("<-");
+        removerPagamentoMorador.setText("<-");
+        removerPagamentoMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerPagamentoMoradorActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(jList2);
 
@@ -127,8 +142,8 @@ public class P0402 extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
+                            .addComponent(adicionarPagamentoMorador)
+                            .addComponent(removerPagamentoMorador)))
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,9 +166,9 @@ public class P0402 extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(jButton1)
+                        .addComponent(adicionarPagamentoMorador)
                         .addGap(6, 6, 6)
-                        .addComponent(jButton2)))
+                        .addComponent(removerPagamentoMorador)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -214,7 +229,7 @@ public class P0402 extends javax.swing.JInternalFrame {
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(162, 162, 162)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(confirmarSolicitacaoPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel5))
@@ -261,7 +276,7 @@ public class P0402 extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(confirmarSolicitacaoPagamento)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -276,11 +291,22 @@ public class P0402 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
+    private void adicionarPagamentoMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarPagamentoMoradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adicionarPagamentoMoradorActionPerformed
+
+    private void removerPagamentoMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerPagamentoMoradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removerPagamentoMoradorActionPerformed
+
+    private void confirmarSolicitacaoPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarSolicitacaoPagamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmarSolicitacaoPagamentoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton adicionarPagamentoMorador;
+    private javax.swing.JButton confirmarSolicitacaoPagamento;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
@@ -304,5 +330,6 @@ public class P0402 extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton removerPagamentoMorador;
     // End of variables declaration//GEN-END:variables
 }

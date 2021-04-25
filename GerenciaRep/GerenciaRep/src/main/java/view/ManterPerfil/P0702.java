@@ -34,7 +34,7 @@ public class P0702 extends javax.swing.JInternalFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        confirmarPerfil = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
@@ -62,7 +62,12 @@ public class P0702 extends javax.swing.JInternalFrame {
 
         jRadioButton2.setText("Privado");
 
-        jButton3.setText("Confirmar");
+        confirmarPerfil.setText("Confirmar");
+        confirmarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarPerfilActionPerformed(evt);
+            }
+        });
 
         jLabel12.setText("Link da Rede Social:");
 
@@ -83,7 +88,7 @@ public class P0702 extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(confirmarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(2, 2, 2)
                             .addComponent(jLabel1))
@@ -143,7 +148,7 @@ public class P0702 extends javax.swing.JInternalFrame {
                         .addComponent(jRadioButton1)
                         .addComponent(jRadioButton2))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton3)
+                    .addComponent(confirmarPerfil)
                     .addContainerGap()))
         );
 
@@ -154,9 +159,13 @@ public class P0702 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
+    private void confirmarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmarPerfilActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton confirmarPerfil;
     private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JFormattedTextField jFormattedTextField5;

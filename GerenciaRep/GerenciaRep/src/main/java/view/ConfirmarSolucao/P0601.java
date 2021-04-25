@@ -31,11 +31,11 @@ public class P0601 extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        marcarResolvido = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        confirmarSolucao = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -62,7 +62,12 @@ public class P0601 extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
-        jButton2.setText("Marcar como Resolvida ");
+        marcarResolvido.setText("Marcar como Resolvida ");
+        marcarResolvido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                marcarResolvidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -71,7 +76,7 @@ public class P0601 extends javax.swing.JInternalFrame {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 901, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(marcarResolvido)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -79,7 +84,7 @@ public class P0601 extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(marcarResolvido)
                 .addGap(0, 8, Short.MAX_VALUE))
         );
 
@@ -110,8 +115,13 @@ public class P0601 extends javax.swing.JInternalFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 901, 420));
 
-        jButton1.setText("Confirmar Solução");
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, -1, -1));
+        confirmarSolucao.setText("Confirmar Solução");
+        confirmarSolucao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarSolucaoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(confirmarSolucao, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 430, -1, -1));
 
         jTabbedPane1.addTab("Confirmação", jPanel2);
 
@@ -120,10 +130,17 @@ public class P0601 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void marcarResolvidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcarResolvidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_marcarResolvidoActionPerformed
+
+    private void confirmarSolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarSolucaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmarSolucaoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton confirmarSolucao;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -131,5 +148,6 @@ public class P0601 extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JButton marcarResolvido;
     // End of variables declaration//GEN-END:variables
 }

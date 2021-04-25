@@ -40,10 +40,10 @@ public class P0701 extends javax.swing.JInternalFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField9 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        excluirPerfil = new javax.swing.JButton();
+        editarPerfil = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        historicoPerfil = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -80,18 +80,28 @@ public class P0701 extends javax.swing.JInternalFrame {
 
         jTextField9.setEditable(false);
 
-        jButton7.setText("Excluir Conta");
-
-        jButton3.setText("Editar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        excluirPerfil.setText("Excluir Conta");
+        excluirPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                excluirPerfilActionPerformed(evt);
+            }
+        });
+
+        editarPerfil.setText("Editar");
+        editarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editarPerfilActionPerformed(evt);
             }
         });
 
         jLabel12.setText("Link da Rede Social:");
 
-        jButton1.setText("Ver Histórico de Repúblicas");
+        historicoPerfil.setText("Ver Histórico de Repúblicas");
+        historicoPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historicoPerfilActionPerformed(evt);
+            }
+        });
 
         jTextField2.setEditable(false);
 
@@ -109,11 +119,11 @@ public class P0701 extends javax.swing.JInternalFrame {
                     .addGap(6, 6, 6)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton7)
+                            .addComponent(excluirPerfil)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jButton1)
+                            .addComponent(historicoPerfil)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(editarPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(2, 2, 2)
                             .addComponent(jLabel1))
@@ -174,9 +184,9 @@ public class P0701 extends javax.swing.JInternalFrame {
                         .addComponent(jRadioButton2))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3)
-                        .addComponent(jButton7)
-                        .addComponent(jButton1))
+                        .addComponent(editarPerfil)
+                        .addComponent(excluirPerfil)
+                        .addComponent(historicoPerfil))
                     .addContainerGap()))
         );
 
@@ -187,17 +197,25 @@ public class P0701 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void editarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPerfilActionPerformed
         P0702 a = new P0702();
         TelaInicial.Desktop.add(a);
         a.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_editarPerfilActionPerformed
+
+    private void excluirPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_excluirPerfilActionPerformed
+
+    private void historicoPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historicoPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_historicoPerfilActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton editarPerfil;
+    private javax.swing.JButton excluirPerfil;
+    private javax.swing.JButton historicoPerfil;
     private javax.swing.JFormattedTextField jFormattedTextField3;
     private javax.swing.JFormattedTextField jFormattedTextField4;
     private javax.swing.JFormattedTextField jFormattedTextField5;

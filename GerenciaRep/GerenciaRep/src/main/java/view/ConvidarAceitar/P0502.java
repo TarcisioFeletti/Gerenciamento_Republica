@@ -29,8 +29,8 @@ public class P0502 extends javax.swing.JInternalFrame {
 
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        aceitarRepublica = new javax.swing.JButton();
+        recusarRepublica = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -53,9 +53,19 @@ public class P0502 extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jTable3);
 
-        jButton4.setText("Aceitar");
+        aceitarRepublica.setText("Aceitar");
+        aceitarRepublica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceitarRepublicaActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Recusar");
+        recusarRepublica.setText("Recusar");
+        recusarRepublica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recusarRepublicaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,9 +73,9 @@ public class P0502 extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(504, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(recusarRepublica, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(48, 48, 48)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(aceitarRepublica, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28))
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
@@ -79,19 +89,27 @@ public class P0502 extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                    .addComponent(aceitarRepublica)
+                    .addComponent(recusarRepublica))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void aceitarRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceitarRepublicaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aceitarRepublicaActionPerformed
+
+    private void recusarRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recusarRepublicaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recusarRepublicaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton aceitarRepublica;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable3;
+    private javax.swing.JButton recusarRepublica;
     // End of variables declaration//GEN-END:variables
 }

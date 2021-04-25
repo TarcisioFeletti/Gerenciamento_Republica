@@ -8,7 +8,9 @@ package Presenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 import model.Republica;
+import view.ManterMoradores.P0201;
 import view.ManterRepublica.P0101;
 import view.TelaInicial;
 
@@ -33,6 +35,7 @@ public class PresenterManterRepublica {
 
     public PresenterManterRepublica() {
         this.viewIncluirRepublica = new P0101();
+        this.viewModificarRepublica = new P0102();
     }
 
     private static void confirmar() {
@@ -61,5 +64,20 @@ public class PresenterManterRepublica {
             //JOptionPane(frame, e.getmessage());
         //}
     }
+    
+    //BOTOES 102
+    private void editarRepublicaActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+    } 
+    
+    private void manterMoradoresActionPerformed(java.awt.event.ActionEvent evt) {
+        P0201 a = new P0201();
+        Desktop.add(a);
+        a.setVisible(true);
+    }   
+    
+    private void excluirRepublicaActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+    } 
 
 }
