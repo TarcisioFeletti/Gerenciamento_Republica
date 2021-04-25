@@ -178,10 +178,10 @@ public class P0101 extends javax.swing.JInternalFrame {
                         .addComponent(jLabel4)
                         .addGap(3, 3, 3)
                         .addComponent(cep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 352, 740, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 740, 210));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados da República"));
 
@@ -289,7 +289,7 @@ public class P0101 extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel13)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jScrollPane2))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,8 +341,7 @@ public class P0101 extends javax.swing.JInternalFrame {
                 confirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 680, 100, -1));
-        getContentPane().add(jScrollBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, 720));
+        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 570, 100, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

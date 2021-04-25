@@ -5,6 +5,8 @@
  */
 package view;
 
+import static java.awt.GridBagConstraints.BOTH;
+import javax.swing.JFrame;
 import view.ConfirmarSolucao.P0601;
 import view.ConvidarAceitar.P0501;
 import view.ConvidarAceitar.P0502;
@@ -27,6 +29,7 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
     /**
