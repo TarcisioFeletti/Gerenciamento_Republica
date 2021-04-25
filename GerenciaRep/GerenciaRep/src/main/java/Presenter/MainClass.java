@@ -7,6 +7,9 @@ package Presenter;
 
 import javax.swing.JOptionPane;
 import view.TelaInicial;
+import Presenter.PresenterManterRepublica;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -14,11 +17,23 @@ import view.TelaInicial;
  */
 public class MainClass {
     
+    private static TelaInicial tela = new TelaInicial();
+
+    public static TelaInicial getTela() {
+        return tela;
+    }
+
     public static void main(String[] args) {
-        //TelaInicial tela = new TelaInicial();
-        //tela.setVisible(true);
-        TelaInicial.main(args);
-        
+        tela.setVisible(true);
+
+        //CRIAR REPUBLICA - P0101
+        tela.getCriarRepublica().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                PresenterManterRepublica.criarRepublica();
+            }
+        });
+
         /*
         // UC 1
         JOptionPane.showMessageDialog(null, "República cadastrada com sucesso!");
@@ -109,8 +124,7 @@ public class MainClass {
         
         // UC 18
         JOptionPane.showMessageDialog(null, "Não há receitas e despesas cadastradas!");
-        */
-        
+         */
     }
 
 }

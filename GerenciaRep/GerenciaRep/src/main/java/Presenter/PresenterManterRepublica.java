@@ -5,9 +5,12 @@
  */
 package Presenter;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import model.Republica;
 import view.ManterRepublica.P0101;
+import view.TelaInicial;
 
 /**
  *
@@ -15,35 +18,48 @@ import view.ManterRepublica.P0101;
  */
 public class PresenterManterRepublica {
 
-    private P0101 viewIncluirRepublica;
+    private static P0101 viewIncluirRepublica = new P0101();
+
+    public static void criarRepublica() {
+        TelaInicial Desktop = MainClass.getTela();
+        Desktop.add(viewIncluirRepublica);
+        viewIncluirRepublica.setVisible(true);
+        viewIncluirRepublica.getConfirmar().addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+            confirmar();
+        }});
+    }
 
     public PresenterManterRepublica() {
         this.viewIncluirRepublica = new P0101();
     }
 
-    private void confirmar() {
+    private static void confirmar() {
         //tratamentos dos campos//
-        if (this.viewIncluirRepublica.getNome().getText().isBlank()) {
-            //Mensagem de Erro
+        if (viewIncluirRepublica.getNome().getText().isBlank()) {
+            //JOptionPane de erro
             return;
         }
         //criação da model com os campos//
         Republica model = new Republica(
-                this.viewIncluirRepublica.getNome().getText(),
-                this.viewIncluirRepublica.getEndereco().getText(),
-                LocalDate.parse(this.viewIncluirRepublica.getDataFundacao().getText()),
-                this.viewIncluirRepublica.getBairro().getText(),
-                this.viewIncluirRepublica.getPontoDeReferencia().getText(),
-                this.viewIncluirRepublica.getLocalizacaoGeografica().getText(),
-                this.viewIncluirRepublica.getVantagens().getText(),
-                Integer.parseInt(this.viewIncluirRepublica.getNumero().getText()),
-                Integer.parseInt(this.viewIncluirRepublica.getTotalVagas().getText()), 1,
-                Integer.parseInt(this.viewIncluirRepublica.getTotalVagas().getText()) - 1);
+                viewIncluirRepublica.getNome().getText(),
+                viewIncluirRepublica.getEndereco().getText(),
+                LocalDate.parse(viewIncluirRepublica.getDataFundacao().getText()),
+                viewIncluirRepublica.getBairro().getText(),
+                viewIncluirRepublica.getPontoDeReferencia().getText(),
+                viewIncluirRepublica.getLocalizacaoGeografica().getText(),
+                viewIncluirRepublica.getVantagens().getText(),
+                Integer.parseInt(viewIncluirRepublica.getNumero().getText()),
+                Integer.parseInt(viewIncluirRepublica.getTotalVagas().getText()), 1,
+                Integer.parseInt(viewIncluirRepublica.getTotalVagas().getText()) - 1);
         //chamar a Presenter<->Service<->DAO pra salvar//
-        //resposta = Service.incluiRepublica(model);
-        //CONFIRMAR/NEGAR com JPanel//
-        //if (resposta == null) Panel mensagem = CONFIRMADO;
-        //else Panel mensagem = FALHA: + resposta;
+        //try{
+            //Service.incluiRepublica(model);
+            //JJOptionPane(frame, "SUCESSO");
+        //}catch(Exception e){
+            //JOptionPane(frame, e.getmessage());
+        //}
     }
 
 }
