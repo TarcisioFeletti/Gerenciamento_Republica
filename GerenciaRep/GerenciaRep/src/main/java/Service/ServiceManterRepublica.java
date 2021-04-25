@@ -15,10 +15,9 @@ import model.Republica;
 public class ServiceManterRepublica throws SQLException {
     public static void incluirRepublica(Republica model){
         try{
-            String resposta = ""; //<""> = DAO.incluiRepublica(model);
+            //DAO.incluiRepublica(model);
         }catch(SQLException e){
             throw e;
         }
-        return resposta;
     }
 }

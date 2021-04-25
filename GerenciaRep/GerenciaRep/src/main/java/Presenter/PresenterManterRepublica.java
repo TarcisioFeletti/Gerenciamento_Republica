@@ -21,7 +21,8 @@ import view.TelaInicial;
 public class PresenterManterRepublica {
 
     private static P0101 viewIncluirRepublica = new P0101();
-
+    
+    //BOTÃO CRIAR NOVA REPUBLICA - P0101
     public static void criarRepublica() {
         TelaInicial Desktop = MainClass.getTela();
         Desktop.add(viewIncluirRepublica);
@@ -32,11 +33,11 @@ public class PresenterManterRepublica {
             confirmar();
         }});
     }
-
+    /* ESSA PRESENTER N PODE GERIR P0101 E P0102 AO MESMO TEMPO
     public PresenterManterRepublica() {
         this.viewIncluirRepublica = new P0101();
         this.viewModificarRepublica = new P0102();
-    }
+    }*/
 
     private static void confirmar() {
         //tratamentos dos campos//
@@ -71,9 +72,10 @@ public class PresenterManterRepublica {
     } 
     
     private void manterMoradoresActionPerformed(java.awt.event.ActionEvent evt) {
-        P0201 a = new P0201();
+        //N É AQUI QUE ISSO VEM
+        /*P0201 a = new P0201();
         Desktop.add(a);
-        a.setVisible(true);
+        a.setVisible(true);*/
     }   
     
     private void excluirRepublicaActionPerformed(java.awt.event.ActionEvent evt) {                                                 
