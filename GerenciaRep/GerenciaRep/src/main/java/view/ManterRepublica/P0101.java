@@ -5,6 +5,7 @@
  */
 package view.ManterRepublica;
 
+import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -382,6 +383,10 @@ public class P0101 extends javax.swing.JInternalFrame {
 
     public void setNumero(JTextField numero) {
         this.numero = numero;
+    }
+
+    public JButton getConfirmar() {
+        return confirmar;
     }
 
 

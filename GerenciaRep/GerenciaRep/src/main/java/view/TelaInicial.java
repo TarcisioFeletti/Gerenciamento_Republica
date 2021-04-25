@@ -7,6 +7,7 @@ package view;
 
 import static java.awt.GridBagConstraints.BOTH;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import view.ConfirmarSolucao.P0601;
 import view.ConvidarAceitar.P0501;
 import view.ConvidarAceitar.P0502;
@@ -48,7 +49,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        criarRepublica = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -101,13 +102,13 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         jMenu1.add(jMenuItem4);
 
-        jMenuItem5.setText("Criar república");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        criarRepublica.setText("Criar república");
+        criarRepublica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                criarRepublicaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem5);
+        jMenu1.add(criarRepublica);
 
         jMenuItem6.setText("Buscar vagas");
         jMenu1.add(jMenuItem6);
@@ -230,11 +231,12 @@ public class TelaInicial extends javax.swing.JFrame {
         a.setVisible(true);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        P0101 a = new P0101();
+    private void criarRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarRepublicaActionPerformed
+        //MOVIDO PARA PresenterManterRepublica.criarRepublica();
+        /*P0101 a = new P0101();
         Desktop.add(a);
-        a.setVisible(true);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
+        a.setVisible(true);*/
+    }//GEN-LAST:event_criarRepublicaActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         P0701 a = new P0701();
@@ -269,6 +271,10 @@ public class TelaInicial extends javax.swing.JFrame {
     private void jMenuItem14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem14ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem14ActionPerformed
+
+    public JMenuItem getCriarRepublica() {
+        return criarRepublica;
+    }
 
     /**
      * @param args the command line arguments
@@ -307,6 +313,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Desktop;
+    private javax.swing.JMenuItem criarRepublica;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -324,7 +331,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;

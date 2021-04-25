@@ -5,15 +5,19 @@
  */
 package Service;
 
+import java.sql.SQLException;
 import model.Republica;
 
 /**
  *
  * @author Lucas Carvalho
  */
-public abstract class ServiceManterRepublica {
-    public String incluirRepublica(Republica model){
-        String resposta = ""; //<""> = DAO.incluiRepublica(model);
-        return resposta;
+public class ServiceManterRepublica throws SQLException {
+    public static void incluirRepublica(Republica model){
+        try{
+            //DAO.incluiRepublica(model);
+        }catch(SQLException e){
+            throw e;
+        }
     }
 }

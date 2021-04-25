@@ -5,13 +5,14 @@
  */
 package Presenter;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import model.Republica;
 import view.ManterMoradores.P0201;
 import view.ManterRepublica.P0101;
-import view.ManterRepublica.P0102;
-import static view.TelaInicial.Desktop;
+import view.TelaInicial;
 
 /**
  *
@@ -19,37 +20,50 @@ import static view.TelaInicial.Desktop;
  */
 public class PresenterManterRepublica {
 
-    private P0101 viewIncluirRepublica;
-    private P0102 viewModificarRepublica;
-
+    private static P0101 viewIncluirRepublica = new P0101();
+    
+    //BOTÃO CRIAR NOVA REPUBLICA - P0101
+    public static void criarRepublica() {
+        TelaInicial Desktop = MainClass.getTela();
+        Desktop.add(viewIncluirRepublica);
+        viewIncluirRepublica.setVisible(true);
+        viewIncluirRepublica.getConfirmar().addActionListener(new ActionListener(){
+        @Override
+        public void actionPerformed(ActionEvent e){
+            confirmar();
+        }});
+    }
+    /* ESSA PRESENTER N PODE GERIR P0101 E P0102 AO MESMO TEMPO
     public PresenterManterRepublica() {
         this.viewIncluirRepublica = new P0101();
         this.viewModificarRepublica = new P0102();
-    }
+    }*/
 
-    //TELA 101
-    private void confirmarActionPerformed() {
+    private static void confirmar() {
         //tratamentos dos campos//
-        //if (this.viewIncluirRepublica.getNome().getText().isBlank()) {
-            //Mensagem de Erro
-        //}
+        if (viewIncluirRepublica.getNome().getText().isBlank()) {
+            //JOptionPane de erro
+            return;
+        }
         //criação da model com os campos//
         Republica model = new Republica(
-                this.viewIncluirRepublica.getNome().getText(),
-                this.viewIncluirRepublica.getEndereco().getText(),
-                LocalDate.parse(this.viewIncluirRepublica.getDataFundacao().getText()),
-                this.viewIncluirRepublica.getBairro().getText(),
-                this.viewIncluirRepublica.getPontoDeReferencia().getText(),
-                this.viewIncluirRepublica.getLocalizacaoGeografica().getText(),
-                this.viewIncluirRepublica.getVantagens().getText(),
-                Integer.parseInt(this.viewIncluirRepublica.getNumero().getText()),
-                Integer.parseInt(this.viewIncluirRepublica.getTotalVagas().getText()), 1,
-                Integer.parseInt(this.viewIncluirRepublica.getTotalVagas().getText()) - 1);
+                viewIncluirRepublica.getNome().getText(),
+                viewIncluirRepublica.getEndereco().getText(),
+                LocalDate.parse(viewIncluirRepublica.getDataFundacao().getText()),
+                viewIncluirRepublica.getBairro().getText(),
+                viewIncluirRepublica.getPontoDeReferencia().getText(),
+                viewIncluirRepublica.getLocalizacaoGeografica().getText(),
+                viewIncluirRepublica.getVantagens().getText(),
+                Integer.parseInt(viewIncluirRepublica.getNumero().getText()),
+                Integer.parseInt(viewIncluirRepublica.getTotalVagas().getText()), 1,
+                Integer.parseInt(viewIncluirRepublica.getTotalVagas().getText()) - 1);
         //chamar a Presenter<->Service<->DAO pra salvar//
-        //resposta = Service.incluiRepublica(model);
-        //CONFIRMAR/NEGAR com JPanel//
-        //if (resposta == null) Panel mensagem = CONFIRMADO;
-        //else Panel mensagem = FALHA: + resposta;
+        //try{
+            //Service.incluiRepublica(model);
+            //JJOptionPane(frame, "SUCESSO");
+        //}catch(Exception e){
+            //JOptionPane(frame, e.getmessage());
+        //}
     }
     
     //BOTOES 102
@@ -58,9 +72,10 @@ public class PresenterManterRepublica {
     } 
     
     private void manterMoradoresActionPerformed(java.awt.event.ActionEvent evt) {
-        P0201 a = new P0201();
+        //N É AQUI QUE ISSO VEM
+        /*P0201 a = new P0201();
         Desktop.add(a);
-        a.setVisible(true);
+        a.setVisible(true);*/
     }   
     
     private void excluirRepublicaActionPerformed(java.awt.event.ActionEvent evt) {                                                 
