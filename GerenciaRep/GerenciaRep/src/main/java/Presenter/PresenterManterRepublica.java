@@ -6,8 +6,12 @@
 package Presenter;
 
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 import model.Republica;
+import view.ManterMoradores.P0201;
 import view.ManterRepublica.P0101;
+import view.ManterRepublica.P0102;
+import static view.TelaInicial.Desktop;
 
 /**
  *
@@ -16,17 +20,19 @@ import view.ManterRepublica.P0101;
 public class PresenterManterRepublica {
 
     private P0101 viewIncluirRepublica;
+    private P0102 viewModificarRepublica;
 
     public PresenterManterRepublica() {
         this.viewIncluirRepublica = new P0101();
+        this.viewModificarRepublica = new P0102();
     }
 
-    private void confirmar() {
+    //TELA 101
+    private void confirmarActionPerformed() {
         //tratamentos dos campos//
-        if (this.viewIncluirRepublica.getNome().getText().isBlank()) {
+        //if (this.viewIncluirRepublica.getNome().getText().isBlank()) {
             //Mensagem de Erro
-            return;
-        }
+        //}
         //criação da model com os campos//
         Republica model = new Republica(
                 this.viewIncluirRepublica.getNome().getText(),
@@ -45,5 +51,20 @@ public class PresenterManterRepublica {
         //if (resposta == null) Panel mensagem = CONFIRMADO;
         //else Panel mensagem = FALHA: + resposta;
     }
+    
+    //BOTOES 102
+    private void editarRepublicaActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+    } 
+    
+    private void manterMoradoresActionPerformed(java.awt.event.ActionEvent evt) {
+        P0201 a = new P0201();
+        Desktop.add(a);
+        a.setVisible(true);
+    }   
+    
+    private void excluirRepublicaActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+    } 
 
 }

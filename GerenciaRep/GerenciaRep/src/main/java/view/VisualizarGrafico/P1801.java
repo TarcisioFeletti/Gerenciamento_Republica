@@ -29,9 +29,9 @@ public class P1801 extends javax.swing.JInternalFrame {
 
         jTextField1 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        tipoGrafico = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        periodoGrafico = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -39,11 +39,21 @@ public class P1801 extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Mês / Ano");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Barra", "Pizza" }));
+        tipoGrafico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Barra", "Pizza" }));
+        tipoGrafico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoGraficoActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Tipo de Gráfico");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mensal", "Anual" }));
+        periodoGrafico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mensal", "Anual" }));
+        periodoGrafico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                periodoGraficoActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Período:");
 
@@ -55,7 +65,7 @@ public class P1801 extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(periodoGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -64,7 +74,7 @@ public class P1801 extends javax.swing.JInternalFrame {
                     .addComponent(jTextField1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tipoGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(232, 232, 232))
         );
@@ -82,8 +92,8 @@ public class P1801 extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(periodoGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tipoGrafico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(210, Short.MAX_VALUE))
         );
@@ -91,13 +101,21 @@ public class P1801 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tipoGraficoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoGraficoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoGraficoActionPerformed
+
+    private void periodoGraficoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_periodoGraficoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_periodoGraficoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JComboBox<String> periodoGrafico;
+    private javax.swing.JComboBox<String> tipoGrafico;
     // End of variables declaration//GEN-END:variables
 }

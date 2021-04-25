@@ -32,12 +32,12 @@ public class P0401 extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        cadastrarPagamento = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        buscarPagamento = new javax.swing.JButton();
+        editarPagamento = new javax.swing.JButton();
+        informacoesPagamento = new javax.swing.JButton();
+        estornarPagamento = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -74,10 +74,10 @@ public class P0401 extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Cadastrar Nova Receita/Despesa");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cadastrarPagamento.setText("Cadastrar Nova Receita/Despesa");
+        cadastrarPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cadastrarPagamentoActionPerformed(evt);
             }
         });
 
@@ -87,31 +87,31 @@ public class P0401 extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Buscar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buscarPagamento.setText("Buscar");
+        buscarPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buscarPagamentoActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Editar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        editarPagamento.setText("Editar");
+        editarPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                editarPagamentoActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Ver Informações");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        informacoesPagamento.setText("Ver Informações");
+        informacoesPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                informacoesPagamentoActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Realizar Estorno");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        estornarPagamento.setText("Realizar Estorno");
+        estornarPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                estornarPagamentoActionPerformed(evt);
             }
         });
 
@@ -125,13 +125,13 @@ public class P0401 extends javax.swing.JInternalFrame {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cadastrarPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(370, 370, 370)
-                            .addComponent(jButton6)
+                            .addComponent(estornarPagamento)
                             .addGap(9, 9, 9)
-                            .addComponent(jButton5)
+                            .addComponent(informacoesPagamento)
                             .addGap(9, 9, 9)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(editarPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(2, 2, 2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +140,7 @@ public class P0401 extends javax.swing.JInternalFrame {
                                     .addGap(6, 6, 6)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(9, 9, 9)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(buscarPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
@@ -153,15 +153,15 @@ public class P0401 extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2))
+                        .addComponent(buscarPagamento))
                     .addGap(20, 20, 20)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(13, 13, 13)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton1)
-                        .addComponent(jButton6)
-                        .addComponent(jButton5)
-                        .addComponent(jButton4))
+                        .addComponent(cadastrarPagamento)
+                        .addComponent(estornarPagamento)
+                        .addComponent(informacoesPagamento)
+                        .addComponent(editarPagamento))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -172,45 +172,45 @@ public class P0401 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cadastrarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarPagamentoActionPerformed
         P0402 cad = new P0402();
         TelaInicial.Desktop.add(cad);
         cad.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_cadastrarPagamentoActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buscarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPagamentoActionPerformed
 
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buscarPagamentoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void editarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPagamentoActionPerformed
         P0402 cad = new P0402();
         TelaInicial.Desktop.add(cad);
         cad.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_editarPagamentoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void informacoesPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informacoesPagamentoActionPerformed
         P0403 v = new P0403();
         TelaInicial.Desktop.add(v);
         v.setVisible(true);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_informacoesPagamentoActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void estornarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estornarPagamentoActionPerformed
         P0404 cad = new P0404();
         TelaInicial.Desktop.add(cad);
         cad.setVisible(true);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_estornarPagamentoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton buscarPagamento;
+    private javax.swing.JButton cadastrarPagamento;
+    private javax.swing.JButton editarPagamento;
+    private javax.swing.JButton estornarPagamento;
+    private javax.swing.JButton informacoesPagamento;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

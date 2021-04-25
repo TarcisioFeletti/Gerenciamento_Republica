@@ -63,6 +63,7 @@ public class P0101 extends javax.swing.JInternalFrame {
         codigoDeEtica = new javax.swing.JTextArea();
         jLabel13 = new javax.swing.JLabel();
         confirmar = new javax.swing.JButton();
+        jScrollBar2 = new javax.swing.JScrollBar();
 
         setClosable(true);
         setMaximizable(true);
@@ -341,6 +342,7 @@ public class P0101 extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 680, 100, -1));
+        getContentPane().add(jScrollBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -390,7 +392,7 @@ public class P0101 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_dataFundacaoActionPerformed
 
     private void confirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_confirmarActionPerformed
 
     public JTextField getBairro() {
@@ -530,6 +532,7 @@ public class P0101 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollBar jScrollBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField localizacaoGeografica;

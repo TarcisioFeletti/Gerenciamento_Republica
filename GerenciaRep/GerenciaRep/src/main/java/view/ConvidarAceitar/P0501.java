@@ -31,12 +31,12 @@ public class P0501 extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        recusarPerfil = new javax.swing.JButton();
+        aceitarPerfil = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        convidarPerfil = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -64,11 +64,21 @@ public class P0501 extends javax.swing.JInternalFrame {
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 410));
 
-        jButton2.setText("Recusar");
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, 120, -1));
+        recusarPerfil.setText("Recusar");
+        recusarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recusarPerfilActionPerformed(evt);
+            }
+        });
+        jPanel2.add(recusarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 420, 120, -1));
 
-        jButton3.setText("Aceitar Solicitação");
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, -1, -1));
+        aceitarPerfil.setText("Aceitar Solicitação");
+        aceitarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceitarPerfilActionPerformed(evt);
+            }
+        });
+        jPanel2.add(aceitarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 420, -1, -1));
 
         jTabbedPane1.addTab("Aceitar Solicitações", jPanel2);
 
@@ -94,8 +104,13 @@ public class P0501 extends javax.swing.JInternalFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 410));
 
-        jButton1.setText("Convidar");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, 110, -1));
+        convidarPerfil.setText("Convidar");
+        convidarPerfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                convidarPerfilActionPerformed(evt);
+            }
+        });
+        jPanel1.add(convidarPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 420, 110, -1));
 
         jTabbedPane1.addTab("Convidar Usuários", jPanel1);
 
@@ -104,11 +119,22 @@ public class P0501 extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void recusarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recusarPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recusarPerfilActionPerformed
+
+    private void aceitarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceitarPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_aceitarPerfilActionPerformed
+
+    private void convidarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_convidarPerfilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_convidarPerfilActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton aceitarPerfil;
+    private javax.swing.JButton convidarPerfil;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -116,5 +142,6 @@ public class P0501 extends javax.swing.JInternalFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
+    private javax.swing.JButton recusarPerfil;
     // End of variables declaration//GEN-END:variables
 }

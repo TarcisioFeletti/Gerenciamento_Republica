@@ -29,14 +29,14 @@ public class P0302 extends javax.swing.JInternalFrame {
 
         jScrollPane3 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        adicionarTarefaMorardor = new javax.swing.JButton();
+        removerTarefaMorador = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jTextField1 = new javax.swing.JTextField();
         jFormattedTextField2 = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        confirmarTarefa = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -52,9 +52,19 @@ public class P0302 extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jList3);
 
-        jButton1.setText("->");
+        adicionarTarefaMorardor.setText("->");
+        adicionarTarefaMorardor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarTarefaMorardorActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("<-");
+        removerTarefaMorador.setText("<-");
+        removerTarefaMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerTarefaMoradorActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Descrição da Tarefa:");
 
@@ -72,7 +82,12 @@ public class P0302 extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Responsáveis pela tarefa:");
 
-        jButton3.setText("Confirmar");
+        confirmarTarefa.setText("Confirmar");
+        confirmarTarefa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarTarefaActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Data de agendamento:");
 
@@ -96,7 +111,7 @@ public class P0302 extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(148, 148, 148)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(confirmarTarefa, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,8 +120,8 @@ public class P0302 extends javax.swing.JInternalFrame {
                                 .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton1)
-                                .addComponent(jButton2))
+                                .addComponent(adicionarTarefaMorardor)
+                                .addComponent(removerTarefaMorador))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,9 +146,9 @@ public class P0302 extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(66, 66, 66)
-                        .addComponent(jButton1)
+                        .addComponent(adicionarTarefaMorardor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(removerTarefaMorador)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -143,18 +158,29 @@ public class P0302 extends javax.swing.JInternalFrame {
                     .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jFormattedTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(jButton3)
+                .addComponent(confirmarTarefa)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void confirmarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarTarefaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmarTarefaActionPerformed
+
+    private void adicionarTarefaMorardorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarTarefaMorardorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adicionarTarefaMorardorActionPerformed
+
+    private void removerTarefaMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerTarefaMoradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removerTarefaMoradorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton adicionarTarefaMorardor;
+    private javax.swing.JButton confirmarTarefa;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
@@ -166,5 +192,6 @@ public class P0302 extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton removerTarefaMorador;
     // End of variables declaration//GEN-END:variables
 }

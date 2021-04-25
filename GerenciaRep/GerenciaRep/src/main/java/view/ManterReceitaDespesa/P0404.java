@@ -29,7 +29,7 @@ public class P0404 extends javax.swing.JInternalFrame {
 
         jTextField4 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        justificarPagamento = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jRadioButton5 = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
@@ -64,7 +64,12 @@ public class P0404 extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Justificativa:");
 
-        jButton3.setText("Confirmar");
+        justificarPagamento.setText("Confirmar");
+        justificarPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                justificarPagamentoActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados da Receita / Despesa"));
 
@@ -302,7 +307,7 @@ public class P0404 extends javax.swing.JInternalFrame {
                             .addComponent(jTextField4)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(194, 194, 194)
-                        .addComponent(jButton3)))
+                        .addComponent(justificarPagamento)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -315,7 +320,7 @@ public class P0404 extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(justificarPagamento)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -330,11 +335,14 @@ public class P0404 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton3ActionPerformed
 
+    private void justificarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_justificarPagamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_justificarPagamentoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JFormattedTextField jFormattedTextField2;
     private javax.swing.JLabel jLabel1;
@@ -363,5 +371,6 @@ public class P0404 extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton justificarPagamento;
     // End of variables declaration//GEN-END:variables
 }
