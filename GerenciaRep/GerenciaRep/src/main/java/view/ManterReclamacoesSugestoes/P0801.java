@@ -33,13 +33,13 @@ public class P0801 extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        novaReclamacao = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        buscarReclamacao = new javax.swing.JButton();
+        excluirReclamacao = new javax.swing.JButton();
+        editarReclamacao = new javax.swing.JButton();
+        confirmarSolucao = new javax.swing.JButton();
+        informacoesReclamacao = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -71,10 +71,10 @@ public class P0801 extends javax.swing.JInternalFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pessoa", "Descrição" }));
 
-        jButton1.setText("Cadastrar Nova Sugestão / Reclamação");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        novaReclamacao.setText("Cadastrar Nova Sugestão / Reclamação");
+        novaReclamacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                novaReclamacaoActionPerformed(evt);
             }
         });
 
@@ -84,35 +84,40 @@ public class P0801 extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setText("Buscar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buscarReclamacao.setText("Buscar");
+        buscarReclamacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buscarReclamacaoActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Excluir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        excluirReclamacao.setText("Excluir");
+        excluirReclamacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                excluirReclamacaoActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Editar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        editarReclamacao.setText("Editar");
+        editarReclamacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                editarReclamacaoActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Confirmar Solução");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        confirmarSolucao.setText("Confirmar Solução");
+        confirmarSolucao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                confirmarSolucaoActionPerformed(evt);
             }
         });
 
-        jButton6.setText("Ver Informações");
+        informacoesReclamacao.setText("Ver Informações");
+        informacoesReclamacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                informacoesReclamacaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,15 +129,15 @@ public class P0801 extends javax.swing.JInternalFrame {
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(novaReclamacao, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(170, 170, 170)
-                            .addComponent(jButton5)
+                            .addComponent(confirmarSolucao)
                             .addGap(11, 11, 11)
-                            .addComponent(jButton6)
+                            .addComponent(informacoesReclamacao)
                             .addGap(9, 9, 9)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(excluirReclamacao, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(12, 12, 12)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(editarReclamacao, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(2, 2, 2)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,7 +146,7 @@ public class P0801 extends javax.swing.JInternalFrame {
                                     .addGap(6, 6, 6)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 640, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(9, 9, 9)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(buscarReclamacao, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 870, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
@@ -154,59 +159,63 @@ public class P0801 extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton2))
+                        .addComponent(buscarReclamacao))
                     .addGap(20, 20, 20)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(13, 13, 13)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton1)
-                        .addComponent(jButton5)
-                        .addComponent(jButton6)
-                        .addComponent(jButton3)
-                        .addComponent(jButton4))
+                        .addComponent(novaReclamacao)
+                        .addComponent(confirmarSolucao)
+                        .addComponent(informacoesReclamacao)
+                        .addComponent(excluirReclamacao)
+                        .addComponent(editarReclamacao))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void novaReclamacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaReclamacaoActionPerformed
         P0302 cad = new P0302();
         TelaInicial.Desktop.add(cad);
         cad.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_novaReclamacaoActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buscarReclamacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarReclamacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buscarReclamacaoActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void excluirReclamacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluirReclamacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_excluirReclamacaoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void editarReclamacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarReclamacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_editarReclamacaoActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void confirmarSolucaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarSolucaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_confirmarSolucaoActionPerformed
+
+    private void informacoesReclamacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informacoesReclamacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_informacoesReclamacaoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton buscarReclamacao;
+    private javax.swing.JButton confirmarSolucao;
+    private javax.swing.JButton editarReclamacao;
+    private javax.swing.JButton excluirReclamacao;
+    private javax.swing.JButton informacoesReclamacao;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton novaReclamacao;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,8 +29,8 @@ public class P0405 extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        consultaResultadoMensalRepublica = new javax.swing.JButton();
+        confirmarRecebimento = new javax.swing.JButton();
 
         setClosable(true);
         setMaximizable(true);
@@ -60,9 +60,19 @@ public class P0405 extends javax.swing.JInternalFrame {
         jTable1.setRowHeight(25);
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Consultar Resultado Mensal da República");
+        consultaResultadoMensalRepublica.setText("Consultar Resultado Mensal da República");
+        consultaResultadoMensalRepublica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaResultadoMensalRepublicaActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Confirmar Pagamento / Recebimento");
+        confirmarRecebimento.setText("Confirmar Pagamento / Recebimento");
+        confirmarRecebimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarRecebimentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,9 +86,9 @@ public class P0405 extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 910, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(440, 440, 440)
-                            .addComponent(jButton1)
+                            .addComponent(consultaResultadoMensalRepublica)
                             .addGap(21, 21, 21)
-                            .addComponent(jButton2)))
+                            .addComponent(confirmarRecebimento)))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -90,18 +100,26 @@ public class P0405 extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(6, 6, 6)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jButton1)
-                        .addComponent(jButton2))
+                        .addComponent(consultaResultadoMensalRepublica)
+                        .addComponent(confirmarRecebimento))
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void consultaResultadoMensalRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaResultadoMensalRepublicaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_consultaResultadoMensalRepublicaActionPerformed
+
+    private void confirmarRecebimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarRecebimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmarRecebimentoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton confirmarRecebimento;
+    private javax.swing.JButton consultaResultadoMensalRepublica;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

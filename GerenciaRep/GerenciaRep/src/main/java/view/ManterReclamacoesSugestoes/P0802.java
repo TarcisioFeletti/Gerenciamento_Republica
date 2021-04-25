@@ -28,7 +28,7 @@ public class P0802 extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        jButton3 = new javax.swing.JButton();
+        confirmarReclamacao = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
@@ -36,8 +36,8 @@ public class P0802 extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        adicionarReclamacaoMorador = new javax.swing.JButton();
+        removerReclamacaoMorador = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         jLabel8 = new javax.swing.JLabel();
@@ -56,7 +56,12 @@ public class P0802 extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
-        jButton3.setText("Confirmar");
+        confirmarReclamacao.setText("Confirmar");
+        confirmarReclamacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmarReclamacaoActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Tipo:");
 
@@ -80,9 +85,19 @@ public class P0802 extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jList3);
 
-        jButton1.setText("->");
+        adicionarReclamacaoMorador.setText("->");
+        adicionarReclamacaoMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adicionarReclamacaoMoradorActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("<-");
+        removerReclamacaoMorador.setText("<-");
+        removerReclamacaoMorador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerReclamacaoMoradorActionPerformed(evt);
+            }
+        });
 
         jScrollPane2.setViewportView(jList2);
 
@@ -99,8 +114,8 @@ public class P0802 extends javax.swing.JInternalFrame {
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)))
+                            .addComponent(adicionarReclamacaoMorador)
+                            .addComponent(removerReclamacaoMorador)))
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,9 +138,9 @@ public class P0802 extends javax.swing.JInternalFrame {
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(jButton1)
+                        .addComponent(adicionarReclamacaoMorador)
                         .addGap(6, 6, 6)
-                        .addComponent(jButton2)))
+                        .addComponent(removerReclamacaoMorador)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -171,7 +186,7 @@ public class P0802 extends javax.swing.JInternalFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(confirmarReclamacao, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(164, 164, 164))
         );
         layout.setVerticalGroup(
@@ -196,7 +211,7 @@ public class P0802 extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
+                .addComponent(confirmarReclamacao)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -207,11 +222,22 @@ public class P0802 extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
+    private void adicionarReclamacaoMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarReclamacaoMoradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_adicionarReclamacaoMoradorActionPerformed
+
+    private void removerReclamacaoMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerReclamacaoMoradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_removerReclamacaoMoradorActionPerformed
+
+    private void confirmarReclamacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmarReclamacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_confirmarReclamacaoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton adicionarReclamacaoMorador;
+    private javax.swing.JButton confirmarReclamacao;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -227,5 +253,6 @@ public class P0802 extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton removerReclamacaoMorador;
     // End of variables declaration//GEN-END:variables
 }
