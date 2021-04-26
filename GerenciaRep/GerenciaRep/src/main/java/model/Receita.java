@@ -13,11 +13,13 @@ import java.time.LocalDate;
  */
 public class Receita extends Lancamento {
     private LocalDate data;
+    private Republica republica;
     /*Lançamento ainda está incompleto*/
 
     public Receita(LocalDate data, String descricao, double valor, String periocidade, Republica republica) {
-        super(descricao, valor, periocidade, republica);
+        super(descricao, valor, periocidade);
         this.data = data;
+        this.republica = republica;
     }
 
     public LocalDate getData() {

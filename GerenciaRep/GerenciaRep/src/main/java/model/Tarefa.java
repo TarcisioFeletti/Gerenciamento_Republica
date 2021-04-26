@@ -6,7 +6,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.sql.Date;
 import java.util.List;
 
 /**
@@ -19,7 +18,36 @@ public class Tarefa {
     private String descricao;
     private LocalDate dataTermino;
     private boolean terminada;
-    private List<Pessoa> pessoaCollection;
+
+    public Tarefa(int idTarefa, LocalDate dataInicio, String descricao, LocalDate dataTermino, boolean terminada) {
+        this.idTarefa = idTarefa;
+        this.dataInicio = dataInicio;
+        this.descricao = descricao;
+        this.dataTermino = dataTermino;
+        this.terminada = terminada;
+    }
+
+    public Tarefa(LocalDate dataInicio, String descricao, LocalDate dataTermino, boolean terminada) {
+        this.dataInicio = dataInicio;
+        this.descricao = descricao;
+        this.dataTermino = dataTermino;
+        this.terminada = terminada;
+    }
+
+    public Tarefa(LocalDate dataInicio, String descricao, boolean terminada) {
+        this.dataInicio = dataInicio;
+        this.descricao = descricao;
+        this.terminada = terminada;
+    }
+
+    public Tarefa(int idTarefa, LocalDate dataInicio, String descricao, boolean terminada) {
+        this.idTarefa = idTarefa;
+        this.dataInicio = dataInicio;
+        this.descricao = descricao;
+        this.terminada = terminada;
+    }
+    
+    
 
     public LocalDate getDataInicio() {
         return dataInicio;
@@ -59,14 +87,6 @@ public class Tarefa {
 
     public void setTerminada(boolean terminada) {
         this.terminada = terminada;
-    }
-
-    public List<Pessoa> getPessoaCollection() {
-        return pessoaCollection;
-    }
-
-    public void setPessoaCollection(List<Pessoa> pessoaCollection) {
-        this.pessoaCollection = pessoaCollection;
     }
 
 }

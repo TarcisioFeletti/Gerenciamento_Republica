@@ -16,8 +16,8 @@ import java.util.logging.Logger;
  * @author tarci
  */
 public class DBConnection {
-    
-    private static Connection conexao;
+
+    private static Connection conexao = null;
 
     private static void conectar() {
         try {
@@ -43,16 +43,15 @@ public class DBConnection {
 
     public static Connection getConexao() {
         try {
-            if (conexao.isClosed()) {
+            if(conexao == null){
                 conectar();
-            }else if(conexao == null){
+            }else if(conexao.isClosed()){
                 conectar();
             }
-            return conexao;
-        } catch (SQLException | NullPointerException e) {
-            System.err.println(e.toString());
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
         }
-        return null;
+        return conexao;
     }
 
 }
