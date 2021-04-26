@@ -45,8 +45,11 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.34.0</version>
         </dependency>
-
-        
+        <dependency>
+            <groupId>com.pss</groupId>
+            <artifactId>ValidadorSenha</artifactId>
+            <version>1.08-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
