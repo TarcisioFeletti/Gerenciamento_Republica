@@ -220,6 +220,7 @@ public class P0101 extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 100, -1));
+        getContentPane().add(jScrollBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
