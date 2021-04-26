@@ -28,8 +28,8 @@ public class PessoaDAO {
 
     private Connection conexao;
 
-     public PessoaDAO() {
-        conexao = DBConnection.getConexao();
+    public PessoaDAO() {
+        this.conexao = DBConnection.getConexao();
     }
 
     //Somente SemTeto terá a função create, pois todos os usuários que forem ser inseridos no sistema
@@ -61,9 +61,9 @@ public class PessoaDAO {
             ps.setInt(1, pessoa.getIdPessoa());
             ps.execute();
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
-//            ps.close();
+            ps.close();
         }
     }
 
@@ -93,7 +93,7 @@ public class PessoaDAO {
                 ps.execute();
             }
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
             ps.close();
         }
@@ -114,8 +114,7 @@ public class PessoaDAO {
             if (rs.getBoolean("SemTeto")) {
                 temp = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                        rs.getInt("idPessoa"), rs.getBoolean("SemTeto"), rs.getBoolean("Morador"),
-                        rs.getBoolean("Representante"), rs.getString("login"), rs.getString("senha"));
+                        rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
                 return temp;
             } else if (rs.getBoolean("Morador")) {
                 query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
@@ -134,8 +133,7 @@ public class PessoaDAO {
                         t.getInt("idREpublica"));
                 temp = new Morador(rep, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                        rs.getInt("idPessoa"), rs.getBoolean("SemTeto"), rs.getBoolean("Morador"),
-                        rs.getBoolean("Representante"), rs.getString("login"), rs.getString("senha"));
+                        rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
                 return temp;
             } else if (rs.getBoolean("Representante")) {
                 query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
@@ -155,15 +153,14 @@ public class PessoaDAO {
                 temp = new Representante(rep, LocalDate.parse(rst.getString("dataInicio")),
                         LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                         rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
-                        rs.getString("contato2"), rs.getInt("idPessoa"), rs.getBoolean("SemTeto"), rs.getBoolean("Morador"),
-                        rs.getBoolean("Representante"), rs.getString("login"), rs.getString("senha"));
+                        rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
                 return temp;
             } else {
                 throw new RuntimeException("Usuário inválido");
             }
 
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
             try {
                 rs.close();
@@ -189,8 +186,7 @@ public class PessoaDAO {
                 if (rs.getBoolean("SemTeto")) {
                     pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                            rs.getInt("idPessoa"), rs.getBoolean("SemTeto"), rs.getBoolean("Morador"),
-                            rs.getBoolean("Representante"), rs.getString("login"), rs.getString("senha"));
+                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
                     pessoaCollection.add(pessoa);
                 } else if (rs.getBoolean("Morador")) {
                     query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
@@ -209,8 +205,7 @@ public class PessoaDAO {
                             t.getInt("idREpublica"));
                     pessoa = new Morador(rep, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                            rs.getInt("idPessoa"), rs.getBoolean("SemTeto"), rs.getBoolean("Morador"),
-                            rs.getBoolean("Representante"), rs.getString("login"), rs.getString("senha"));
+                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
                     pessoaCollection.add(pessoa);
                 } else if (rs.getBoolean("Representante")) {
                     query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
@@ -230,19 +225,18 @@ public class PessoaDAO {
                     pessoa = new Representante(rep, LocalDate.parse(rst.getString("dataInicio")),
                             LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                             rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
-                            rs.getString("contato2"), rs.getInt("idPessoa"), rs.getBoolean("SemTeto"), rs.getBoolean("Morador"),
-                            rs.getBoolean("Representante"), rs.getString("login"), rs.getString("senha"));
+                            rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
                     pessoaCollection.add(pessoa);
                 }
             }
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
             try {
                 rs.close();
                 ps.close();
             } catch (SQLException e) {
-                throw new SQLException(e.toString());
+                throw e;
             }
         }
         return pessoaCollection;
@@ -273,7 +267,7 @@ public class PessoaDAO {
             ps.setString(13, nome);
             ps.execute();
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
             ps.close();
         }
@@ -310,7 +304,7 @@ public class PessoaDAO {
             ps.setInt(1, rep.getIdRepublica());
             ps.setInt(2, pessoa.getIdPessoa());            
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
             ps.close();
         }
@@ -349,7 +343,7 @@ public class PessoaDAO {
             ps.setDate(3, Date.valueOf(pessoa.getDataFinal()));
             ps.setInt(4, pessoa.getIdPessoa());  
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
             ps.close();
         }
@@ -374,7 +368,7 @@ public class PessoaDAO {
             ps.setInt(2, rep.getIdRepublica());
             ps.execute();
         } catch (SQLException ex) {
-            throw new SQLException(ex.toString());
+            throw ex;
         }catch (RuntimeException e){
             throw new RuntimeException(e.toString());
         }finally{
@@ -402,7 +396,7 @@ public class PessoaDAO {
             ps.setDate(3, Date.valueOf(dataInicio));
             ps.execute();
         } catch (SQLException ex) {
-            throw new SQLException(ex.toString());
+            throw ex;
         }catch (RuntimeException e){
             throw new RuntimeException(e.toString());
         }finally{
@@ -430,7 +424,7 @@ public class PessoaDAO {
             ps.setDate(3, Date.valueOf(dataInicio));
             ps.execute();
         } catch (SQLException ex) {
-            throw new SQLException(ex.toString());
+            throw ex;
         }catch (RuntimeException e){
             throw new RuntimeException(e.toString());
         }finally{
@@ -457,7 +451,7 @@ public class PessoaDAO {
             ps.setInt(2, rep.getIdRepublica());
             ps.execute();
         } catch (SQLException ex) {
-            throw new SQLException(ex.toString());
+            throw ex;
         }catch (RuntimeException e){
             throw new RuntimeException(e.toString());
         }finally{
@@ -481,7 +475,7 @@ public class PessoaDAO {
             ps.setInt(1, temp.getIdPessoa());
             ps.execute();
         } catch (SQLException ex) {
-            throw new SQLException(ex.toString());
+            throw ex;
         }catch (RuntimeException e){
             throw new RuntimeException(e.toString());
         }finally{
@@ -505,7 +499,7 @@ public class PessoaDAO {
             ps.setInt(1, temp.getIdPessoa());
             ps.execute();
         } catch (SQLException ex) {
-            throw new SQLException(ex.toString());
+            throw ex;
         }catch (RuntimeException e){
             throw new RuntimeException(e.toString());
         }finally{

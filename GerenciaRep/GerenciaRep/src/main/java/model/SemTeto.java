@@ -11,13 +11,15 @@ package model;
  */
 public class SemTeto extends Pessoa {
 
-    public SemTeto(String nome, String apelido, String telefone, String cpf, String redesSociais, String contato1, String contat2, int idPessoa, boolean semTeto, boolean morador, boolean representante, String login, String senha) {
-        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2, idPessoa, semTeto, morador, representante, login, senha);
+    public SemTeto(String nome, String apelido, String telefone, String cpf, String redesSociais, String contato1, String contat2, int idPessoa, String login, String senha) {
+        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2, idPessoa, true, false, false, login, senha);
     }
 
-    public SemTeto(String nome, String apelido, String telefone, String cpf, String redesSociais, String contato1, String contat2, boolean semTeto, boolean morador, boolean representante, String login, String senha) {
-        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2, semTeto, morador, representante, login, senha);
+    public SemTeto(String nome, String apelido, String telefone, String cpf, String redesSociais, String contato1, String contat2, String login, String senha) {
+        super(nome, apelido, telefone, cpf, redesSociais, contato1, contat2, true, false, false, login, senha);
     }
+
+    
 
     
 }

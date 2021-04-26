@@ -40,7 +40,7 @@ public class DespesaMoradorDAO {
             
             ps.execute();
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
             ps.close();
             DBConnection.fecharConexao();
@@ -55,10 +55,9 @@ public class DespesaMoradorDAO {
             ps.setString(1, nome);
             ps.execute();
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
             ps.close();
-            DBConnection.fecharConexao();
         }
     }
 
@@ -75,14 +74,13 @@ public class DespesaMoradorDAO {
             
 
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
             try {
                 rs.close();
                 ps.close();
-                DBConnection.fecharConexao();
             } catch (SQLException e) {
-                throw new SQLException(e.toString());
+                throw e;
             }
         }
         return null;

@@ -24,38 +24,38 @@ public class RepublicaDAO {
 
     private Connection conexao;
 
-    RepublicaDAO() {
+    public RepublicaDAO() {
         conexao = DBConnection.getConexao();
     }
     
     //Criar uma nova república
-    public void create(Republica republica) throws SQLException {
-        PreparedStatement ps = null;
+    public void create(Republica republica) throws SQLException,NullPointerException {
+        
         try {
-            String query = "INSERT INTO Republica(nomeRepublica, dataFundacao, dataExtincao, endereco, "
-                    + "bairro, pontoReferencia, localizacaoGeografica, vantagens, "
-                    + "despesasMediaPorMorador, vagasTotal, vagasOcupadas, vagasDisponiveis, numeroDaCasa)  "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement ps;
+            String query = "INSERT INTO Republica(nomeRepublica, dataFundacao, endereco, "
+                    + "bairro, pontoReferencia, vantagens, "
+                    + "despesasMediasPorMorador, vagasTotal, vagasOcupadas, vagasDisponiveis, numeroDaCasa)  "
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
             ps = conexao.prepareStatement(query);
             ps.setString(1, republica.getNomeRepublica());
             ps.setDate(2, Date.valueOf(republica.getDataFundacao()));
-            ps.setDate(3, Date.valueOf(republica.getDataExtincao()));
-            ps.setString(4, republica.getEndereco());
-            ps.setString(5, republica.getBairro());
-            ps.setString(6, republica.getPontoReferencia());
-            ps.setString(7, republica.getLocalizacaoGeografica());
-            ps.setString(8, republica.getVantagens());
-            ps.setFloat(9, republica.getDespesasMediasPorMorador());
-            ps.setInt(10, republica.getVagasTotal());
-            ps.setInt(11, republica.getVagasOcupadas());
-            ps.setInt(12, republica.getVagasDisponiveis());
-            ps.setInt(13, republica.getNumero());
+            ps.setString(3, republica.getEndereco());
+            ps.setString(4, republica.getBairro());
+            ps.setString(5, republica.getPontoReferencia());
+            ps.setString(6, republica.getVantagens());
+            ps.setDouble(7, republica.getDespesasMediasPorMorador());
+            ps.setInt(8, republica.getVagasTotal());
+            ps.setInt(9, republica.getVagasOcupadas());
+            ps.setInt(10, republica.getVagasDisponiveis());
+            ps.setInt(11, republica.getNumero());
             ps.execute();
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
-        } finally {
-            ps.close();
-            DBConnection.fecharConexao();
+            throw e;
+        } catch (NullPointerException e) {
+            throw e;
+        }finally {
+ //           ps.close();
         }
     }
     
@@ -71,7 +71,6 @@ public class RepublicaDAO {
             throw new SQLException(e.toString());
         } finally {
             ps.close();
-            DBConnection.fecharConexao();
         }
     }
     
@@ -98,7 +97,6 @@ public class RepublicaDAO {
             try {
                 rs.close();
                 ps.close();
-                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw new SQLException(e.toString());
             }
@@ -131,7 +129,6 @@ public class RepublicaDAO {
             try {
                 rs.close();
                 ps.close();
-                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw new SQLException(e.toString());
             }
@@ -156,7 +153,7 @@ public class RepublicaDAO {
             ps.setString(6, republica.getPontoReferencia());
             ps.setString(7, republica.getLocalizacaoGeografica());
             ps.setString(8, republica.getVantagens());
-            ps.setFloat(9, republica.getDespesasMediasPorMorador());
+            ps.setDouble(9, republica.getDespesasMediasPorMorador());
             ps.setInt(10, republica.getVagasTotal());
             ps.setInt(11, republica.getVagasOcupadas());
             ps.setInt(12, republica.getVagasDisponiveis());
@@ -167,7 +164,6 @@ public class RepublicaDAO {
             throw new SQLException(e.toString());
         } finally {
             ps.close();
-            DBConnection.fecharConexao();
         }
     }
 }
