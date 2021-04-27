@@ -23,20 +23,24 @@ import model.Republica;
 public class RepublicaDAO {
 
     private Connection conexao;
+    private static RepublicaDAO instancia;
 
-    public RepublicaDAO() {
+    private RepublicaDAO() {}
+    
+    public void conectar(){
         conexao = DBConnection.getConexao();
     }
     
     //Criar uma nova república
     public void create(Republica republica) throws SQLException,NullPointerException {
-        
+        conectar();
         try {
             PreparedStatement ps;
             String query = "INSERT INTO Republica(nomeRepublica, dataFundacao, endereco, "
                     + "bairro, pontoReferencia, vantagens, "
-                    + "despesasMediasPorMorador, vagasTotal, vagasOcupadas, vagasDisponiveis, numeroDaCasa)  "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+                    + "despesasMediasPorMorador, vagasTotal, vagasOcupadas, vagasDisponiveis, numeroDaCasa,"
+                    + "cep, codigoDeEtica)  "
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             ps = conexao.prepareStatement(query);
             ps.setString(1, republica.getNomeRepublica());
             ps.setDate(2, Date.valueOf(republica.getDataFundacao()));
@@ -49,6 +53,8 @@ public class RepublicaDAO {
             ps.setInt(9, republica.getVagasOcupadas());
             ps.setInt(10, republica.getVagasDisponiveis());
             ps.setInt(11, republica.getNumero());
+            ps.setDouble(12, republica.getCep());
+            ps.setString(13, republica.getCodigoEtica());
             ps.execute();
         } catch (SQLException e) {
             throw e;
@@ -56,11 +62,13 @@ public class RepublicaDAO {
             throw e;
         }finally {
  //           ps.close();
+            DBConnection.fecharConexao();
         }
     }
     
     //Deletar uma república
     public void delete(String nome) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         try {
             String query = "DELETE FROM Republica WHERE (nomeRepublica = ?);";
@@ -71,11 +79,13 @@ public class RepublicaDAO {
             throw new SQLException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
     
     //Ler os dados de uma república
     public Republica read(String nome) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -83,12 +93,12 @@ public class RepublicaDAO {
             ps = conexao.prepareStatement(query);
             ps.setString(1, nome);
             rs = ps.executeQuery();
-            Republica rep = new Republica(rs.getString("nome"), rs.getString("endereco"), 
-                        LocalDate.parse(rs.getString("dataFundacao")), LocalDate.parse(rs.getString("dataExtincao")), 
+            Republica rep = new Republica(rs.getString("nomeRepublica"), rs.getString("endereco"),
+                        LocalDate.parse(rs.getString("dataFundacao")), LocalDate.parse(rs.getString("dataExtincao")),
                         rs.getString("bairro"), rs.getString("pontoReferencia"), rs.getString("localizacaoGeografica"),
-                        rs.getString("vantagens"), rs.getInt("numeroDaCasa"),  rs.getFloat("despesasMediasPorMorador"), 
-                        rs.getInt("vagasTotal"), rs.getInt("vagasOcupadas"), rs.getInt("vagasDisponiveis"), 
-                        rs.getInt("idREpublica"));
+                        rs.getString("vantagens"), rs.getString("codigoDeEtica"), rs.getInt("numeroDaCasa"), 
+                        rs.getFloat("despesasMediasPorMorador"), rs.getInt("vagasTotal"), rs.getInt("vagasOcupadas"), 
+                        rs.getInt("vagasDisponiveis"), rs.getDouble("cep"), rs.getInt("idRepublica"));
             return rep;
 
         } catch (SQLException e) {
@@ -97,6 +107,37 @@ public class RepublicaDAO {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
+            } catch (SQLException e) {
+                throw new SQLException(e.toString());
+            }
+        }
+    }
+    
+    public Republica read(int idRepublica) throws SQLException {
+        conectar();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String query = "SELECT * FROM Republica WHERE (idRepublica = ?);";
+            ps = conexao.prepareStatement(query);
+            ps.setInt(1, idRepublica);
+            rs = ps.executeQuery();
+            Republica rep = new Republica(rs.getString("nomeRepublica"), rs.getString("endereco"),
+                        LocalDate.parse(rs.getString("dataFundacao")), LocalDate.parse(rs.getString("dataExtincao")),
+                        rs.getString("bairro"), rs.getString("pontoReferencia"), rs.getString("localizacaoGeografica"),
+                        rs.getString("vantagens"), rs.getString("codigoDeEtica"), rs.getInt("numeroDaCasa"), 
+                        rs.getFloat("despesasMediasPorMorador"), rs.getInt("vagasTotal"), rs.getInt("vagasOcupadas"), 
+                        rs.getInt("vagasDisponiveis"), rs.getDouble("cep"), rs.getInt("idRepublica"));
+            return rep;
+
+        } catch (SQLException e) {
+            throw new SQLException(e.toString());
+        } finally {
+            try {
+                rs.close();
+                ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw new SQLException(e.toString());
             }
@@ -105,22 +146,22 @@ public class RepublicaDAO {
     
     //Ler os dados de todas as repúblicas
     public List<Republica> getAll() throws SQLException {
-        Connection con = DBConnection.getConexao();
+        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Republica> republicaCollection = new ArrayList<>();
 
         try {
             String query = "SELECT * FROM Republica";
-            ps = con.prepareStatement(query);
+            ps = conexao.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                Republica rep = new Republica(rs.getString("nome"), rs.getString("endereco"), 
-                        LocalDate.parse(rs.getString("dataFundacao")), LocalDate.parse(rs.getString("dataExtincao")), 
+                Republica rep = new Republica(rs.getString("nomeRepublica"), rs.getString("endereco"),
+                        LocalDate.parse(rs.getString("dataFundacao")), LocalDate.parse(rs.getString("dataExtincao")),
                         rs.getString("bairro"), rs.getString("pontoReferencia"), rs.getString("localizacaoGeografica"),
-                        rs.getString("vantagens"), rs.getInt("numeroDaCasa"),  rs.getFloat("despesasMediasPorMorador"), 
-                        rs.getInt("vagasTotal"), rs.getInt("vagasOcupadas"), rs.getInt("vagasDisponiveis"), 
-                        rs.getInt("idREpublica"));
+                        rs.getString("vantagens"), rs.getString("codigoDeEtica"), rs.getInt("numeroDaCasa"), 
+                        rs.getFloat("despesasMediasPorMorador"), rs.getInt("vagasTotal"), rs.getInt("vagasOcupadas"), 
+                        rs.getInt("vagasDisponiveis"), rs.getDouble("cep"), rs.getInt("idRepublica"));
                 republicaCollection.add(rep);
             }
         } catch (SQLException e) {
@@ -129,6 +170,7 @@ public class RepublicaDAO {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw new SQLException(e.toString());
             }
@@ -138,6 +180,7 @@ public class RepublicaDAO {
     
     //Atualizar os dados de uma república
     public void update(Republica republica, String nome) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         try {
             String query = "UPDATE Republica SET nomeRepublica = ?, dataFundacao = ?, dataExtincao = ?, endereco = ?, "
@@ -164,6 +207,14 @@ public class RepublicaDAO {
             throw new SQLException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
+    }
+    
+    public static RepublicaDAO getInstancia(){
+        if(instancia == null){
+            instancia = new RepublicaDAO();
+        }
+        return instancia;
     }
 }

@@ -13,18 +13,19 @@ public abstract class Lancamento {
     private String descricao;
     private double valor;
     private String periocidade;
+    private Republica republica;
     private int idLancamento;
     
     
     /*Lançamento ainda está incompleto*/
 
-    public Lancamento(String descricao, double valor, String periocidade) {
+    public Lancamento(String descricao, double valor, String periocidade, Republica republica, int idLancamento) {
         this.descricao = descricao;
         this.valor = valor;
         this.periocidade = periocidade;
+        this.republica = republica;
+        this.idLancamento = idLancamento;
     }
-
-    
 
     public String getDescricao() {
         return descricao;
@@ -41,8 +42,9 @@ public abstract class Lancamento {
     public int getIdLancamento() {
         return idLancamento;
     }
-    
-    
-    
+
+    public Republica getRepublica() {
+        return republica;
+    }
     
 }

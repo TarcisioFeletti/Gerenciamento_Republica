@@ -24,25 +24,36 @@ import model.TarefaPessoa;
  */
 public class TarefasPessoaDAO {
 
-    private final TarefasDAO tarefaDAO = new TarefasDAO();
-    private final PessoaDAO pessoaDAO = new PessoaDAO();
+    private final TarefasDAO tarefaDAO;
+    private final PessoaDAO pessoaDAO;
+    private static TarefasPessoaDAO instancia;
     private Connection conexao;
 
-    public TarefasPessoaDAO() {
+    private TarefasPessoaDAO() {
+        tarefaDAO = TarefasDAO.getInstancia();
+        pessoaDAO = PessoaDAO.getInstancia();
+    }
+
+    public static TarefasPessoaDAO getInstancia() {
+        if (instancia == null) {
+            instancia = new TarefasPessoaDAO();
+        }
+        return instancia;
+    }
+
+    public void conectar() {
         this.conexao = DBConnection.getConexao();
     }
-    
-    
 
     //Create
-    public void adicionar(List<TarefaPessoa> tmCollection) throws SQLException {
+    public void adicionar(List<Pessoa> tmCollection, Tarefa tarefa) throws SQLException {
         PreparedStatement ps = null;
         try {
-            for (TarefaPessoa tm : tmCollection) {
+            for (Pessoa tm : tmCollection) {
                 String query = "INSERT INTO TarefaMorador(idTarefa, idPessoa)  Values(?,?)";
                 ps = conexao.prepareStatement(query);
-                ps.setInt(1, tm.getTarefa().getIdTarefa());
-                ps.setInt(2, tm.getUsuario().getIdPessoa());
+                ps.setInt(1, tarefa.getIdTarefa());
+                ps.setInt(2, tm.getIdPessoa());
                 ps.execute();
             }
         } catch (SQLException e) {
@@ -50,57 +61,47 @@ public class TarefasPessoaDAO {
         }
     }
 
-    public void adicionar(TarefaPessoa tm) throws SQLException {
-        PreparedStatement ps = null;
-        try {
-            String query = "INSERT INTO TarefaMorador(idTarefa, idPessoa)  Values(?,?)";
-            ps = conexao.prepareStatement(query);
-            ps.setInt(1, tm.getTarefa().getIdTarefa());
-            ps.setInt(2, tm.getUsuario().getIdPessoa());
-            ps.execute();
-        } catch (SQLException e) {
-            throw e;
-        }
-    }
-
     //Delete
-    public void removerPorTarefa(int idTarefa) throws SQLException {
+    public void removerPorTarefa(Tarefa tarefa) throws SQLException {
         //Excluir todas as relações entre a tarefa com idTarefa e os moradores
         //pertencentes àquela tarefa
+        conectar();
         PreparedStatement ps = null;
         try {
             String query = "DELETE FROM TarefaMorador WHERE (idTarefa = ?);";
             ps = conexao.prepareStatement(query);
-            ps.setInt(1, idTarefa);
+            ps.setInt(1, tarefa.getIdTarefa());
             ps.execute();
         } catch (SQLException e) {
             throw new SQLException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
-    public void removerPorPessoa(int idPessoa) throws SQLException {
+    public void removerPorPessoa(Pessoa pessoa) throws SQLException {
         //Excluir todas as relações entre a pessoa com idPessoa e as tarefas
         //atribuídas a ele
+        conectar();
         PreparedStatement ps = null;
         try {
             String query = "DELETE FROM TarefaMorador WHERE (idPessoa = ?);";
             ps = conexao.prepareStatement(query);
-            ps.setInt(1, idPessoa);
+            ps.setInt(1, pessoa.getIdPessoa());
             ps.execute();
         } catch (SQLException e) {
             throw new SQLException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
     //Read
     //Read Line
-    //rever
     public TarefaPessoa buscarLinha(String descricao, LocalDate dataInicio, String nome) throws SQLException {
-        Connection con = DBConnection.getConexao();
+        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         Pessoa pessoa;
@@ -117,14 +118,16 @@ public class TarefasPessoaDAO {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw new SQLException(e.toString());
             }
         }
     }
 
-    //Read all
-    public List<TarefaPessoa> lerTodasAsPessoasEmUmaTarefa(String descricao, LocalDate dataInicio) throws SQLException {
+    //Ler todas as pessoas participantes de uma tarefa
+    public List<TarefaPessoa> buscarTodasAsPessoasEmUmaTarefa(String descricao, LocalDate dataInicio) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         Pessoa pessoa = null;
@@ -142,52 +145,54 @@ public class TarefasPessoaDAO {
                 ps = conexao.prepareStatement(query);
                 ps.setInt(1, rs.getInt("idPessoa"));
                 ResultSet r = ps.executeQuery();
-                if(rs.getBoolean("SemTeto")){
-                    pessoa = new SemTeto(r.getString("nome"), r.getString("apelido"), r.getString("telefone"), 
-                            r.getString("cpf"), r.getString("redesSociais"), r.getString("contato1"), 
+                if (rs.getBoolean("SemTeto")) {
+                    pessoa = new SemTeto(r.getString("nome"), r.getString("apelido"), r.getString("telefone"),
+                            r.getString("cpf"), r.getString("redesSociais"), r.getString("contato1"),
                             r.getString("contato2"), r.getInt("idPessoa"), r.getString("login"), r.getString("senha"));
-                }else if(rs.getBoolean("Morador")){
+                } else if (rs.getBoolean("Morador")) {
                     String subQuery = "SELECT r.nomeRepublica FROM Morador m inner join Republica r on m.idRepublica = r.idRepublica WHERE(idPessoa = ?);";
                     PreparedStatement p = conexao.prepareStatement(subQuery);
                     p.setInt(1, r.getInt("idPessoa"));
                     ResultSet rt = p.executeQuery();
-                    RepublicaDAO repDAO = new RepublicaDAO();
+                    RepublicaDAO repDAO = RepublicaDAO.getInstancia();
                     Republica rep = repDAO.read(rt.getString("r.nomeRepublica"));
-                    pessoa = new Morador(rep, r.getString("nome"), r.getString("apelido"), r.getString("telefone"), 
-                            r.getString("cpf"), r.getString("redesSociais"), r.getString("contato1"), 
+                    pessoa = new Morador(rep, r.getString("nome"), r.getString("apelido"), r.getString("telefone"),
+                            r.getString("cpf"), r.getString("redesSociais"), r.getString("contato1"),
                             r.getString("contato2"), r.getInt("idPessoa"), r.getString("login"), r.getString("senha"));
-                }else if(rs.getBoolean("Representante")){
+                } else if (rs.getBoolean("Representante")) {
                     String subQuery = "SELECT r.nomeRepublica, re.dataInicio, re.dataFim FROM Representante re inner join Republica r on m.idRepublica = r.idRepublica WHERE(idPessoa = ?);";
                     PreparedStatement p = conexao.prepareStatement(subQuery);
                     p.setInt(1, r.getInt("idPessoa"));
                     ResultSet rt = p.executeQuery();
-                    RepublicaDAO repDAO = new RepublicaDAO();
+                    RepublicaDAO repDAO = RepublicaDAO.getInstancia();
                     Republica rep = repDAO.read(rt.getString("r.nomeRepublica"));
-                    pessoa = new Representante(rep, LocalDate.parse(rt.getString("dataInicio")), 
-                            LocalDate.parse(rt.getString("dataFim")), r.getString("nome"), r.getString("apelido"), 
-                            r.getString("telefone"), r.getString("cpf"), r.getString("redesSociais"), 
-                            r.getString("contato1"), 
+                    pessoa = new Representante(rep, LocalDate.parse(rt.getString("dataInicio")),
+                            LocalDate.parse(rt.getString("dataFim")), r.getString("nome"), r.getString("apelido"),
+                            r.getString("telefone"), r.getString("cpf"), r.getString("redesSociais"),
+                            r.getString("contato1"),
                             r.getString("contato2"), r.getInt("idPessoa"), r.getString("login"), r.getString("senha"));
                 }
                 TarefaPessoa tm = new TarefaPessoa(pessoa, tarefa);
                 tmCollection.add(tm);
             }
 
-            
         } catch (SQLException e) {
             throw e;
         } finally {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw e;
             }
         }
         return tmCollection;
     }
-    
-    public List<TarefaPessoa> lerTodasAsTarefasDeUmaPessoa(String nome) throws SQLException {
+
+    //Ler todas as tarefas relacionadas a uma pessoa
+    public List<TarefaPessoa> buscarTodasAsTarefasDeUmaPessoa(String nome) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         Pessoa pessoa = null;
@@ -206,24 +211,62 @@ public class TarefasPessoaDAO {
                 p.setInt(1, rs.getInt("idTarefa"));
                 ResultSet r = p.executeQuery();
                 tarefa = new Tarefa(r.getInt("idTarefa"), LocalDate.parse(r.getString("dataInicio")),
-                r.getString("descricao"), LocalDate.parse(r.getString("dataTermino")), r.getBoolean("terminada"));
+                        r.getString("descricao"), LocalDate.parse(r.getString("dataTermino")), r.getBoolean("terminada"));
                 TarefaPessoa tm = new TarefaPessoa(pessoa, tarefa);
                 tmCollection.add(tm);
                 r.close();
                 p.close();
             }
 
-            
         } catch (SQLException e) {
             throw e;
         } finally {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw e;
             }
         }
         return tmCollection;
+    }
+
+    //Update idPessoa de TarefaPessoa
+    public void updatePessoa(TarefaPessoa tarefaPessoa, String nomeAntigo) throws SQLException {
+        conectar();
+        PessoaDAO pessoaDAO = PessoaDAO.getInstancia();
+        PreparedStatement ps = null;
+        try {
+            Pessoa pessoa = pessoaDAO.read(nomeAntigo);
+            String query = "UPDATE TarefaMorador SET idTarefa = ?, idMorador = ? WHERE(idTarefa = ?) and (idMorador = ?);";
+            ps = conexao.prepareStatement(query);
+            ps.setInt(1,tarefaPessoa.getTarefa().getIdTarefa());
+            ps.setInt(2,tarefaPessoa.getUsuario().getIdPessoa());
+            ps.setInt(3,tarefaPessoa.getTarefa().getIdTarefa());
+            ps.setInt(4, pessoa.getIdPessoa());
+            ps.execute();
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+    
+    //Update o idTarefa de TarefaPessoa
+    public void updateTarefa(TarefaPessoa tarefaPessoa, LocalDate dataInicioAntiga, String descricaoAntiga) throws SQLException {
+        conectar();
+        TarefasDAO tarefasDAO = TarefasDAO.getInstancia();
+        PreparedStatement ps = null;
+        try {
+            Tarefa tarefa = tarefasDAO.read(dataInicioAntiga, descricaoAntiga);
+            String query = "UPDATE TarefaMorador SET idTarefa = ?, idMorador = ? WHERE(idTarefa = ?) and (idMorador = ?);";
+            ps = conexao.prepareStatement(query);
+            ps.setInt(1,tarefaPessoa.getTarefa().getIdTarefa());
+            ps.setInt(2,tarefaPessoa.getUsuario().getIdPessoa());
+            ps.setInt(3,tarefa.getIdTarefa());
+            ps.setInt(4,tarefaPessoa.getUsuario().getIdPessoa());
+            ps.execute();
+        } catch (SQLException e) {
+            throw e;
+        }
     }
 }

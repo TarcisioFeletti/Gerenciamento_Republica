@@ -16,8 +16,8 @@ public class Despesa extends Lancamento {
     
     /*Lançamento ainda está incompleto*/
 
-    public Despesa(LocalDate dataVencimento, String descricao, double valor, String periocidade) {
-        super(descricao, valor, periocidade);
+    public Despesa(LocalDate dataVencimento, String descricao, double valor, String periocidade, Republica republica, int idLancamento) {
+        super(descricao, valor, periocidade, republica, idLancamento);
         this.dataVencimento = dataVencimento;
     }
 

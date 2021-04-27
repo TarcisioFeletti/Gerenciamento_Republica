@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import model.Pessoa;
 import model.Tarefa;
 
 /**
@@ -21,14 +22,27 @@ import model.Tarefa;
  * @author tarci
  */
 public class TarefasDAO {
-    private TarefasPessoaDAO tarefaMorador = new TarefasPessoaDAO();
+    private TarefasPessoaDAO tarefasPessoa;
     private Connection conexao;
+    private static TarefasDAO instancia;
 
-    public TarefasDAO() {
+    private TarefasDAO() {
+        tarefasPessoa = TarefasPessoaDAO.getInstancia();
+    }
+    
+    public static TarefasDAO getInstancia(){
+        if(instancia == null){
+            instancia = new TarefasDAO();
+        }
+        return instancia;
+    }
+    
+    public void conectar(){
         this.conexao = DBConnection.getConexao();
     }
     
-    public void create(Tarefa tarefa) throws SQLException {
+    public void create(Tarefa tarefa, List<Pessoa> pessoaCollection) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         try {
             String query = "INSERT INTO Tarefas(dataInicio, descricao, dataTermino, terminada)  Values(?,?,?,?)";
@@ -38,23 +52,29 @@ public class TarefasDAO {
             ps.setDate(3, Date.valueOf(tarefa.getDataTermino()));
             ps.setBoolean(4, tarefa.isTerminada());
             ps.execute();
+            
+            TarefasPessoaDAO tarefasPessoaDAO = TarefasPessoaDAO.getInstancia();
+            tarefasPessoaDAO.adicionar(pessoaCollection, tarefa);
 
         //    tarefaMorador.adicionar(tarefa.getPessoaCollection(), tarefa);
         } catch (SQLException e) {
             throw e;
+        }finally{
+            DBConnection.fecharConexao();
         }
     }
 
     public void delete(LocalDate dataInicio, String descricao) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         try {
-            Tarefa t = this.read(dataInicio, descricao);
+            Tarefa tarefa = this.read(dataInicio, descricao);
             String query = "DELETE FROM Tarefas WHERE (dataInicio = ?) and (descricao = ?);";
             ps = conexao.prepareStatement(query);
             ps.setDate(1, Date.valueOf(dataInicio));
             ps.setString(2, descricao);
             ps.execute();
-            tarefaMorador.removerPorTarefa(t.getIdTarefa());
+            tarefasPessoa.removerPorTarefa(tarefa);
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -63,6 +83,7 @@ public class TarefasDAO {
     }
 
     public Tarefa read(LocalDate dataInicio, String descricao) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         Tarefa tarefa = null;
@@ -81,6 +102,7 @@ public class TarefasDAO {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw e;
             }
@@ -89,6 +111,7 @@ public class TarefasDAO {
     }
 
     public List<Tarefa> getAll() throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Tarefa> tarefaCollection = new ArrayList<>();
@@ -109,6 +132,7 @@ public class TarefasDAO {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw e;
             }
@@ -117,6 +141,7 @@ public class TarefasDAO {
     }
 
     public void update(int id, Tarefa tarefa) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         try {
             String query = "UPDATE Tarefas SET dataInicio = ?, descricao = ?, dataTermino = ?, terminada = ? WHERE (idTarefa = ?);";
@@ -131,6 +156,7 @@ public class TarefasDAO {
             throw e;
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 }

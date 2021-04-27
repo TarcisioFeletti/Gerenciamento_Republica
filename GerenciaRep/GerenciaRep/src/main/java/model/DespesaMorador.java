@@ -12,6 +12,7 @@ package model;
 public class DespesaMorador {
     private Pessoa pessoa;
     private Despesa despesa;
+    private float porcentagem;
 
     public DespesaMorador(Pessoa pessoa, Despesa despesa) {
         this.pessoa = pessoa;
@@ -33,6 +34,13 @@ public class DespesaMorador {
     public void setDespesa(Despesa despesa) {
         this.despesa = despesa;
     }
-    
+
+    public float getPorcentagem() {
+        return porcentagem;
+    }
+
+    public void setPorcentagem(float porcentagem) {
+        this.porcentagem = porcentagem;
+    }
     
 }

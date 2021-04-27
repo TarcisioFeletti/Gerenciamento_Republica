@@ -7,71 +7,107 @@ package DAO;
 
 import DAO.DBConnection.DBConnection;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
+import model.Despesa;
 import model.DespesaMorador;
+import model.Morador;
 import model.Pessoa;
-import model.Republica;
 
 /**
  *
  * @author tarci
  */
 public class DespesaMoradorDAO {
-    private Connection conexao;
 
-    DespesaMoradorDAO() {
+    private Connection conexao;
+    private static DespesaMoradorDAO instancia;
+
+    private DespesaMoradorDAO() {
+    }
+
+    public static DespesaMoradorDAO getInstancia() {
+        if (instancia == null) {
+            instancia = new DespesaMoradorDAO();
+        }
+        return instancia;
+    }
+
+    public void conectar() {
         conexao = DBConnection.getConexao();
     }
 
-    public void create(String nomePessoa, String descricao, LocalDate data) throws SQLException {
+    /*public void create(List<DespesaMorador> despesaMoradorCollection) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         try {
-            PessoaDAO subQuery = new PessoaDAO();
-            Pessoa pessoa = subQuery.read(nomePessoa);
-            String query = "INSERT INTO DespesaMorador(idDespesa, idMorador, porcentagemDoValorTotal)  "
-                    + "VALUES(?,?,?)";
-            ps = conexao.prepareStatement(query);
-            
-            ps.execute();
+            for (DespesaMorador despesaMorador : despesaMoradorCollection) {
+                String query = "INSERT INTO DespesaMorador(idDespesa, idMorador, porcentagemDoValorTotal)  "
+                        + "VALUES(?,?,?)";
+                ps = conexao.prepareStatement(query);
+                ps.setInt(1, despesa.getIdLancamento());
+                ps.setInt(2, pessoa.getIdPessoa());
+                ps.setFloat(3, despesaMorador.getPorcentagem());
+                ps.execute();
+            }
         } catch (SQLException e) {
             throw e;
         } finally {
             ps.close();
             DBConnection.fecharConexao();
         }
-    }
+    }*/
 
-    public void delete(String nome) throws SQLException {
+    //Delete
+    public void removerPorDespesa(Despesa despesa) throws SQLException {
+        //Excluir todas as relações entre a tarefa com idTarefa e os moradores
+        //pertencentes àquela tarefa
+        conectar();
         PreparedStatement ps = null;
         try {
-            String query = "DELETE FROM Republica WHERE (nomeRepublica = ?);";
+            String query = "DELETE FROM DespesaMorador WHERE (idLancamento = ?);";
             ps = conexao.prepareStatement(query);
-            ps.setString(1, nome);
+            ps.setInt(1, despesa.getIdLancamento());
             ps.execute();
         } catch (SQLException e) {
-            throw e;
+            throw new SQLException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
-    public DespesaMorador readAllPorMorador(String nomePessoa, String descricao, LocalDate data) throws SQLException {
+    public void removerPorPessoa(Pessoa pessoa) throws SQLException {
+        //Excluir todas as relações entre a pessoa com idPessoa e as tarefas
+        //atribuídas a ele
+        conectar();
+        PreparedStatement ps = null;
+        try {
+            String query = "DELETE FROM DespesaMorador WHERE (idMorador = ?);";
+            ps = conexao.prepareStatement(query);
+            ps.setInt(1, pessoa.getIdPessoa());
+            ps.execute();
+        } catch (SQLException e) {
+            throw new SQLException(e.toString());
+        } finally {
+            ps.close();
+            DBConnection.fecharConexao();
+        }
+    }
+
+    public DespesaMorador readAllPorMorador(Morador morador) throws SQLException {
+        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
-        DespesaMorador dado;
-
+        DespesaMorador despesaMorador;
         try {
-            String query = "SELECT * FROM Republica WHERE (nomeRepublica = ?);";
+            String query = "SELECT * FROM DespesaMorador WHERE (id = ?);";
             ps = conexao.prepareStatement(query);
-            
+
             rs = ps.executeQuery();
-            
 
         } catch (SQLException e) {
             throw e;
@@ -79,13 +115,14 @@ public class DespesaMoradorDAO {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw e;
             }
         }
         return null;
     }
-/*
+    /*
     public List<Republica> getAll() throws SQLException {
         Connection con = DBConnection.getConexao();
         PreparedStatement ps = null;
@@ -156,5 +193,5 @@ public class DespesaMoradorDAO {
             DBConnection.fecharConexao();
         }
     }
-*/
+     */
 }
