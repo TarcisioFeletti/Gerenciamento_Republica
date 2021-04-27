@@ -46,7 +46,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         manterRepublica = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        manterMorador = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         criarRepublica = new javax.swing.JMenuItem();
@@ -78,13 +78,13 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         jMenu1.add(manterRepublica);
 
-        jMenuItem2.setText("Manter moradores");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        manterMorador.setText("Manter moradores");
+        manterMorador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                manterMoradorActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(manterMorador);
 
         jMenuItem3.setText("Confirmar solução de reclamações / sugestões");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
@@ -214,11 +214,11 @@ public class TelaInicial extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_manterRepublicaActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void manterMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manterMoradorActionPerformed
         P0201 a = new P0201();
         Desktop.add(a);
         a.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_manterMoradorActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         P0601 a = new P0601();
@@ -332,13 +332,13 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
     private javax.swing.JMenuItem jMenuItem16;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem manterMorador;
     private javax.swing.JMenuItem manterRepublica;
     // End of variables declaration//GEN-END:variables
 }
