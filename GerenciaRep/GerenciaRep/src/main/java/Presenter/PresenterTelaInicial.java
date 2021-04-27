@@ -5,9 +5,8 @@
  */
 package Presenter;
 
-import javax.swing.JOptionPane;
 import view.TelaInicial;
-import Presenter.PresenterManterRepublica;
+import Presenter.PresenterP0101;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -15,7 +14,7 @@ import java.awt.event.ActionListener;
  *
  * @author Davidson
  */
-public class MainClass {
+public class PresenterTelaInicial {
     
     private static TelaInicial tela = new TelaInicial();
 
@@ -30,7 +29,17 @@ public class MainClass {
         tela.getCriarRepublica().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
-                PresenterManterRepublica.criarRepublica();
+                PresenterP0101 presenterP0101 = new PresenterP0101();
+                presenterP0101.criarRepublica();
+            }
+        });
+        
+        //MANTER REPUBLICA - P0102
+        tela.getManterRepublica().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                PresenterP0102 presenterP0102 = new PresenterP0102();
+                presenterP0102.manterRepublica(); //funcao do botão de editar republica
             }
         });
 
