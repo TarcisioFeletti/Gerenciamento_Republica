@@ -61,10 +61,9 @@ public class P0101 extends javax.swing.JInternalFrame {
         jLabel12 = new javax.swing.JLabel();
         dataFundacao = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
-        codigoDeEtica = new javax.swing.JTextArea();
+        codigoEtica = new javax.swing.JTextArea();
         jLabel13 = new javax.swing.JLabel();
         confirmar = new javax.swing.JButton();
-        jScrollBar2 = new javax.swing.JScrollBar();
 
         setClosable(true);
         setMaximizable(true);
@@ -203,9 +202,9 @@ public class P0101 extends javax.swing.JInternalFrame {
         });
         jPanel2.add(dataFundacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(499, 36, 215, -1));
 
-        codigoDeEtica.setColumns(20);
-        codigoDeEtica.setRows(5);
-        jScrollPane2.setViewportView(codigoDeEtica);
+        codigoEtica.setColumns(20);
+        codigoEtica.setRows(5);
+        jScrollPane2.setViewportView(codigoEtica);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 137, 346, 140));
 
@@ -221,7 +220,6 @@ public class P0101 extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 100, -1));
-        getContentPane().add(jScrollBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 0, -1, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -290,12 +288,12 @@ public class P0101 extends javax.swing.JInternalFrame {
         this.cep = cep;
     }
 
-    public JTextArea getCodigoDeEtica() {
-        return codigoDeEtica;
+    public JTextArea getCodigoEtica() {
+        return codigoEtica;
     }
 
-    public void setCodigoDeEtica(JTextArea codigoDeEtica) {
-        this.codigoDeEtica = codigoDeEtica;
+    public void setCodigoEtica(JTextArea codigoDeEtica) {
+        this.codigoEtica = codigoDeEtica;
     }
 
     public JTextField getDataFundacao() {
@@ -394,7 +392,7 @@ public class P0101 extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairro;
     private javax.swing.JTextField cep;
-    private javax.swing.JTextArea codigoDeEtica;
+    private javax.swing.JTextArea codigoEtica;
     private javax.swing.JButton confirmar;
     private javax.swing.JTextField dataFundacao;
     private javax.swing.JTextField despesasMediasMorador;
@@ -415,7 +413,6 @@ public class P0101 extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollBar jScrollBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField localizacaoGeografica;

@@ -21,14 +21,16 @@ public class Republica {
     private String pontoReferencia;
     private String localizacaoGeografica;//Pode ser null
     private String vantagens;
+    private String codigoEtica;
     private int numero;
     private double despesasMediasPorMorador;
     private int vagasTotal;
     private int vagasOcupadas;
     private int vagasDisponiveis;
+    private double cep;
     private int idRepublica;//Pode ser null
 
-    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, LocalDate dataExtincao, String bairro, String pontoReferencia, String localizacaoGeografica, String vantagens, int numero, double despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis, int idRepublica) {
+    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, LocalDate dataExtincao, String bairro, String pontoReferencia, String localizacaoGeografica, String vantagens, String codigoEtica, int numero, double despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis, double cep, int idRepublica) {
         this.nomeRepublica = nomeRepublica;
         this.endereco = endereco;
         this.dataFundacao = dataFundacao;
@@ -37,108 +39,16 @@ public class Republica {
         this.pontoReferencia = pontoReferencia;
         this.localizacaoGeografica = localizacaoGeografica;
         this.vantagens = vantagens;
+        this.codigoEtica = codigoEtica;
         this.numero = numero;
         this.despesasMediasPorMorador = despesasMediasPorMorador;
         this.vagasTotal = vagasTotal;
         this.vagasOcupadas = vagasOcupadas;
         this.vagasDisponiveis = vagasDisponiveis;
-        this.idRepublica = idRepublica;
-    }
-
-    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, LocalDate dataExtincao, String bairro, String pontoReferencia, String localizacaoGeografica, String vantagens, int numero, double despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis) {
-        this.nomeRepublica = nomeRepublica;
-        this.endereco = endereco;
-        this.dataFundacao = dataFundacao;
-        this.dataExtincao = dataExtincao;
-        this.bairro = bairro;
-        this.pontoReferencia = pontoReferencia;
-        this.localizacaoGeografica = localizacaoGeografica;
-        this.vantagens = vantagens;
-        this.numero = numero;
-        this.despesasMediasPorMorador = despesasMediasPorMorador;
-        this.vagasTotal = vagasTotal;
-        this.vagasOcupadas = vagasOcupadas;
-        this.vagasDisponiveis = vagasDisponiveis;
-    }
-
-    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, LocalDate dataExtincao, String bairro, String pontoReferencia, String vantagens, int numero, double despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis) {
-        this.nomeRepublica = nomeRepublica;
-        this.endereco = endereco;
-        this.dataFundacao = dataFundacao;
-        this.dataExtincao = dataExtincao;
-        this.bairro = bairro;
-        this.pontoReferencia = pontoReferencia;
-        this.vantagens = vantagens;
-        this.numero = numero;
-        this.despesasMediasPorMorador = despesasMediasPorMorador;
-        this.vagasTotal = vagasTotal;
-        this.vagasOcupadas = vagasOcupadas;
-        this.vagasDisponiveis = vagasDisponiveis;
-    }
-
-    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, String bairro, String pontoReferencia, String vantagens, int numero, double despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis) {
-        this.nomeRepublica = nomeRepublica;
-        this.endereco = endereco;
-        this.dataFundacao = dataFundacao;
-        this.bairro = bairro;
-        this.pontoReferencia = pontoReferencia;
-        this.vantagens = vantagens;
-        this.numero = numero;
-        this.despesasMediasPorMorador = despesasMediasPorMorador;
-        this.vagasTotal = vagasTotal;
-        this.vagasOcupadas = vagasOcupadas;
-        this.vagasDisponiveis = vagasDisponiveis;
-    }
-
-    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, String bairro, String pontoReferencia, String vantagens, int numero, double despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis, int idRepublica) {
-        this.nomeRepublica = nomeRepublica;
-        this.endereco = endereco;
-        this.dataFundacao = dataFundacao;
-        this.bairro = bairro;
-        this.pontoReferencia = pontoReferencia;
-        this.vantagens = vantagens;
-        this.numero = numero;
-        this.despesasMediasPorMorador = despesasMediasPorMorador;
-        this.vagasTotal = vagasTotal;
-        this.vagasOcupadas = vagasOcupadas;
-        this.vagasDisponiveis = vagasDisponiveis;
-        this.idRepublica = idRepublica;
-    }
-
-    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, LocalDate dataExtincao, String bairro, String pontoReferencia, String vantagens, int numero, double despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis, int idRepublica) {
-        this.nomeRepublica = nomeRepublica;
-        this.endereco = endereco;
-        this.dataFundacao = dataFundacao;
-        this.dataExtincao = dataExtincao;
-        this.bairro = bairro;
-        this.pontoReferencia = pontoReferencia;
-        this.vantagens = vantagens;
-        this.numero = numero;
-        this.despesasMediasPorMorador = despesasMediasPorMorador;
-        this.vagasTotal = vagasTotal;
-        this.vagasOcupadas = vagasOcupadas;
-        this.vagasDisponiveis = vagasDisponiveis;
-        this.idRepublica = idRepublica;
-    }
-
-    public Republica(String nomeRepublica, String endereco, LocalDate dataFundacao, String bairro, String pontoReferencia, String localizacaoGeografica, String vantagens, int numero, double despesasMediasPorMorador, int vagasTotal, int vagasOcupadas, int vagasDisponiveis, int idRepublica) {
-        this.nomeRepublica = nomeRepublica;
-        this.endereco = endereco;
-        this.dataFundacao = dataFundacao;
-        this.bairro = bairro;
-        this.pontoReferencia = pontoReferencia;
-        this.localizacaoGeografica = localizacaoGeografica;
-        this.vantagens = vantagens;
-        this.numero = numero;
-        this.despesasMediasPorMorador = despesasMediasPorMorador;
-        this.vagasTotal = vagasTotal;
-        this.vagasOcupadas = vagasOcupadas;
-        this.vagasDisponiveis = vagasDisponiveis;
+        this.cep = cep;
         this.idRepublica = idRepublica;
     }
     
-    
-  
     public String getNomeRepublica() {
         return nomeRepublica;
     }
@@ -249,6 +159,22 @@ public class Republica {
 
     public void setIdRepublica(int idRepublica) {
         this.idRepublica = idRepublica;
+    }
+
+    public String getCodigoEtica() {
+        return codigoEtica;
+    }
+
+    public void setCodigoEtica(String codigoEtica) {
+        this.codigoEtica = codigoEtica;
+    }
+
+    public double getCep() {
+        return cep;
+    }
+
+    public void setCep(double cep) {
+        this.cep = cep;
     }
     
     
