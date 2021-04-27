@@ -7,7 +7,7 @@ package view.ManterMoradores;
 
 import javax.swing.JButton;
 import javax.swing.JTable;
-import static view.TelaInicial.Desktop;
+import static view.P0000.Desktop;
 
 /**
  *

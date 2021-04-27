@@ -5,13 +5,14 @@
  */
 package Presenter;
 
+import Service.ServiceP0201;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.Pessoa;
 import view.ManterMoradores.P0201;
-import view.TelaInicial;
+import view.P0000;
 
 /**
  *
@@ -20,17 +21,19 @@ import view.TelaInicial;
 public class PresenterP0201 {
 
     private P0201 viewManterMorador;
+    private ServiceP0201 serviceP0201;
     private List<Pessoa> pessoaArray;
 
     public PresenterP0201() {
         viewManterMorador = new P0201();
-        // Função para puxar a lista de moradores na service
-        // preencher a tabela
+        serviceP0201 = ServiceP0201.getInstancia();
+        //pessoaArray = serviceP0201.consultaMoradoresRepublica(/*args do usuario / republica*/); //Função para puxar a lista de moradores na service
+        //preencherTabela(pessoaAray);
     }
 
     //BOTÃO MANTER MORADOR - P0201
     public void manterMorador() {
-        TelaInicial Desktop = PresenterTelaInicial.getTela();
+        P0000 Desktop = PresenterP0000.getTela();
         Desktop.add(viewManterMorador);
         viewManterMorador.setVisible(true);
         viewManterMorador.getConvidarMoradorSemTeto().addActionListener(new ActionListener() {

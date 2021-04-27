@@ -5,7 +5,6 @@
  */
 package view;
 
-import static java.awt.GridBagConstraints.BOTH;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import view.ConfirmarSolucao.P0601;
@@ -14,8 +13,6 @@ import view.ConvidarAceitar.P0502;
 import view.ManterMoradores.P0201;
 import view.ManterPerfil.P0701;
 import view.ManterReceitaDespesa.P0401;
-import view.ManterRepublica.P0101;
-import view.ManterRepublica.P0102;
 import view.ManterTarefa.P0301;
 import view.ManterTarefa.P0303;
 
@@ -23,12 +20,12 @@ import view.ManterTarefa.P0303;
  *
  * @author Davidson
  */
-public class TelaInicial extends javax.swing.JFrame {
+public class P0000 extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaInicial
      */
-    public TelaInicial() {
+    public P0000() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
@@ -207,11 +204,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manterRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manterRepublicaActionPerformed
-        /*
-        P0102 a = new P0102();
-        Desktop.add(a);
-        a.setVisible(true);
-        */
+
     }//GEN-LAST:event_manterRepublicaActionPerformed
 
     private void manterMoradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manterMoradorActionPerformed
@@ -233,10 +226,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void criarRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarRepublicaActionPerformed
-        //MOVIDO PARA PresenterManterRepublica.criarRepublica();
-        /*P0101 a = new P0101();
-        Desktop.add(a);
-        a.setVisible(true);*/
+        
     }//GEN-LAST:event_criarRepublicaActionPerformed
 
     private void adicionarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarPerfilActionPerformed
@@ -285,41 +275,11 @@ public class TelaInicial extends javax.swing.JFrame {
         return adicionarPerfil;
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaInicial().setVisible(true);
-            }
-        });
+    public JMenuItem getManterMorador() {
+        return manterMorador;
     }
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuItem adicionarPerfil;
@@ -342,7 +302,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem manterMorador;
     private javax.swing.JMenuItem manterRepublica;
     // End of variables declaration//GEN-END:variables

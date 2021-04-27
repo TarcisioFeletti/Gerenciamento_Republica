@@ -25,6 +25,12 @@ public class ServiceP0102 /*throws SQLException*/{
         return serviceP0102;
     }
     
+    public Republica recebeRepublica(/*arg com usuario*/){
+        Republica republica = null;
+        //DAO.recebeRepublica(usuario);
+        return republica;
+    }
+    
     public void editarRepublica(Republica republica){
         /*try{
             //DAO.editarRepublica(republica);

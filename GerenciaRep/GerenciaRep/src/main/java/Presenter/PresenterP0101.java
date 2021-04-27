@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import model.Republica;
 import view.ManterRepublica.P0101;
-import view.TelaInicial;
+import view.P0000;
 
 /**
  *
@@ -21,14 +21,16 @@ import view.TelaInicial;
 public class PresenterP0101 {
 
     private P0101 viewIncluirRepublica;
+    private ServiceP0101 serviceP0101;
 
     public PresenterP0101() {
         viewIncluirRepublica = new P0101();
+        serviceP0101 = ServiceP0101.getInstancia();
     }
 
     //BOTÃO CRIAR NOVA REPUBLICA - P0101
     public void criarRepublica() {
-        TelaInicial Desktop = PresenterTelaInicial.getTela();
+        P0000 Desktop = PresenterP0000.getTela();
         Desktop.add(viewIncluirRepublica);
         viewIncluirRepublica.setVisible(true);
         viewIncluirRepublica.getConfirmar().addActionListener(new ActionListener() {
@@ -67,8 +69,7 @@ public class PresenterP0101 {
         );
         //chamar a Presenter<->Service<->DAO pra salvar//
         try {
-            ServiceP0101 serviceP0101 = ServiceP0101.getInstancia();
-            serviceP0101.incluirRepublica(novaRepublica);
+            this.serviceP0101.incluirRepublica(novaRepublica);
             JOptionPane.showMessageDialog(null, "SUCESSO");
             limparCamposP0101();
         } catch (Exception e) {
