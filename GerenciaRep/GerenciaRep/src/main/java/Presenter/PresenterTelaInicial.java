@@ -42,6 +42,14 @@ public class PresenterTelaInicial {
                 presenterP0102.manterRepublica(); //funcao do botão de editar republica
             }
         });
+        
+        tela.getAdicionarPerfil().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                PresenterP0702 presenterP0702 = new PresenterP0702();
+                presenterP0702.adicionarPerfil(); //funcao do botão confirmar perfil
+            }
+        });
 
         /*
         // UC 1

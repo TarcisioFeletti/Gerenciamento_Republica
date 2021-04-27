@@ -54,7 +54,7 @@ public class TelaInicial extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        adicionarPerfil = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem11 = new javax.swing.JMenuItem();
@@ -123,13 +123,13 @@ public class TelaInicial extends javax.swing.JFrame {
 
         jMenu2.setText("Morador");
 
-        jMenuItem9.setText("Manter perfil");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        adicionarPerfil.setText("Manter perfil");
+        adicionarPerfil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                adicionarPerfilActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem9);
+        jMenu2.add(adicionarPerfil);
 
         jMenuItem10.setText("Aceitar convite");
         jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
@@ -239,11 +239,11 @@ public class TelaInicial extends javax.swing.JFrame {
         a.setVisible(true);*/
     }//GEN-LAST:event_criarRepublicaActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void adicionarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarPerfilActionPerformed
         P0701 a = new P0701();
         Desktop.add(a);
         a.setVisible(true);
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_adicionarPerfilActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
         P0502 a = new P0502();
@@ -279,6 +279,10 @@ public class TelaInicial extends javax.swing.JFrame {
 
     public JMenuItem getManterRepublica() {
         return manterRepublica;
+    }
+    
+    public JMenuItem getAdicionarPerfil() {
+        return adicionarPerfil;
     }
 
     /**
@@ -318,6 +322,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Desktop;
+    private javax.swing.JMenuItem adicionarPerfil;
     private javax.swing.JMenuItem criarRepublica;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -338,7 +343,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JMenuItem manterRepublica;
     // End of variables declaration//GEN-END:variables
+
 }
