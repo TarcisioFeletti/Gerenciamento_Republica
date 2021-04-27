@@ -6,7 +6,7 @@
 package view.ManterReclamacoesSugestoes;
 
 import view.ManterTarefa.P0302;
-import view.TelaInicial;
+import view.P0000;
 
 /**
  *
@@ -177,7 +177,7 @@ public class P0801 extends javax.swing.JInternalFrame {
 
     private void novaReclamacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_novaReclamacaoActionPerformed
         P0302 cad = new P0302();
-        TelaInicial.Desktop.add(cad);
+        P0000.Desktop.add(cad);
         cad.setVisible(true);
     }//GEN-LAST:event_novaReclamacaoActionPerformed
 

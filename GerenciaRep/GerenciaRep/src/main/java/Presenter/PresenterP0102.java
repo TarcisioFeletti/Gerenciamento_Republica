@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
 import model.Republica;
 import view.ManterRepublica.P0102;
-import view.TelaInicial;
+import view.P0000;
 
 /**
  *
@@ -23,11 +23,13 @@ public class PresenterP0102 {
 
     private P0102 viewManterRepublica;
     private Republica republica;
+    private ServiceP0102 serviceP0102;
 
     public PresenterP0102() {
         viewManterRepublica = new P0102();
-        //republica = ServiceP0102.getRepublica(usuario); PUXA INFO DA REPUBLICA
-        //preencherCampos(republica);
+        serviceP0102 = ServiceP0102.getInstancia();
+        republica = serviceP0102.recebeRepublica(/*arg com usuario*/);// PUXA INFO DA REPUBLICA
+        preencherCampos(this.republica);
     }
 
     private void preencherCampos(Republica republica) {
@@ -47,7 +49,7 @@ public class PresenterP0102 {
 
     //BOTÃO MANTER REPUBLICA - P0102
     public void manterRepublica() {
-        TelaInicial Desktop = PresenterTelaInicial.getTela();
+        P0000 Desktop = PresenterP0000.getTela();
         Desktop.add(viewManterRepublica);
         viewManterRepublica.setVisible(true);
         viewManterRepublica.getEditarRepublica().addActionListener(new ActionListener() {
@@ -96,8 +98,7 @@ public class PresenterP0102 {
         this.republica.setVagasDisponiveis(Integer.parseInt(this.viewManterRepublica.getTotalVagas().getText()) - this.republica.getVagasOcupadas());
         //chamar a Presenter<->Service<->DAO pra salvar//
         try {
-            ServiceP0102 serviceP0102 = ServiceP0102.getInstancia();
-            serviceP0102.editarRepublica(this.republica);
+            this.serviceP0102.editarRepublica(this.republica);
             JOptionPane.showMessageDialog(null, "SUCESSO");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
@@ -107,8 +108,7 @@ public class PresenterP0102 {
     private void remover() {
         if (0 == JOptionPane.showConfirmDialog(viewManterRepublica, "MENSAGEM", "ATENÇÃO", YES_NO_OPTION)) {
             try {
-                //ServiceP0102 serviceP0102 = ServiceP0102.getInstancia();
-                //serviceP0102.removerRepublica(this.republica);
+                //this.serviceP0102.removerRepublica(this.republica);
                 JOptionPane.showMessageDialog(null, "SUCESSO");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());

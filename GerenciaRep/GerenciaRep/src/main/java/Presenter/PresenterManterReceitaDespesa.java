@@ -10,7 +10,7 @@ import view.ManterReceitaDespesa.P0402;
 import view.ManterReceitaDespesa.P0403;
 import view.ManterReceitaDespesa.P0404;
 import view.ManterReceitaDespesa.P0405;
-import view.TelaInicial;
+import view.P0000;
 
 /**
  *
@@ -39,26 +39,26 @@ public class PresenterManterReceitaDespesa {
     
     private void cadastrarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         P0402 cad = new P0402();
-        TelaInicial.Desktop.add(cad);
+        P0000.Desktop.add(cad);
         cad.setVisible(true);
     }   
     
     private void estornarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         P0404 cad = new P0404();
-        TelaInicial.Desktop.add(cad);
+        P0000.Desktop.add(cad);
         cad.setVisible(true);
     } 
     
     //ABRE TELA P0403
     private void informacoesPagamentoActionPerformed(java.awt.event.ActionEvent evt) {                                                     
         P0403 v = new P0403();
-        TelaInicial.Desktop.add(v);
+        P0000.Desktop.add(v);
         v.setVisible(true);
     }  
     
     private void editarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {                                                
         P0402 cad = new P0402();
-        TelaInicial.Desktop.add(cad);
+        P0000.Desktop.add(cad);
         cad.setVisible(true);
     } 
     

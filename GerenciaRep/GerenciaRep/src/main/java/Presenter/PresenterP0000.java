@@ -5,7 +5,7 @@
  */
 package Presenter;
 
-import view.TelaInicial;
+import view.P0000;
 import Presenter.PresenterP0101;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,11 +14,11 @@ import java.awt.event.ActionListener;
  *
  * @author Davidson
  */
-public class PresenterTelaInicial {
+public class PresenterP0000 {
     
-    private static TelaInicial tela = new TelaInicial();
+    private static P0000 tela = new P0000();
 
-    public static TelaInicial getTela() {
+    public static P0000 getTela() {
         return tela;
     }
 
@@ -30,7 +30,7 @@ public class PresenterTelaInicial {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 PresenterP0101 presenterP0101 = new PresenterP0101();
-                presenterP0101.criarRepublica();
+                presenterP0101.criarRepublica(); //função do botão de criar republica
             }
         });
         
@@ -43,6 +43,16 @@ public class PresenterTelaInicial {
             }
         });
         
+        //MANTER MORADOR - P0201
+        tela.getManterMorador().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                PresenterP0201 presenterP0201 = new PresenterP0201();
+                presenterP0201.manterMorador(); //funcao do botão de manter morador
+            }
+        });
+        
+        //MANTER PERFIL - P0701
         tela.getAdicionarPerfil().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent arg0){

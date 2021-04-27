@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import view.ManterMoradores.P0201;
-import static view.TelaInicial.Desktop;
+import static view.P0000.Desktop;
 
 /**
  *

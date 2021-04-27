@@ -9,7 +9,7 @@ import view.ManterReclamacoesSugestoes.P0801;
 import view.ManterReclamacoesSugestoes.P0802;
 import view.ManterReclamacoesSugestoes.P0803;
 import view.ManterTarefa.P0302;
-import view.TelaInicial;
+import view.P0000;
 
 /**
  *
@@ -33,7 +33,7 @@ public class PresenterManterReclamacoesSugestoes {
     
     private void novaReclamacaoActionPerformed(java.awt.event.ActionEvent evt) {                                               
         P0302 cad = new P0302();
-        TelaInicial.Desktop.add(cad);
+        P0000.Desktop.add(cad);
         cad.setVisible(true);
     }   
     
