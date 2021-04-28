@@ -60,7 +60,19 @@ public class PresenterP0000 {
                 presenterP0702.adicionarPerfil(); //funcao do botão confirmar perfil
             }
         });
-
+        
+        //MODIFICAR PERFIL - P0701
+        //MODIFICAR NOME VARIAVEL DO BOTAO MANTER MORADORES
+        /*
+        tela.getModificarPerfil().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent arg0){
+                PresenterP0701 presenterP0701 = new PresenterP0701();
+                presenterP0701.adicionarPerfil(); //funcao do botão confirmar perfil
+            }
+        });
+        */
+        
         /*
         // UC 1
         JOptionPane.showMessageDialog(null, "República cadastrada com sucesso!");
