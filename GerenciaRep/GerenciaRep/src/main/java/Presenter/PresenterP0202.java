@@ -23,9 +23,8 @@ public class PresenterP0202 {
     }
     
     //BOTÃO EDITAR MORADOR - P0202
-    public void editarMorador(int index) {
-        P0000 Desktop = PresenterP0000.getTela();
-        Desktop.add(viewEditarMorador);
+    public void editarMorador(P0000 Desktop, int index) {
+        Desktop.getDesktop().add(viewEditarMorador);
         viewEditarMorador.setVisible(true);
         viewEditarMorador.getBotaoSalvar().addActionListener(new ActionListener() {
             @Override

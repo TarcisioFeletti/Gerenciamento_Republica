@@ -29,20 +29,19 @@ public class PresenterP0101 {
     }
 
     //BOTÃO CRIAR NOVA REPUBLICA - P0101
-    public void criarRepublica() {
-        P0000 Desktop = PresenterP0000.getTela();
-        Desktop.add(viewIncluirRepublica);
+    public void criarRepublica(P0000 Desktop/*, usuario*/) {
+        Desktop.getDesktop().add(viewIncluirRepublica);
         viewIncluirRepublica.setVisible(true);
         viewIncluirRepublica.getConfirmar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //BOTÃO DE CONFIRMAR A INCLUSÃO
-                confirmar();
+                confirmar(/*usuario*/);
             }
         });
     }
 
-    private void confirmar() {
+    private void confirmar(/*representante*/) {
         //tratamentos dos campos//
         if (this.viewIncluirRepublica.getNome().getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "O campo nome não pode ficar vazio.");
@@ -69,7 +68,7 @@ public class PresenterP0101 {
         );
         //chamar a Presenter<->Service<->DAO pra salvar//
         try {
-            this.serviceP0101.incluirRepublica(novaRepublica);
+            this.serviceP0101.incluirRepublica(novaRepublica/*, representante*/);
             JOptionPane.showMessageDialog(null, "SUCESSO");
             limparCamposP0101();
         } catch (Exception e) {
