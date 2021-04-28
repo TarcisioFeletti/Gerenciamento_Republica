@@ -32,9 +32,8 @@ public class PresenterP0201 {
     }
 
     //BOTÃO MANTER MORADOR - P0201
-    public void manterMorador() {
-        P0000 Desktop = PresenterP0000.getTela();
-        Desktop.add(viewManterMorador);
+    public void manterMorador(P0000 Desktop) {
+        Desktop.getDesktop().add(viewManterMorador);
         viewManterMorador.setVisible(true);
         viewManterMorador.getConvidarMoradorSemTeto().addActionListener(new ActionListener() {
             @Override

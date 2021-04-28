@@ -12,6 +12,7 @@ import model.Republica;
  * @author Lucas Carvalho
  */
 public class ServiceP0102 /*throws SQLException*/{
+    
     private static ServiceP0102 serviceP0102;
     
     private ServiceP0102(){
@@ -34,6 +35,14 @@ public class ServiceP0102 /*throws SQLException*/{
     public void editarRepublica(Republica republica){
         /*try{
             //DAO.editarRepublica(republica);
+        }catch(SQLException e){
+            throw e;
+        }*/
+    }
+    
+    public void removerRepublica(Republica republica){
+        /*try{
+            //DAO.removerRepublica(republica);
         }catch(SQLException e){
             throw e;
         }*/

@@ -40,6 +40,7 @@ public class PessoaDAOTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
+    /*
     @Test
     public void CT001() {
         PessoaDAO pessoaDAO = new PessoaDAO();
@@ -51,5 +52,5 @@ public class PessoaDAOTest {
             System.out.println(ex.toString());
         }
         
-    }
+    }*/
 }
