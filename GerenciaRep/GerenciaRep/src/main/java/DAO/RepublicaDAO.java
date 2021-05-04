@@ -23,17 +23,13 @@ import model.Republica;
 public class RepublicaDAO {
 
     private Connection conexao;
-    private static RepublicaDAO instancia;
 
-    private RepublicaDAO() {}
-    
-    public void conectar(){
+    public RepublicaDAO() {
         conexao = DBConnection.getConexao();
     }
     
     //Criar uma nova república
     public void create(Republica republica) throws SQLException,NullPointerException {
-        conectar();
         try {
             PreparedStatement ps;
             String query = "INSERT INTO Republica(nomeRepublica, dataFundacao, endereco, "
@@ -68,7 +64,6 @@ public class RepublicaDAO {
     
     //Deletar uma república
     public void delete(String nome) throws SQLException {
-        conectar();
         PreparedStatement ps = null;
         try {
             String query = "DELETE FROM Republica WHERE (nomeRepublica = ?);";
@@ -85,7 +80,6 @@ public class RepublicaDAO {
     
     //Ler os dados de uma república
     public Republica read(String nome) throws SQLException {
-        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -115,7 +109,6 @@ public class RepublicaDAO {
     }
     
     public Republica read(int idRepublica) throws SQLException {
-        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         try {
@@ -146,7 +139,6 @@ public class RepublicaDAO {
     
     //Ler os dados de todas as repúblicas
     public List<Republica> getAll() throws SQLException {
-        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Republica> republicaCollection = new ArrayList<>();
@@ -180,7 +172,6 @@ public class RepublicaDAO {
     
     //Atualizar os dados de uma república
     public void update(Republica republica, String nome) throws SQLException {
-        conectar();
         PreparedStatement ps = null;
         try {
             String query = "UPDATE Republica SET nomeRepublica = ?, dataFundacao = ?, dataExtincao = ?, endereco = ?, "
@@ -209,12 +200,5 @@ public class RepublicaDAO {
             ps.close();
             DBConnection.fecharConexao();
         }
-    }
-    
-    public static RepublicaDAO getInstancia(){
-        if(instancia == null){
-            instancia = new RepublicaDAO();
-        }
-        return instancia;
     }
 }

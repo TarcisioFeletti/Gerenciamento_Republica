@@ -26,19 +26,8 @@ import model.Republica;
 public class DespesaDAO {
 
     private Connection conexao;
-    private static DespesaDAO instancia;
 
-    private DespesaDAO() {
-    }
-
-    public static DespesaDAO getInstancia() {
-        if (instancia == null) {
-            instancia = new DespesaDAO();
-        }
-        return instancia;
-    }
-
-    private void conectar() {
+    public DespesaDAO() {
         conexao = DBConnection.getConexao();
     }
 
@@ -108,8 +97,7 @@ public class DespesaDAO {
             ps.setDate(1, Date.valueOf(dataVencimento.format(DateTimeFormatter.ISO_DATE)));
             ps.setString(2, descricao);
             rs = ps.executeQuery();
-            RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-            Republica republica = republicaDAO.read(rs.getInt("idRepublica"));
+            Republica republica = new RepublicaDAO().read(rs.getInt("idRepublica"));
             despesa = new Despesa(LocalDate.parse(rs.getString("dataVencimento")), rs.getString("descricao"),
                     rs.getDouble("valor"), rs.getString("periodicidade"), republica, rs.getInt("idDespesa"));
             return despesa;
@@ -137,8 +125,7 @@ public class DespesaDAO {
             ps = conexao.prepareStatement(query);
             ps.setInt(1, idLancamento);
             rs = ps.executeQuery();
-            RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-            Republica republica = republicaDAO.read(rs.getInt("idRepublica"));
+            Republica republica = new RepublicaDAO().read(rs.getInt("idRepublica"));
             despesa = new Despesa(LocalDate.parse(rs.getString("dataVencimento")), rs.getString("descricao"),
                     rs.getDouble("valor"), rs.getString("periodicidade"), republica, rs.getInt("idDespesa"));
             return despesa;
@@ -157,7 +144,6 @@ public class DespesaDAO {
 
     //Excluir uma despesa
     public void delete(String descricao, LocalDate dataVencimento) throws SQLException {
-        conectar();
         PreparedStatement ps = null;
         try {
             Despesa despesa = this.read(descricao, dataVencimento);
@@ -180,7 +166,6 @@ public class DespesaDAO {
     
     //Atualizar uma despesa
     public void update(Despesa despesa, String descricaoAntiga, LocalDate dataVencimentoAntiga) throws SQLException {
-        conectar();
         PreparedStatement ps = null;
         try {
             Despesa despesaAntiga = this.read(descricaoAntiga, dataVencimentoAntiga);
@@ -196,7 +181,7 @@ public class DespesaDAO {
             query = "UPDATE Despesa SET dataVencimento = ?"
                     + "WHERE(idDespesa = ?);";
             ps = conexao.prepareStatement(query);
-            ps.setDate(1, Date.valueOf(despesa.getDataVencimento()));
+            ps.setDate(1, Date.valueOf(despesa.getDataVencimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
             ps.setInt(2, despesa.getIdLancamento());
             ps.execute();
         } catch (SQLException e) {

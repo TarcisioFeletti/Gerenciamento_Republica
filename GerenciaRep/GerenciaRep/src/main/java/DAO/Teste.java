@@ -20,7 +20,7 @@ import model.SemTeto;
  */
 public class Teste {
     public static void main(String[] args){
-        RepublicaDAO repDAO = RepublicaDAO.getInstancia();
+        RepublicaDAO repDAO = new RepublicaDAO();
         PessoaDAO teste = new PessoaDAO();
         SemTeto semTeto = new SemTeto("Tarcísio Feletti", "tarcisio", "28999340833", "16967503774", "@FelettiT", "28999156489", "28999193884", "tarcisio.feletti", "tarcisio123");
         Pessoa morador;
