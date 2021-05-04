@@ -127,8 +127,7 @@ public class DespesaMoradorDAO {
                     ps = conexao.prepareStatement(query);
                     ps.setInt(1, rs.getInt("idPessoa"));
                     ResultSet rst = ps.executeQuery();
-                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
                             rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
@@ -137,15 +136,13 @@ public class DespesaMoradorDAO {
                     ps = conexao.prepareStatement(query);
                     ps.setInt(1, rs.getInt("idPessoa"));
                     ResultSet rst = ps.executeQuery();
-                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                             LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                             rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
                             rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
                 }
-                DespesaDAO despesaDAO = DespesaDAO.getInstancia();
-                Despesa despesa = despesaDAO.read(rs.getInt("idDespesa"));
+                Despesa despesa = new DespesaDAO().read(rs.getInt("idDespesa"));
                 DespesaMorador despesaMorador = new DespesaMorador(pessoa, despesa, rs.getFloat("porcentagemDoValorTotal"));
                 despesaMoradorCollection.add(despesaMorador);
             }
@@ -183,8 +180,7 @@ public class DespesaMoradorDAO {
                     ps = conexao.prepareStatement(query);
                     ps.setInt(1, rs.getInt("idPessoa"));
                     ResultSet rst = ps.executeQuery();
-                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
                             rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
@@ -193,15 +189,13 @@ public class DespesaMoradorDAO {
                     ps = conexao.prepareStatement(query);
                     ps.setInt(1, rs.getInt("idPessoa"));
                     ResultSet rst = ps.executeQuery();
-                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                             LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                             rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
                             rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
                 }
-                DespesaDAO despesaDAO = DespesaDAO.getInstancia();
-                Despesa despesaTemp = despesaDAO.read(rs.getInt("idDespesa"));
+                Despesa despesaTemp = new DespesaDAO().read(rs.getInt("idDespesa"));
                 DespesaMorador despesaMorador = new DespesaMorador(pessoa, despesaTemp, rs.getFloat("porcentagemDoValorTotal"));
                 despesaMoradorCollection.add(despesaMorador);
             }
@@ -238,8 +232,7 @@ public class DespesaMoradorDAO {
                     ps = conexao.prepareStatement(query);
                     ps.setInt(1, rs.getInt("idPessoa"));
                     ResultSet rst = ps.executeQuery();
-                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
                             rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
@@ -248,15 +241,13 @@ public class DespesaMoradorDAO {
                     ps = conexao.prepareStatement(query);
                     ps.setInt(1, rs.getInt("idPessoa"));
                     ResultSet rst = ps.executeQuery();
-                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                             LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                             rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
                             rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
                 }
-                DespesaDAO despesaDAO = DespesaDAO.getInstancia();
-                Despesa despesaTemp = despesaDAO.read(rs.getInt("idDespesa"));
+                Despesa despesaTemp = new DespesaDAO().read(rs.getInt("idDespesa"));
                 DespesaMorador despesaMorador = new DespesaMorador(pessoa, despesaTemp, rs.getFloat("porcentagemDoValorTotal"));
                 despesaMoradorCollection.add(despesaMorador);
             }

@@ -150,8 +150,7 @@ public class TarefasPessoaDAO {
                     PreparedStatement p = conexao.prepareStatement(subQuery);
                     p.setInt(1, r.getInt("idPessoa"));
                     ResultSet rt = p.executeQuery();
-                    RepublicaDAO repDAO = RepublicaDAO.getInstancia();
-                    Republica rep = repDAO.read(rt.getString("r.nomeRepublica"));
+                    Republica rep = new RepublicaDAO().read(rt.getString("r.nomeRepublica"));
                     pessoa = new Morador(rep, r.getString("nome"), r.getString("apelido"), r.getString("telefone"),
                             r.getString("cpf"), r.getString("redesSociais"), r.getString("contato1"),
                             r.getString("contato2"), r.getInt("idPessoa"), r.getString("login"), r.getString("senha"));
@@ -160,8 +159,7 @@ public class TarefasPessoaDAO {
                     PreparedStatement p = conexao.prepareStatement(subQuery);
                     p.setInt(1, r.getInt("idPessoa"));
                     ResultSet rt = p.executeQuery();
-                    RepublicaDAO repDAO = RepublicaDAO.getInstancia();
-                    Republica rep = repDAO.read(rt.getString("r.nomeRepublica"));
+                    Republica rep = new RepublicaDAO().read(rt.getString("r.nomeRepublica"));
                     pessoa = new Representante(rep, LocalDate.parse(rt.getString("dataInicio")),
                             LocalDate.parse(rt.getString("dataFim")), r.getString("nome"), r.getString("apelido"),
                             r.getString("telefone"), r.getString("cpf"), r.getString("redesSociais"),

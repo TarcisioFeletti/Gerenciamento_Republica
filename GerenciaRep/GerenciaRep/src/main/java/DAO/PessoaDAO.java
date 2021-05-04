@@ -122,8 +122,7 @@ public class PessoaDAO {
                 ps = conexao.prepareStatement(query);
                 ps.setInt(1, rs.getInt("idPessoa"));
                 rst = ps.executeQuery();
-                RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                 pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
                         rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
@@ -132,8 +131,7 @@ public class PessoaDAO {
                 ps = conexao.prepareStatement(query);
                 ps.setInt(1, rs.getInt("idPessoa"));
                 rst = ps.executeQuery();
-                RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                 pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                         LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                         rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
@@ -177,8 +175,7 @@ public class PessoaDAO {
                 ps = conexao.prepareStatement(query);
                 ps.setInt(1, rs.getInt("idPessoa"));
                 rst = ps.executeQuery();
-                RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                 temp = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
                         rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
@@ -188,8 +185,7 @@ public class PessoaDAO {
                 ps = conexao.prepareStatement(query);
                 ps.setInt(1, rs.getInt("idPessoa"));
                 rst = ps.executeQuery();
-                RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                 temp = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                         LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                         rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
@@ -234,8 +230,7 @@ public class PessoaDAO {
                     ps = conexao.prepareStatement(query);
                     ps.setInt(1, rs.getInt("idPessoa"));
                     ResultSet rst = ps.executeQuery();
-                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
                             rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
@@ -245,8 +240,7 @@ public class PessoaDAO {
                     ps = conexao.prepareStatement(query);
                     ps.setInt(1, rs.getInt("idPessoa"));
                     ResultSet rst = ps.executeQuery();
-                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
-                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                             LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                             rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
@@ -324,8 +318,7 @@ public class PessoaDAO {
             ps.setString(12, pessoa.getSenha());
             ps.setString(13, nome);
             ps.execute();
-            RepublicaDAO subQuery = RepublicaDAO.getInstancia();
-            Republica republica = subQuery.read(pessoa.getRepublicaAtual().getNomeRepublica());
+            Republica republica = new RepublicaDAO().read(pessoa.getRepublicaAtual().getNomeRepublica());
             query = "UPDATE Morador SET idRepublica = ? WHERE (idPessoa = ?);";
             ps = conexao.prepareStatement(query);
             ps.setInt(1, republica.getIdRepublica());
@@ -362,8 +355,7 @@ public class PessoaDAO {
             ps.setString(12, pessoa.getSenha());
             ps.setString(13, nome);
             ps.execute();
-            RepublicaDAO subQuery = RepublicaDAO.getInstancia();
-            Republica republica = subQuery.read(pessoa.getRepublicaAtual().getNomeRepublica());
+            Republica republica = new RepublicaDAO().read(pessoa.getRepublicaAtual().getNomeRepublica());
             query = "UPDATE Morador SET idRepublica = ?, dataInicio = ?, dataFim = ? WHERE (idPessoa = ?);";
             ps = conexao.prepareStatement(query);
             ps.setInt(1, republica.getIdRepublica());
@@ -382,8 +374,7 @@ public class PessoaDAO {
     public void promocaoDe(SemTeto st, String nomeRepublica) throws SQLException, RuntimeException {
         PreparedStatement ps = null;
         try {
-            RepublicaDAO subQuery = RepublicaDAO.getInstancia();
-            Republica republica = subQuery.read(nomeRepublica);
+            Republica republica = new RepublicaDAO().read(nomeRepublica);
             Pessoa temp = this.read(st.getNome());
             String query = "DELETE FROM SemTeto WHERE(idSemTeto = ?);";
             ps = conexao.prepareStatement(query);
@@ -410,8 +401,7 @@ public class PessoaDAO {
     public void promocaoDe(SemTeto st, String nomeRepublica, LocalDate dataInicio) throws SQLException, RuntimeException {
         PreparedStatement ps = null;
         try {
-            RepublicaDAO subQuery = RepublicaDAO.getInstancia();
-            Republica republica = subQuery.read(nomeRepublica);
+            Republica republica = new RepublicaDAO().read(nomeRepublica);
             Pessoa temp = this.read(st.getNome());
             String query = "DELETE FROM SemTeto WHERE(idSemTeto = ?);";
             ps = conexao.prepareStatement(query);
@@ -439,8 +429,7 @@ public class PessoaDAO {
     public void promocaoDe(Morador m, LocalDate dataInicio) throws SQLException, RuntimeException {
         PreparedStatement ps = null;
         try {
-            RepublicaDAO subQuery = RepublicaDAO.getInstancia();
-            Republica republica = subQuery.read(m.getRepublicaAtual().getNomeRepublica());
+            Republica republica = new RepublicaDAO().read(m.getRepublicaAtual().getNomeRepublica());
             Pessoa temp = this.read(m.getNome());
             String query = "DELETE FROM Morador WHERE(idSemTeto = ?);";
             ps = conexao.prepareStatement(query);
@@ -468,8 +457,7 @@ public class PessoaDAO {
     public void depromocaoDe(Representante r, String nomeRepublica) throws SQLException, RuntimeException {
         PreparedStatement ps = null;
         try {
-            RepublicaDAO subQuery = RepublicaDAO.getInstancia();
-            Republica republica = subQuery.read(nomeRepublica);
+            Republica republica = new RepublicaDAO().read(nomeRepublica);
             Pessoa temp = this.read(r.getNome());
             String query = "DELETE FROM Representante WHERE(idSemTeto = ?);";
             ps = conexao.prepareStatement(query);
