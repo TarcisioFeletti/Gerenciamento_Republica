@@ -27,16 +27,8 @@ import model.SemTeto;
 public class PessoaDAO {
 
     private Connection conexao;
-    private static PessoaDAO instancia;
 
-    public static PessoaDAO getInstancia() {
-        if (instancia == null) {
-            instancia = new PessoaDAO();
-        }
-        return instancia;
-    }
-
-    private PessoaDAO() {
+    public PessoaDAO() {
         this.conexao = DBConnection.getConexao();
     }
 
@@ -72,6 +64,7 @@ public class PessoaDAO {
             throw e;
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
@@ -104,6 +97,7 @@ public class PessoaDAO {
             throw e;
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
@@ -112,7 +106,7 @@ public class PessoaDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         ResultSet rst = null;
-        Pessoa temp;
+        Pessoa pessoa = null;
 
         try {
             String query = "SELECT * FROM Pessoa WHERE (nome = ?);";
@@ -120,10 +114,9 @@ public class PessoaDAO {
             ps.setString(1, nome);
             rs = ps.executeQuery();
             if (rs.getBoolean("SemTeto")) {
-                temp = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
+                pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
                         rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
-                return temp;
             } else if (rs.getBoolean("Morador")) {
                 query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
                 ps = conexao.prepareStatement(query);
@@ -131,10 +124,9 @@ public class PessoaDAO {
                 rst = ps.executeQuery();
                 RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
                 Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
-                temp = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
+                pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
                         rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
-                return temp;
             } else if (rs.getBoolean("Representante")) {
                 query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
                 ps = conexao.prepareStatement(query);
@@ -142,11 +134,10 @@ public class PessoaDAO {
                 rst = ps.executeQuery();
                 RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
                 Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
-                temp = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
+                pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                         LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                         rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
                         rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
-                return temp;
             } else {
                 throw new RuntimeException("Usuário inválido");
             }
@@ -157,10 +148,12 @@ public class PessoaDAO {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw new SQLException(e.toString());
             }
         }
+        return pessoa;
     }
     
     public Pessoa read(int idPessoa) throws SQLException, RuntimeException {
@@ -212,6 +205,7 @@ public class PessoaDAO {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw new SQLException(e.toString());
             }
@@ -266,6 +260,7 @@ public class PessoaDAO {
             try {
                 rs.close();
                 ps.close();
+                DBConnection.fecharConexao();
             } catch (SQLException e) {
                 throw e;
             }
@@ -301,6 +296,7 @@ public class PessoaDAO {
             throw e;
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
@@ -338,6 +334,7 @@ public class PessoaDAO {
             throw e;
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
@@ -377,6 +374,7 @@ public class PessoaDAO {
             throw e;
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
@@ -404,6 +402,7 @@ public class PessoaDAO {
             throw new RuntimeException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
@@ -432,6 +431,7 @@ public class PessoaDAO {
             throw new RuntimeException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
@@ -460,6 +460,7 @@ public class PessoaDAO {
             throw new RuntimeException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
@@ -487,6 +488,7 @@ public class PessoaDAO {
             throw new RuntimeException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
@@ -511,6 +513,7 @@ public class PessoaDAO {
             throw new RuntimeException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 
@@ -535,6 +538,7 @@ public class PessoaDAO {
             throw new RuntimeException(e.toString());
         } finally {
             ps.close();
+            DBConnection.fecharConexao();
         }
     }
 }

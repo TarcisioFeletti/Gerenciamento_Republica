@@ -14,9 +14,10 @@ public class DespesaMorador {
     private Despesa despesa;
     private float porcentagem;
 
-    public DespesaMorador(Pessoa pessoa, Despesa despesa) {
+    public DespesaMorador(Pessoa pessoa, Despesa despesa, float porcentagem) {
         this.pessoa = pessoa;
         this.despesa = despesa;
+        this.porcentagem = porcentagem;
     }
 
     public Pessoa getPessoa() {

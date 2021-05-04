@@ -11,11 +11,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import model.Despesa;
 import model.DespesaMorador;
 import model.Morador;
 import model.Pessoa;
+import model.Representante;
+import model.Republica;
+import model.SemTeto;
 
 /**
  *
@@ -24,32 +28,38 @@ import model.Pessoa;
 public class DespesaMoradorDAO {
 
     private Connection conexao;
-    private static DespesaMoradorDAO instancia;
-
-    private DespesaMoradorDAO() {
-    }
-
-    public static DespesaMoradorDAO getInstancia() {
-        if (instancia == null) {
-            instancia = new DespesaMoradorDAO();
-        }
-        return instancia;
-    }
-
-    public void conectar() {
+    
+    public DespesaMoradorDAO() {
         conexao = DBConnection.getConexao();
     }
 
-    /*public void create(List<DespesaMorador> despesaMoradorCollection) throws SQLException {
-        conectar();
+    public void create(Despesa despesa, Pessoa pessoa) throws SQLException {
+        PreparedStatement ps = null;
+        try {
+            String query = "INSERT INTO DespesaMorador(idDespesa, idMorador, porcentagemDoValorTotal)  "
+                    + "VALUES(?,?,?)";
+            ps = conexao.prepareStatement(query);
+            ps.setInt(1, despesa.getIdLancamento());
+            ps.setInt(2, pessoa.getIdPessoa());
+            ps.setFloat(3, 100);
+            ps.execute();
+        } catch (SQLException e) {
+            throw e;
+        } finally {
+            ps.close();
+            DBConnection.fecharConexao();
+        }
+    }
+
+    public void create(List<DespesaMorador> despesaMoradorCollection) throws SQLException {
         PreparedStatement ps = null;
         try {
             for (DespesaMorador despesaMorador : despesaMoradorCollection) {
                 String query = "INSERT INTO DespesaMorador(idDespesa, idMorador, porcentagemDoValorTotal)  "
                         + "VALUES(?,?,?)";
                 ps = conexao.prepareStatement(query);
-                ps.setInt(1, despesa.getIdLancamento());
-                ps.setInt(2, pessoa.getIdPessoa());
+                ps.setInt(1, despesaMorador.getDespesa().getIdLancamento());
+                ps.setInt(2, despesaMorador.getPessoa().getIdPessoa());
                 ps.setFloat(3, despesaMorador.getPorcentagem());
                 ps.execute();
             }
@@ -59,13 +69,12 @@ public class DespesaMoradorDAO {
             ps.close();
             DBConnection.fecharConexao();
         }
-    }*/
+    }
 
     //Delete
     public void removerPorDespesa(Despesa despesa) throws SQLException {
         //Excluir todas as relações entre a tarefa com idTarefa e os moradores
         //pertencentes àquela tarefa
-        conectar();
         PreparedStatement ps = null;
         try {
             String query = "DELETE FROM DespesaMorador WHERE (idLancamento = ?);";
@@ -83,7 +92,6 @@ public class DespesaMoradorDAO {
     public void removerPorPessoa(Pessoa pessoa) throws SQLException {
         //Excluir todas as relações entre a pessoa com idPessoa e as tarefas
         //atribuídas a ele
-        conectar();
         PreparedStatement ps = null;
         try {
             String query = "DELETE FROM DespesaMorador WHERE (idMorador = ?);";
@@ -98,17 +106,50 @@ public class DespesaMoradorDAO {
         }
     }
 
-    public DespesaMorador readAllPorMorador(Morador morador) throws SQLException {
-        conectar();
+    public List<DespesaMorador> readAllPorMorador(Morador morador) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
-        DespesaMorador despesaMorador;
+        List<DespesaMorador> despesaMoradorCollection = new ArrayList<>();
         try {
-            String query = "SELECT * FROM DespesaMorador WHERE (id = ?);";
+
+            String query = "SELECT * FROM DespesaMorador WHERE (idMorador = ?);";
             ps = conexao.prepareStatement(query);
-
+            ps.setInt(1, morador.getIdPessoa());
             rs = ps.executeQuery();
-
+            while (rs.next()) {
+                Pessoa pessoa = new PessoaDAO().read(rs.getInt("idPessoa"));
+                if (rs.getBoolean("SemTeto")) {
+                    pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
+                            rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
+                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                } else if (rs.getBoolean("Morador")) {
+                    query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
+                    ps = conexao.prepareStatement(query);
+                    ps.setInt(1, rs.getInt("idPessoa"));
+                    ResultSet rst = ps.executeQuery();
+                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
+                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
+                            rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
+                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                } else if (rs.getBoolean("Representante")) {
+                    query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
+                    ps = conexao.prepareStatement(query);
+                    ps.setInt(1, rs.getInt("idPessoa"));
+                    ResultSet rst = ps.executeQuery();
+                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
+                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
+                            LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
+                            rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
+                            rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                }
+                DespesaDAO despesaDAO = DespesaDAO.getInstancia();
+                Despesa despesa = despesaDAO.read(rs.getInt("idDespesa"));
+                DespesaMorador despesaMorador = new DespesaMorador(pessoa, despesa, rs.getFloat("porcentagemDoValorTotal"));
+                despesaMoradorCollection.add(despesaMorador);
+            }
+            return despesaMoradorCollection;
         } catch (SQLException e) {
             throw e;
         } finally {
@@ -120,78 +161,120 @@ public class DespesaMoradorDAO {
                 throw e;
             }
         }
-        return null;
     }
-    /*
-    public List<Republica> getAll() throws SQLException {
-        Connection con = DBConnection.getConexao();
+
+    public List<DespesaMorador> readAllPorDespesa(Despesa despesa) throws SQLException {
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Republica> republicaCollection = new ArrayList<>();
-
+        List<DespesaMorador> despesaMoradorCollection = new ArrayList<>();
         try {
-            String query = "SELECT * FROM Republica";
-            ps = con.prepareStatement(query);
+            String query = "SELECT * FROM DespesaMorador WHERE (idDespesa = ?);";
+            ps = conexao.prepareStatement(query);
+            ps.setInt(1, despesa.getIdLancamento());
             rs = ps.executeQuery();
             while (rs.next()) {
-                republica.setNomeRepublica(rs.getString("nomeRepublica"));
-                republica.setDataFundacao(LocalDate.parse(rs.getString("dataFundacao")));
-                republica.setDataExtincao(LocalDate.parse(rs.getString("dataExtincao")));
-                republica.setEndereco(rs.getString("endereco"));
-                republica.setBairro(rs.getString("bairro"));
-                republica.setPontoReferencia(rs.getString("pontoReferencia"));
-                republica.setLocalizacaoGeografica(rs.getString("localizacaoGeografica"));
-                republica.setVantagens(rs.getString("vantagens"));
-                republica.setDespesasMediasPorMorador(rs.getFloat("despesasMediasPorMorador"));
-                republica.setVagasTotal(rs.getInt("vagasTotal"));
-                republica.setVagasOcupadas(rs.getInt("vagasOcupadas"));
-                republica.setVagasDisponiveis(rs.getInt("vagasDisponiveis"));
-                republica.setNumero(rs.getInt("numeroDaCasa"));
-                republicaCollection.add(republica);
+                Pessoa pessoa = new PessoaDAO().read(rs.getInt("idPessoa"));
+                if (rs.getBoolean("SemTeto")) {
+                    pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
+                            rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
+                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                } else if (rs.getBoolean("Morador")) {
+                    query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
+                    ps = conexao.prepareStatement(query);
+                    ps.setInt(1, rs.getInt("idPessoa"));
+                    ResultSet rst = ps.executeQuery();
+                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
+                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
+                            rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
+                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                } else if (rs.getBoolean("Representante")) {
+                    query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
+                    ps = conexao.prepareStatement(query);
+                    ps.setInt(1, rs.getInt("idPessoa"));
+                    ResultSet rst = ps.executeQuery();
+                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
+                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
+                            LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
+                            rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
+                            rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                }
+                DespesaDAO despesaDAO = DespesaDAO.getInstancia();
+                Despesa despesaTemp = despesaDAO.read(rs.getInt("idDespesa"));
+                DespesaMorador despesaMorador = new DespesaMorador(pessoa, despesaTemp, rs.getFloat("porcentagemDoValorTotal"));
+                despesaMoradorCollection.add(despesaMorador);
             }
+            return despesaMoradorCollection;
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
             try {
                 rs.close();
                 ps.close();
                 DBConnection.fecharConexao();
             } catch (SQLException e) {
-                throw new SQLException(e.toString());
+                throw e;
             }
         }
-        return republicaCollection;
     }
-
-    public void update(Republica republica, String nome) throws SQLException {
+    
+    public List<DespesaMorador> readAll() throws SQLException {
         PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<DespesaMorador> despesaMoradorCollection = new ArrayList<>();
         try {
-            String query = "UPDATE Republica SET nomeRepublica = ?, dataFundacao = ?, dataExtincao = ?, endereco = ?, "
-                    + "bairro = ?, pontoReferencia = ?, localizacaoGeografica = ?, vantagens = ?, despesasMedisPorMorador = ?, "
-                    + "vagasTotal = ?, vagasOcupadas = ?, vagasDisponiveis = ?, numeroDaCasa = ? "
-                    + "WHERE (nomeRepublica = ?);";
+            String query = "SELECT * FROM DespesaMorador;";
             ps = conexao.prepareStatement(query);
-            ps.setString(1, republica.getNomeRepublica());
-            ps.setDate(2, Date.valueOf(republica.getDataFundacao()));
-            ps.setDate(3, Date.valueOf(republica.getDataExtincao()));
-            ps.setString(4, republica.getEndereco());
-            ps.setString(5, republica.getBairro());
-            ps.setString(6, republica.getPontoReferencia());
-            ps.setString(7, republica.getLocalizacaoGeografica());
-            ps.setString(8, republica.getVantagens());
-            ps.setFloat(9, republica.getDespesasMediasPorMorador());
-            ps.setInt(10, republica.getVagasTotal());
-            ps.setInt(11, republica.getVagasOcupadas());
-            ps.setInt(12, republica.getVagasDisponiveis());
-            ps.setInt(13, republica.getNumero());
-            ps.setString(14, nome);
-            ps.execute();
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Pessoa pessoa = new PessoaDAO().read(rs.getInt("idPessoa"));
+                if (rs.getBoolean("SemTeto")) {
+                    pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
+                            rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
+                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                } else if (rs.getBoolean("Morador")) {
+                    query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
+                    ps = conexao.prepareStatement(query);
+                    ps.setInt(1, rs.getInt("idPessoa"));
+                    ResultSet rst = ps.executeQuery();
+                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
+                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
+                            rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
+                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                } else if (rs.getBoolean("Representante")) {
+                    query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
+                    ps = conexao.prepareStatement(query);
+                    ps.setInt(1, rs.getInt("idPessoa"));
+                    ResultSet rst = ps.executeQuery();
+                    RepublicaDAO republicaDAO = RepublicaDAO.getInstancia();
+                    Republica republica = republicaDAO.read(rst.getInt("idRepublica"));
+                    pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
+                            LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
+                            rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
+                            rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                }
+                DespesaDAO despesaDAO = DespesaDAO.getInstancia();
+                Despesa despesaTemp = despesaDAO.read(rs.getInt("idDespesa"));
+                DespesaMorador despesaMorador = new DespesaMorador(pessoa, despesaTemp, rs.getFloat("porcentagemDoValorTotal"));
+                despesaMoradorCollection.add(despesaMorador);
+            }
+            return despesaMoradorCollection;
         } catch (SQLException e) {
-            throw new SQLException(e.toString());
+            throw e;
         } finally {
-            ps.close();
-            DBConnection.fecharConexao();
+            try {
+                rs.close();
+                ps.close();
+                DBConnection.fecharConexao();
+            } catch (SQLException e) {
+                throw e;
+            }
         }
     }
-     */
+    
+    public void update(DespesaMorador despesaMorador, Despesa despesaAntiga){
+        
+    }
 }
