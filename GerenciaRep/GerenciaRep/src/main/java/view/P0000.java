@@ -5,6 +5,7 @@
  */
 package view;
 
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenuItem;
 import view.ConfirmarSolucao.P0601;
@@ -27,6 +28,7 @@ public class P0000 extends javax.swing.JFrame {
      */
     public P0000() {
         initComponents();
+        setLocationRelativeTo(getParent());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
@@ -39,6 +41,7 @@ public class P0000 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         Desktop = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -62,6 +65,17 @@ public class P0000 extends javax.swing.JFrame {
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem16 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -226,7 +240,7 @@ public class P0000 extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void criarRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_criarRepublicaActionPerformed
-        
+
     }//GEN-LAST:event_criarRepublicaActionPerformed
 
     private void adicionarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarPerfilActionPerformed
@@ -270,7 +284,7 @@ public class P0000 extends javax.swing.JFrame {
     public JMenuItem getManterRepublica() {
         return manterRepublica;
     }
-    
+
     public JMenuItem getAdicionarPerfil() {
         return adicionarPerfil;
     }
@@ -278,12 +292,17 @@ public class P0000 extends javax.swing.JFrame {
     public JMenuItem getManterMorador() {
         return manterMorador;
     }
-    
-    
+
+    public static JDesktopPane getDesktop() {
+        return Desktop;
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane Desktop;
     private javax.swing.JMenuItem adicionarPerfil;
     private javax.swing.JMenuItem criarRepublica;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

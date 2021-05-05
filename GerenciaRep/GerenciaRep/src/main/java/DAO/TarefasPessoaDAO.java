@@ -24,24 +24,9 @@ import model.TarefaPessoa;
  */
 public class TarefasPessoaDAO {
 
-    private final TarefasDAO tarefaDAO;
-    private final PessoaDAO pessoaDAO;
-    private static TarefasPessoaDAO instancia;
     private Connection conexao;
 
-    private TarefasPessoaDAO() {
-        tarefaDAO = TarefasDAO.getInstancia();
-        pessoaDAO = PessoaDAO.getInstancia();
-    }
-
-    public static TarefasPessoaDAO getInstancia() {
-        if (instancia == null) {
-            instancia = new TarefasPessoaDAO();
-        }
-        return instancia;
-    }
-
-    public void conectar() {
+    public TarefasPessoaDAO() {
         this.conexao = DBConnection.getConexao();
     }
 
@@ -60,12 +45,26 @@ public class TarefasPessoaDAO {
             throw e;
         }
     }
+    
+    public void adicionar(List<Tarefa> tmCollection, Pessoa pessoa) throws SQLException {
+        PreparedStatement ps = null;
+        try {
+            for (Tarefa tm : tmCollection) {
+                String query = "INSERT INTO TarefaMorador(idTarefa, idPessoa)  Values(?,?)";
+                ps = conexao.prepareStatement(query);
+                ps.setInt(1, tm.getIdTarefa());
+                ps.setInt(2, pessoa.getIdPessoa());
+                ps.execute();
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
 
     //Delete
     public void removerPorTarefa(Tarefa tarefa) throws SQLException {
         //Excluir todas as relações entre a tarefa com idTarefa e os moradores
         //pertencentes àquela tarefa
-        conectar();
         PreparedStatement ps = null;
         try {
             String query = "DELETE FROM TarefaMorador WHERE (idTarefa = ?);";
@@ -83,7 +82,6 @@ public class TarefasPessoaDAO {
     public void removerPorPessoa(Pessoa pessoa) throws SQLException {
         //Excluir todas as relações entre a pessoa com idPessoa e as tarefas
         //atribuídas a ele
-        conectar();
         PreparedStatement ps = null;
         try {
             String query = "DELETE FROM TarefaMorador WHERE (idPessoa = ?);";
@@ -101,15 +99,14 @@ public class TarefasPessoaDAO {
     //Read
     //Read Line
     public TarefaPessoa buscarLinha(String descricao, LocalDate dataInicio, String nome) throws SQLException {
-        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         Pessoa pessoa;
         Tarefa tarefa;
 
         try {
-            tarefa = this.tarefaDAO.read(dataInicio, descricao);
-            pessoa = this.pessoaDAO.read(nome);
+            tarefa = new TarefasDAO().read(dataInicio, descricao);
+            pessoa = new PessoaDAO().read(nome);
             TarefaPessoa tm = new TarefaPessoa(pessoa, tarefa);
             return tm;
         } catch (SQLException e) {
@@ -127,14 +124,13 @@ public class TarefasPessoaDAO {
 
     //Ler todas as pessoas participantes de uma tarefa
     public List<TarefaPessoa> buscarTodasAsPessoasEmUmaTarefa(String descricao, LocalDate dataInicio) throws SQLException {
-        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         Pessoa pessoa = null;
         Tarefa tarefa;
         List<TarefaPessoa> tmCollection = new ArrayList<>();
         try {
-            tarefa = this.tarefaDAO.read(dataInicio, descricao);
+            tarefa = new TarefasDAO().read(dataInicio, descricao);
             String query = "SELECT * FROM TarefaMorador WHERE (idTarefa = ?);";
             ps = conexao.prepareStatement(query);
             ps.setInt(1, tarefa.getIdTarefa());
@@ -154,8 +150,7 @@ public class TarefasPessoaDAO {
                     PreparedStatement p = conexao.prepareStatement(subQuery);
                     p.setInt(1, r.getInt("idPessoa"));
                     ResultSet rt = p.executeQuery();
-                    RepublicaDAO repDAO = RepublicaDAO.getInstancia();
-                    Republica rep = repDAO.read(rt.getString("r.nomeRepublica"));
+                    Republica rep = new RepublicaDAO().read(rt.getString("r.nomeRepublica"));
                     pessoa = new Morador(rep, r.getString("nome"), r.getString("apelido"), r.getString("telefone"),
                             r.getString("cpf"), r.getString("redesSociais"), r.getString("contato1"),
                             r.getString("contato2"), r.getInt("idPessoa"), r.getString("login"), r.getString("senha"));
@@ -164,8 +159,7 @@ public class TarefasPessoaDAO {
                     PreparedStatement p = conexao.prepareStatement(subQuery);
                     p.setInt(1, r.getInt("idPessoa"));
                     ResultSet rt = p.executeQuery();
-                    RepublicaDAO repDAO = RepublicaDAO.getInstancia();
-                    Republica rep = repDAO.read(rt.getString("r.nomeRepublica"));
+                    Republica rep = new RepublicaDAO().read(rt.getString("r.nomeRepublica"));
                     pessoa = new Representante(rep, LocalDate.parse(rt.getString("dataInicio")),
                             LocalDate.parse(rt.getString("dataFim")), r.getString("nome"), r.getString("apelido"),
                             r.getString("telefone"), r.getString("cpf"), r.getString("redesSociais"),
@@ -192,14 +186,13 @@ public class TarefasPessoaDAO {
 
     //Ler todas as tarefas relacionadas a uma pessoa
     public List<TarefaPessoa> buscarTodasAsTarefasDeUmaPessoa(String nome) throws SQLException {
-        conectar();
         PreparedStatement ps = null;
         ResultSet rs = null;
         Pessoa pessoa = null;
         Tarefa tarefa;
         List<TarefaPessoa> tmCollection = new ArrayList<>();
         try {
-            pessoa = this.pessoaDAO.read(nome);
+            pessoa = new PessoaDAO().read(nome);
             String query = "SELECT * FROM TarefaMorador WHERE (idPessoa = ?);";
             ps = conexao.prepareStatement(query);
             ps.setInt(1, pessoa.getIdPessoa());
@@ -234,11 +227,9 @@ public class TarefasPessoaDAO {
 
     //Update idPessoa de TarefaPessoa
     public void updatePessoa(TarefaPessoa tarefaPessoa, String nomeAntigo) throws SQLException {
-        conectar();
-        PessoaDAO pessoaDAO = PessoaDAO.getInstancia();
         PreparedStatement ps = null;
         try {
-            Pessoa pessoa = pessoaDAO.read(nomeAntigo);
+            Pessoa pessoa = new PessoaDAO().read(nomeAntigo);
             String query = "UPDATE TarefaMorador SET idTarefa = ?, idMorador = ? WHERE(idTarefa = ?) and (idMorador = ?);";
             ps = conexao.prepareStatement(query);
             ps.setInt(1,tarefaPessoa.getTarefa().getIdTarefa());
@@ -253,11 +244,9 @@ public class TarefasPessoaDAO {
     
     //Update o idTarefa de TarefaPessoa
     public void updateTarefa(TarefaPessoa tarefaPessoa, LocalDate dataInicioAntiga, String descricaoAntiga) throws SQLException {
-        conectar();
-        TarefasDAO tarefasDAO = TarefasDAO.getInstancia();
         PreparedStatement ps = null;
         try {
-            Tarefa tarefa = tarefasDAO.read(dataInicioAntiga, descricaoAntiga);
+            Tarefa tarefa = new TarefasDAO().read(dataInicioAntiga, descricaoAntiga);
             String query = "UPDATE TarefaMorador SET idTarefa = ?, idMorador = ? WHERE(idTarefa = ?) and (idMorador = ?);";
             ps = conexao.prepareStatement(query);
             ps.setInt(1,tarefaPessoa.getTarefa().getIdTarefa());

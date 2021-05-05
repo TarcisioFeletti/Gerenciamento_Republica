@@ -17,8 +17,8 @@ public class ReclamacaoSugestao {
     private LocalDate dataSolucao;
     private int idade;
     private boolean excluida;
-    
     private Pessoa morador;
+    private int idReclamacaoSugestao;
 
     public ReclamacaoSugestao(LocalDate dataAbertura, String descricao, LocalDate dataSolucao, int idade, boolean excluida, Pessoa morador) {
         this.dataAbertura = dataAbertura;
@@ -37,6 +37,18 @@ public class ReclamacaoSugestao {
         this.excluida = excluida;
         this.morador = null;
     }
+
+    public ReclamacaoSugestao(LocalDate dataAbertura, String descricao, LocalDate dataSolucao, int idade, boolean excluida, Pessoa morador, int idReclamacaoSugestao) {
+        this.dataAbertura = dataAbertura;
+        this.descricao = descricao;
+        this.dataSolucao = dataSolucao;
+        this.idade = idade;
+        this.excluida = excluida;
+        this.morador = morador;
+        this.idReclamacaoSugestao = idReclamacaoSugestao;
+    }
+    
+    
     
     public LocalDate getDataAbertura() {
         return dataAbertura;

@@ -25,9 +25,8 @@ public class PresenterP0702 {
         viewIncluirPerfil = new P0702();
     }
 
-    public void adicionarPerfil() {
-        P0000 Desktop = PresenterP0000.getTela();
-        Desktop.add(viewIncluirPerfil);
+    public void adicionarPerfil(P0000 Desktop) {
+        Desktop.getDesktop().add(viewIncluirPerfil);
         viewIncluirPerfil.setVisible(true);
         viewIncluirPerfil.getConfirmarPerfil().addActionListener(new ActionListener() {
             @Override

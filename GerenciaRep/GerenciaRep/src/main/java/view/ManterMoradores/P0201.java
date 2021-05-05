@@ -38,6 +38,8 @@ public class P0201 extends javax.swing.JInternalFrame {
         removerDaRepublica = new javax.swing.JButton();
         verHistorico = new javax.swing.JButton();
 
+        setClosable(true);
+
         convidarMoradorSemTeto.setText("Convidar Morador / Sem Teto");
         convidarMoradorSemTeto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

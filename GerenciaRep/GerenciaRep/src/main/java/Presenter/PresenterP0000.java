@@ -5,165 +5,95 @@
  */
 package Presenter;
 
+import Presenter.State.StateAbstrato;
 import view.P0000;
-import Presenter.PresenterP0101;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import model.Pessoa;
 
 /**
  *
  * @author Davidson
  */
 public class PresenterP0000 {
-    
-    private static P0000 tela = new P0000();
 
-    public static P0000 getTela() {
-        return tela;
+    private P0000 tela;
+    private StateAbstrato telaPrincipalState;
+    private Pessoa usuario;
+
+    public PresenterP0000(/*StateAbstrato telaPrincipalState*/) {
+        //mudarState(Login);
+        this.telaPrincipalState = telaPrincipalState;
     }
-
-    public static void main(String[] args) {
+    
+    private void mudarState(StateAbstrato novoState){
+        this.telaPrincipalState = novoState;
+    }
+    
+    public StateAbstrato login(){
+        new PresenterP0001().criarLogin(tela);
+    }
+    //PAROU O DESENVOLVIMENTO PQ SAIU A PROVA, DEPOIS TERMINO
+    public void abrirTelaInicial() {
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(P0000.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(P0000.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(P0000.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(P0000.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        tela = new P0000();
         tela.setVisible(true);
+
+        //ABRE TELA DE LOGIN - P0001
+        PresenterP0001 presenterP0001 = new PresenterP0001();
+        presenterP0001.criarLogin(tela);
 
         //CRIAR REPUBLICA - P0101
         tela.getCriarRepublica().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent arg0) {
+                //telaPrincipalState.criarRepublica(){PresenterP0101 presenterP0101 = new PresenterP0101(); presenterP0101.criarRepublica(tela); //função do botão de criar republica}
                 PresenterP0101 presenterP0101 = new PresenterP0101();
-                presenterP0101.criarRepublica(); //função do botão de criar republica
+                presenterP0101.criarRepublica(tela); //função do botão de criar republica
             }
         });
-        
+
         //MANTER REPUBLICA - P0102
-        tela.getManterRepublica().addActionListener(new ActionListener(){
+        tela.getManterRepublica().addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent arg0){
+            public void actionPerformed(ActionEvent arg0) {
                 PresenterP0102 presenterP0102 = new PresenterP0102();
-                presenterP0102.manterRepublica(); //funcao do botão de editar republica
+                presenterP0102.manterRepublica(tela); //funcao do botão de editar republica
             }
         });
-        
+
         //MANTER MORADOR - P0201
-        tela.getManterMorador().addActionListener(new ActionListener(){
+        tela.getManterMorador().addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent arg0){
+            public void actionPerformed(ActionEvent arg0) {
                 PresenterP0201 presenterP0201 = new PresenterP0201();
-                presenterP0201.manterMorador(); //funcao do botão de manter morador
+                presenterP0201.manterMorador(tela); //funcao do botão de manter morador
             }
         });
-        
+
         //MANTER PERFIL - P0701
-        tela.getAdicionarPerfil().addActionListener(new ActionListener(){
+        tela.getAdicionarPerfil().addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent arg0){
+            public void actionPerformed(ActionEvent arg0) {
                 PresenterP0702 presenterP0702 = new PresenterP0702();
-                presenterP0702.adicionarPerfil(); //funcao do botão confirmar perfil
+                presenterP0702.adicionarPerfil(tela); //funcao do botão confirmar perfil
             }
         });
-        
-        //MODIFICAR PERFIL - P0701
-        //MODIFICAR NOME VARIAVEL DO BOTAO MANTER MORADORES
-        /*
-        tela.getModificarPerfil().addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent arg0){
-                PresenterP0701 presenterP0701 = new PresenterP0701();
-                presenterP0701.adicionarPerfil(); //funcao do botão confirmar perfil
-            }
-        });
-        */
-        
-        /*
-        // UC 1
-        JOptionPane.showMessageDialog(null, "República cadastrada com sucesso!");
-        JOptionPane.showMessageDialog(null, "República editada com sucesso!");
-        JOptionPane.showConfirmDialog(null, "Deseja excluir a república?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showMessageDialog(null, "República excluída com sucesso!");
-        
-        
-        // UC 2 
-        JOptionPane.showConfirmDialog(null, "Deseja remover o morador da república?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showMessageDialog(null, "Usuário removido com sucesso!");
-        
-        // UC 3
-        JOptionPane.showMessageDialog(null, "Usuário removido com sucesso!");
-        JOptionPane.showMessageDialog(null, "Tarefa não encontrada!");
-        JOptionPane.showConfirmDialog(null, "Deseja excluir a tarefa?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showMessageDialog(null, "Tarefa excluída com sucesso!");
-        
-        
-        // UC 4  
-        JOptionPane.showMessageDialog(null, "Receita / Despesa cadastrada com sucesso!");
-        JOptionPane.showMessageDialog(null, "Receita / Despesa alterada com sucesso!");
-        JOptionPane.showMessageDialog(null, "Receita / Despesa não encontrada!");
-        JOptionPane.showMessageDialog(null, "Receita / Despesa com registro de pagamento!");
-        
-
-        // UC 5
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo convidar este usuário?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showMessageDialog(null, "Convite enviado!");
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo confirmar a solicitação?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showMessageDialog(null, "Solicitação confirmada!");
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo recusar a solicitação?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showMessageDialog(null, "Solicitação recusada!");
-        
-        // UC 6
-        JOptionPane.showMessageDialog(null, "Reclamação / sugestão resolvida!");
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo confirmar a solução?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showMessageDialog(null, "Solução confirmada!");
-        JOptionPane.showMessageDialog(null, "A Reclamação / Sugestão já está resolvida!");
-        JOptionPane.showMessageDialog(null, "A Solução já está confirmada!");
-        
-        // UC 7
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo editar seus dados?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir seu perfil?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showMessageDialog(null, "Perfil do Morador editado com sucesso!");
-        JOptionPane.showMessageDialog(null, "Perfil do Morador excluído com sucesso!");
-
-        // UC 8
-        JOptionPane.showMessageDialog(null, "Reclamação / sugestão cadastrada com sucesso!");
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir a reclamação/sugestão?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showMessageDialog(null, "Reclamação / sugestão excluída com sucesso!");
-        JOptionPane.showMessageDialog(null, "Reclamação / sugestão não encontrada!");
-        JOptionPane.showMessageDialog(null, "Reclamação / sugestão editada com sucesso!");
-        
-        // UC 9
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo registrar o pagamento?", "Atenção", JOptionPane.YES_NO_OPTION);
-        JOptionPane.showMessageDialog(null, "Receita ou despesa paga!");
-        JOptionPane.showMessageDialog(null, "Não há pagamentos referente ao usuário!");
-
-        // UC 10
-        JOptionPane.showMessageDialog(null, "Não há receitas e despesas cadastradas!");
-
-        // UC 11
-        JOptionPane.showMessageDialog(null, "Não há receitas e despesas cadastradas!");
-
-        // UC 12
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo marcar a tarefa como resolvida?", "Atenção", JOptionPane.YES_NO_OPTION);      
-        JOptionPane.showMessageDialog(null, "Tarefa Concluída!");
-
-        // UC 13
-        JOptionPane.showMessageDialog(null, "Não foram encontradas repúblicas com vagas disponíveis.");
-
-        // UC 14
-        JOptionPane.showConfirmDialog(null, "Deseja enviar a solicitação?", "Atenção", JOptionPane.YES_NO_OPTION);      
-        JOptionPane.showMessageDialog(null, "Solicitação enviada!");
-        
-        // UC 15
-        JOptionPane.showConfirmDialog(null, "Deseja realizar o estorno?", "Atenção", JOptionPane.YES_NO_OPTION);      
-        JOptionPane.showMessageDialog(null, "Estorno realizado com sucesso!");
-        
-        // UC 16
-        
-        // UC 17
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo aceitar o convite?", "Atenção", JOptionPane.YES_NO_OPTION);      
-        JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir o convite?", "Atenção", JOptionPane.YES_NO_OPTION);      
-        JOptionPane.showMessageDialog(null, "Convite aceito!");
-        JOptionPane.showMessageDialog(null, "Convite excluido!");
-        
-        // UC 18
-        JOptionPane.showMessageDialog(null, "Não há receitas e despesas cadastradas!");
-         */
     }
 
 }

@@ -48,9 +48,8 @@ public class PresenterP0102 {
     }
 
     //BOTÃO MANTER REPUBLICA - P0102
-    public void manterRepublica() {
-        P0000 Desktop = PresenterP0000.getTela();
-        Desktop.add(viewManterRepublica);
+    public void manterRepublica(P0000 Desktop) {
+        Desktop.getDesktop().add(viewManterRepublica);
         viewManterRepublica.setVisible(true);
         viewManterRepublica.getEditarRepublica().addActionListener(new ActionListener() {
             @Override
@@ -108,7 +107,7 @@ public class PresenterP0102 {
     private void remover() {
         if (0 == JOptionPane.showConfirmDialog(viewManterRepublica, "MENSAGEM", "ATENÇÃO", YES_NO_OPTION)) {
             try {
-                //this.serviceP0102.removerRepublica(this.republica);
+                this.serviceP0102.removerRepublica(this.republica);
                 JOptionPane.showMessageDialog(null, "SUCESSO");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e.getMessage());
