@@ -20,15 +20,15 @@ import model.SemTeto;
  */
 public class Teste {
     public static void main(String[] args){
-        RepublicaDAO repDAO = RepublicaDAO.getInstancia();
-        PessoaDAO teste = PessoaDAO.getInstancia();
+        RepublicaDAO repDAO = new RepublicaDAO();
+        PessoaDAO teste = new PessoaDAO();
         SemTeto semTeto = new SemTeto("Tarcísio Feletti", "tarcisio", "28999340833", "16967503774", "@FelettiT", "28999156489", "28999193884", "tarcisio.feletti", "tarcisio123");
         Pessoa morador;
         Pessoa repre;
         try {
-//            teste.create(semTeto);
-//            semTeto.setApelido("apelido2");
-//            teste.update(semTeto, semTeto.getNome());
+            teste.create(semTeto);
+            semTeto.setApelido("apelido2");
+            teste.update(semTeto, semTeto.getNome());
             LocalDate dataCriacao = LocalDate.now();
             Republica republica = new Republica("republica", "alegre", dataCriacao, null, "guararema", "Biruta",null, "barato","qlq codigo de etica", 122, 210.5, 3, 1, 2, 29500000,0);
 //            repDAO.create(republica);
