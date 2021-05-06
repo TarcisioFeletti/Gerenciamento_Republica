@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import model.Pessoa;
 import model.SemTeto;
 import view.ManterPerfil.P0702;
-import view.P0000;
+import view.P0000View;
 
 /**
  *
@@ -25,7 +25,7 @@ public class PresenterP0702 {
         viewIncluirPerfil = new P0702();
     }
 
-    public void adicionarPerfil(P0000 Desktop) {
+    public void adicionarPerfil(P0000View Desktop) {
         Desktop.getDesktop().add(viewIncluirPerfil);
         viewIncluirPerfil.setVisible(true);
         viewIncluirPerfil.getConfirmarPerfil().addActionListener(new ActionListener() {

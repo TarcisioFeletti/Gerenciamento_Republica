@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presenter;
+package DEPRECATED;
 
 import Service.ServiceP0002;
 import java.awt.Dimension;
@@ -11,24 +11,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import view.LoginCadastro.P0002;
-import view.P0000;
+import view.P0000View;
 
 /**
  *
  * @author Lucas Carvalho
  */
-public class PresenterP0002 {
+public class DEPRECATED_PresenterP0002 {
     
     private P0002 viewCadastroLogin;
     private ServiceP0002 serviceP0002;
 
-    public PresenterP0002() {
+    public DEPRECATED_PresenterP0002() {
         viewCadastroLogin = new P0002();
         serviceP0002 = serviceP0002.getInstancia();
     }
 
     //TELA DE LOGIN - P0002
-    public void cadastrarNovoUsuario(P0000 Desktop) {
+    public void cadastrarNovoUsuario(P0000View Desktop) {
         Desktop.getDesktop().add(viewCadastroLogin);
         Dimension desktopSize = Desktop.getDesktop().getSize();
         Dimension viewCadastroLoginSize = viewCadastroLogin.getSize();

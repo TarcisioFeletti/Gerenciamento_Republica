@@ -8,7 +8,7 @@ package Presenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.ManterMoradores.P0202;
-import view.P0000;
+import view.P0000View;
 
 /**
  *
@@ -23,7 +23,7 @@ public class PresenterP0202 {
     }
     
     //BOTÃO EDITAR MORADOR - P0202
-    public void editarMorador(P0000 Desktop, int index) {
+    public void editarMorador(P0000View Desktop, int index) {
         Desktop.getDesktop().add(viewEditarMorador);
         viewEditarMorador.setVisible(true);
         viewEditarMorador.getBotaoSalvar().addActionListener(new ActionListener() {

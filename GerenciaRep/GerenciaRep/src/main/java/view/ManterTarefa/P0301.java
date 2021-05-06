@@ -5,7 +5,7 @@
  */
 package view.ManterTarefa;
 
-import view.P0000;
+import view.P0000View;
 
 /**
  *
@@ -163,7 +163,7 @@ public class P0301 extends javax.swing.JInternalFrame {
 
     private void cadastrarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarTarefaActionPerformed
         P0302 cad = new P0302();
-        P0000.Desktop.add(cad);
+        P0000View.Desktop.add(cad);
         cad.setVisible(true);
     }//GEN-LAST:event_cadastrarTarefaActionPerformed
 
@@ -181,7 +181,7 @@ public class P0301 extends javax.swing.JInternalFrame {
 
     private void editarTarefaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarTarefaActionPerformed
         P0302 cad = new P0302();
-        P0000.Desktop.add(cad);
+        P0000View.Desktop.add(cad);
         cad.setVisible(true);
     }//GEN-LAST:event_editarTarefaActionPerformed
 

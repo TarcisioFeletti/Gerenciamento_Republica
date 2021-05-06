@@ -8,19 +8,17 @@ package view.ManterRepublica;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import view.ManterMoradores.P0201;
-import static view.P0000.Desktop;
 
 /**
  *
  * @author Davidson
  */
-public class P0102 extends javax.swing.JInternalFrame {
+public class P0102View extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form P0102
      */
-    public P0102() {
+    public P0102View() {
         initComponents();
     }
 
@@ -438,9 +436,6 @@ public class P0102 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_excluirRepublicaActionPerformed
 
     private void manterMoradoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manterMoradoresActionPerformed
-        P0201 a = new P0201();
-        Desktop.add(a);
-        a.setVisible(true);
     }//GEN-LAST:event_manterMoradoresActionPerformed
 
     private void editarRepublicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarRepublicaActionPerformed
@@ -514,7 +509,6 @@ public class P0102 extends javax.swing.JInternalFrame {
     public JTextArea getVantagens() {
         return vantagens;
     }
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bairro;
