@@ -5,7 +5,7 @@
  */
 package view.ManterReceitaDespesa;
 
-import view.P0000;
+import view.P0000View;
 
 /**
  *
@@ -174,7 +174,7 @@ public class P0401 extends javax.swing.JInternalFrame {
 
     private void cadastrarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarPagamentoActionPerformed
         P0402 cad = new P0402();
-        P0000.Desktop.add(cad);
+        P0000View.Desktop.add(cad);
         cad.setVisible(true);
     }//GEN-LAST:event_cadastrarPagamentoActionPerformed
 
@@ -188,19 +188,19 @@ public class P0401 extends javax.swing.JInternalFrame {
 
     private void editarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPagamentoActionPerformed
         P0402 cad = new P0402();
-        P0000.Desktop.add(cad);
+        P0000View.Desktop.add(cad);
         cad.setVisible(true);
     }//GEN-LAST:event_editarPagamentoActionPerformed
 
     private void informacoesPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informacoesPagamentoActionPerformed
         P0403 v = new P0403();
-        P0000.Desktop.add(v);
+        P0000View.Desktop.add(v);
         v.setVisible(true);
     }//GEN-LAST:event_informacoesPagamentoActionPerformed
 
     private void estornarPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estornarPagamentoActionPerformed
         P0404 cad = new P0404();
-        P0000.Desktop.add(cad);
+        P0000View.Desktop.add(cad);
         cad.setVisible(true);
     }//GEN-LAST:event_estornarPagamentoActionPerformed
 

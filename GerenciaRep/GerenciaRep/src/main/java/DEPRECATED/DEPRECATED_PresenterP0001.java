@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presenter;
+package DEPRECATED;
 
 import Service.ServiceP0001;
 import java.awt.Dimension;
@@ -11,24 +11,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import view.LoginCadastro.P0001;
-import view.P0000;
+import view.P0000View;
 
 /**
  *
  * @author Lucas Carvalho
  */
-public class PresenterP0001 {
+public class DEPRECATED_PresenterP0001 {
 
     private P0001 viewLogin;
     private ServiceP0001 serviceP0001;
 
-    public PresenterP0001() {
+    public DEPRECATED_PresenterP0001() {
         viewLogin = new P0001();
         serviceP0001 = serviceP0001.getInstancia();
     }
 
     //TELA DE LOGIN - P0001
-    public void criarLogin(P0000 Desktop) {
+    public void criarLogin(P0000View Desktop) {
         Desktop.getDesktop().add(viewLogin);
         Dimension desktopSize = Desktop.getDesktop().getSize();
         Dimension viewLoginSize = viewLogin.getSize();
@@ -45,7 +45,7 @@ public class PresenterP0001 {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //BOTÃO PARA CADASTRAR NOVO USUARIO
-                PresenterP0002 presenterP0002 = new PresenterP0002();
+                DEPRECATED_PresenterP0002 presenterP0002 = new DEPRECATED_PresenterP0002();
                 presenterP0002.cadastrarNovoUsuario(Desktop);
             }
         });

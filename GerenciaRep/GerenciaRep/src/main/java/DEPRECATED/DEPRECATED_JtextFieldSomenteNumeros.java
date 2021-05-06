@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view.ManterPerfil;
+package DEPRECATED;
 
 import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
@@ -12,10 +12,10 @@ import javax.swing.JTextField;
  *
  * @author gabri
  */
-public final class JtextFieldSomenteNumeros extends JTextField {
+public final class DEPRECATED_JtextFieldSomenteNumeros extends JTextField {
 private int maximoCaracteres=-1;// definição de -1
 // como  valor normal de um textfield sem limite de caracters
-public JtextFieldSomenteNumeros() {
+public DEPRECATED_JtextFieldSomenteNumeros() {
         super();
         addKeyListener(new java.awt.event.KeyAdapter() {
             @Override
@@ -23,7 +23,7 @@ public JtextFieldSomenteNumeros() {
         jTextFieldKeyTyped(evt);}});
     }
 
-public JtextFieldSomenteNumeros(int maximo) {
+public DEPRECATED_JtextFieldSomenteNumeros(int maximo) {
     super();
     setMaximoCaracteres(maximo);// define o tamanho máximo
 //que deve ser aceito no jtextfield que foi recebido no  construtor

@@ -8,7 +8,7 @@ package Presenter;
 import view.ManterTarefa.P0301;
 import view.ManterTarefa.P0302;
 import view.ManterTarefa.P0303;
-import view.P0000;
+import view.P0000View;
 
 
 
@@ -35,7 +35,7 @@ public class PresenterManterTarefa {
     
     private void cadastrarTarefaActionPerformed(java.awt.event.ActionEvent evt) {                                                
         P0302 cad = new P0302();
-        P0000.Desktop.add(cad);
+        P0000View.Desktop.add(cad);
         cad.setVisible(true);
     }  
     
@@ -45,7 +45,7 @@ public class PresenterManterTarefa {
     
     private void editarTarefaActionPerformed(java.awt.event.ActionEvent evt) {                                             
         P0302 cad = new P0302();
-        P0000.Desktop.add(cad);
+        P0000View.Desktop.add(cad);
         cad.setVisible(true);
     } 
     

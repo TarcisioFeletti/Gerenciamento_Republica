@@ -13,13 +13,34 @@ import javax.swing.JTextField;
  *
  * @author Lucas Carvalho
  */
-public class P0001 extends javax.swing.JInternalFrame {
+public class P0001ModalView extends javax.swing.JDialog {
 
     /**
-     * Creates new form P0001
+     * Creates new form LoginModalView
      */
-    public P0001() {
+    public P0001ModalView(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+    }
+
+    public JButton getBotaoCadastrar() {
+        return botaoCadastrar;
+    }
+
+    public JButton getBotaoCancelar() {
+        return botaoCancelar;
+    }
+
+    public JButton getBotaoConfirmar() {
+        return botaoConfirmar;
+    }
+
+    public JPasswordField getCampoSenha() {
+        return campoSenha;
+    }
+
+    public JTextField getCampoUsuario() {
+        return campoUsuario;
     }
 
     /**
@@ -40,7 +61,7 @@ public class P0001 extends javax.swing.JInternalFrame {
         botaoCadastrar = new javax.swing.JButton();
         botaoConfirmar = new javax.swing.JButton();
 
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Usuário");
 
@@ -104,30 +125,26 @@ public class P0001 extends javax.swing.JInternalFrame {
                     .addGap(0, 47, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 390, 120));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getBotaoCadastrar() {
-        return botaoCadastrar;
-    }
+    /**
+     * @param args the command line arguments
+     */
 
-    public JButton getBotaoCancelar() {
-        return botaoCancelar;
-    }
-
-    public JButton getBotaoConfirmar() {
-        return botaoConfirmar;
-    }
-
-    public JPasswordField getCampoSenha() {
-        return campoSenha;
-    }
-
-    public JTextField getCampoUsuario() {
-        return campoUsuario;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastrar;

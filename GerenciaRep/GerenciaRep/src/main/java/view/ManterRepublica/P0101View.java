@@ -13,12 +13,12 @@ import javax.swing.JTextField;
  *
  * @author Davidson
  */
-public class P0101 extends javax.swing.JInternalFrame {
+public class P0101View extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form P0101
      */
-    public P0101() {
+    public P0101View() {
         initComponents();
     }
 
