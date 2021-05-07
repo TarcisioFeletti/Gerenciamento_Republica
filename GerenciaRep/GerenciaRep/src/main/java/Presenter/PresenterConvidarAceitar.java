@@ -5,8 +5,8 @@
  */
 package Presenter;
 
-import view.ConvidarAceitar.P0501;
-import view.ConvidarAceitar.P0502;
+import View.ConvidarAceitar.P0501;
+import View.ConvidarAceitar.P0502;
 
 /**
  *

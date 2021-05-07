@@ -6,6 +6,13 @@
 package DAO;
 
 import DAO.DBConnection.DBConnection;
+import Model.Despesa;
+import Model.DespesaMorador;
+import Model.Morador;
+import Model.Pessoa;
+import Model.Representante;
+import Model.Republica;
+import Model.SemTeto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,13 +20,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import model.Despesa;
-import model.DespesaMorador;
-import model.Morador;
-import model.Pessoa;
-import model.Representante;
-import model.Republica;
-import model.SemTeto;
 
 /**
  *
@@ -121,7 +121,7 @@ public class DespesaMoradorDAO {
                 if (rs.getBoolean("SemTeto")) {
                     pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getInt("idPessoa"));
                 } else if (rs.getBoolean("Morador")) {
                     query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
                     ps = conexao.prepareStatement(query);
@@ -130,7 +130,7 @@ public class DespesaMoradorDAO {
                     Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getInt("idPessoa"));
                 } else if (rs.getBoolean("Representante")) {
                     query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
                     ps = conexao.prepareStatement(query);
@@ -140,7 +140,7 @@ public class DespesaMoradorDAO {
                     pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                             LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                             rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
-                            rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getString("contato2"), rs.getInt("idPessoa"));
                 }
                 Despesa despesa = new DespesaDAO().read(rs.getInt("idDespesa"));
                 DespesaMorador despesaMorador = new DespesaMorador(pessoa, despesa, rs.getFloat("porcentagemDoValorTotal"));
@@ -174,7 +174,7 @@ public class DespesaMoradorDAO {
                 if (rs.getBoolean("SemTeto")) {
                     pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getInt("idPessoa"));
                 } else if (rs.getBoolean("Morador")) {
                     query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
                     ps = conexao.prepareStatement(query);
@@ -183,7 +183,7 @@ public class DespesaMoradorDAO {
                     Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getInt("idPessoa"));
                 } else if (rs.getBoolean("Representante")) {
                     query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
                     ps = conexao.prepareStatement(query);
@@ -193,7 +193,7 @@ public class DespesaMoradorDAO {
                     pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                             LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                             rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
-                            rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getString("contato2"), rs.getInt("idPessoa"));
                 }
                 Despesa despesaTemp = new DespesaDAO().read(rs.getInt("idDespesa"));
                 DespesaMorador despesaMorador = new DespesaMorador(pessoa, despesaTemp, rs.getFloat("porcentagemDoValorTotal"));
@@ -226,7 +226,7 @@ public class DespesaMoradorDAO {
                 if (rs.getBoolean("SemTeto")) {
                     pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getInt("idPessoa"));
                 } else if (rs.getBoolean("Morador")) {
                     query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
                     ps = conexao.prepareStatement(query);
@@ -235,7 +235,7 @@ public class DespesaMoradorDAO {
                     Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getInt("idPessoa"));
                 } else if (rs.getBoolean("Representante")) {
                     query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
                     ps = conexao.prepareStatement(query);
@@ -245,7 +245,7 @@ public class DespesaMoradorDAO {
                     pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                             LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                             rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
-                            rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getString("contato2"), rs.getInt("idPessoa"));
                 }
                 Despesa despesaTemp = new DespesaDAO().read(rs.getInt("idDespesa"));
                 DespesaMorador despesaMorador = new DespesaMorador(pessoa, despesaTemp, rs.getFloat("porcentagemDoValorTotal"));

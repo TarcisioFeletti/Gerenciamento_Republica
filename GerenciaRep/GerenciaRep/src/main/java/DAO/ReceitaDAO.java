@@ -13,8 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import model.Receita;
-import model.Republica;
+import Model.Receita;
+import Model.Republica;
 
 /**
  *

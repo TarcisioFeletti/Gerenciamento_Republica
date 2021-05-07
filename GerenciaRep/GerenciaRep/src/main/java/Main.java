@@ -1,6 +1,6 @@
 
 import Presenter.P0000Presenter;
-import view.P0000View;
+import View.P0000View;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

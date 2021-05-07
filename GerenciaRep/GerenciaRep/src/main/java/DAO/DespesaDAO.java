@@ -14,10 +14,10 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import model.Despesa;
-import model.DespesaMorador;
-import model.Pessoa;
-import model.Republica;
+import Model.Despesa;
+import Model.DespesaMorador;
+import Model.Pessoa;
+import Model.Republica;
 
 /**
  *

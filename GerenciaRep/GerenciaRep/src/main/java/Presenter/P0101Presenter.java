@@ -5,13 +5,13 @@
  */
 package Presenter;
 
+import Model.Republica;
+import View.ManterRepublica.P0101View;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import model.Republica;
-import view.ManterRepublica.P0101View;
 
 /**
  *
@@ -63,6 +63,7 @@ public class P0101Presenter {
                     Double.parseDouble(this.getView().getCep().getText()),
                     0
             );
+            //NA SERVICE: new RepublicaDAO().create(novaRepublica);
             //chamar a Presenter<->Service<->DAO pra salvar//
             //new P0101Service().incluirRepublica(novaRepublica/*, representante*/);
             this.getView().dispose();

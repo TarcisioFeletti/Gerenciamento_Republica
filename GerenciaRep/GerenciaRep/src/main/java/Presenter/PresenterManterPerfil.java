@@ -5,9 +5,9 @@
  */
 package Presenter;
 
-import view.ManterPerfil.P0701;
-import view.ManterPerfil.P0702;
-import view.P0000View;
+import View.ManterPerfil.P0701;
+import View.ManterPerfil.P0702;
+import View.P0000View;
 
 /**
  *

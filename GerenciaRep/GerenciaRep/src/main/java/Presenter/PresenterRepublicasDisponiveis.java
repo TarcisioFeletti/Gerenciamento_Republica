@@ -5,8 +5,8 @@
  */
 package Presenter;
 
-import view.RepublicasDisponiveis.P1301;
-import view.RepublicasDisponiveis.VerInformacoesRepublica;
+import View.RepublicasDisponiveis.P1301;
+import View.RepublicasDisponiveis.VerInformacoesRepublica;
 
 
 /**

@@ -5,12 +5,12 @@
  */
 package Presenter;
 
-import view.ManterReceitaDespesa.P0401;
-import view.ManterReceitaDespesa.P0402;
-import view.ManterReceitaDespesa.P0403;
-import view.ManterReceitaDespesa.P0404;
-import view.ManterReceitaDespesa.P0405;
-import view.P0000View;
+import View.ManterReceitaDespesa.P0401;
+import View.ManterReceitaDespesa.P0402;
+import View.ManterReceitaDespesa.P0403;
+import View.ManterReceitaDespesa.P0404;
+import View.ManterReceitaDespesa.P0405;
+import View.P0000View;
 
 /**
  *

@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
-import model.Republica;
-import view.ManterRepublica.P0102View;
+import Model.Republica;
+import View.ManterRepublica.P0102View;
 
 /**
  *

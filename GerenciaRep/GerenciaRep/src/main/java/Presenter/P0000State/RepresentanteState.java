@@ -35,11 +35,18 @@ public class RepresentanteState extends P0000AbstractState {
                 buscarRepublica();
             }
         });
-        super.getPresenter().getView().getBotaoSair().addActionListener(new ActionListener() {
+        super.getPresenter().getView().getLogout().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //BOTÃO PARA TROCAR DE USUÁRIO
-                sair();
+                logout();
+            }
+        });
+        super.getPresenter().getView().getFechar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //BOTÃO PARA TROCAR DE USUÁRIO
+                fechar();
             }
         });
         super.getPresenter().getView().getConsultarResultadoMensal().addActionListener(new ActionListener() {
@@ -170,9 +177,13 @@ public class RepresentanteState extends P0000AbstractState {
     }
 
     @Override
-    public void sair() {
-        //abrir tela de login (mudar estado)
-        super.getPresenter().setEstado(new LoginState(this.getPresenter()));
+    public void logout() {
+        this.getPresenter().setEstado(new LoginState(this.getPresenter()));
+    }
+
+    @Override
+    public void fechar() {
+        System.exit(0);
     }
 
     @Override

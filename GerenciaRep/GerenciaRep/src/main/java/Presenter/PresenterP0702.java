@@ -8,10 +8,10 @@ package Presenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import model.Pessoa;
-import model.SemTeto;
-import view.ManterPerfil.P0702;
-import view.P0000View;
+import Model.Pessoa;
+import Model.SemTeto;
+import View.ManterPerfil.P0702;
+import View.P0000View;
 
 /**
  *

@@ -35,11 +35,18 @@ public class MoradorState extends P0000AbstractState {
                 buscarRepublica();
             }
         });
-        super.getPresenter().getView().getBotaoSair().addActionListener(new ActionListener() {
+        super.getPresenter().getView().getLogout().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //BOTÃO PARA TROCAR DE USUÁRIO
-                sair();
+                logout();
+            }
+        });
+        super.getPresenter().getView().getFechar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //BOTÃO PARA TROCAR DE USUÁRIO
+                fechar();
             }
         });
         super.getPresenter().getView().getConsultarResultadoMensal().addActionListener(new ActionListener() {
@@ -121,43 +128,47 @@ public class MoradorState extends P0000AbstractState {
     }
 
     @Override
-    public void sair() {
-        //abrir tela de login (mudar estado)
-        super.getPresenter().setEstado(new LoginState(this.getPresenter()));
+    public void logout() {
+        this.getPresenter().setEstado(new LoginState(this.getPresenter()));
     }
-    
+
     @Override
-    public void consultarResultadoMensal(){
+    public void fechar() {
+        System.exit(0);
+    }
+
+    @Override
+    public void consultarResultadoMensal() {
         //new P1101Presenter(this.getPresenter().getView().getDesktop());
     }
-    
+
     @Override
-    public void manterReclamacoesSugestoes(){
+    public void manterReclamacoesSugestoes() {
         //new P0801Presenter(this.getPresenter().getView().getDesktop());
     }
-    
+
     @Override
-    public void manterPerfil(){
+    public void manterPerfil() {
         //new P0701Presenter(this.getPresenter().getView().getDesktop());
     }
-    
+
     @Override
-    public void aceitarConvite(){
+    public void aceitarConvite() {
         //new P0502Presenter(this.getPresenter().getView().getDesktop());
     }
-    
+
     @Override
-    public void registrarConclusaoDaTarefa(){
+    public void registrarConclusaoDaTarefa() {
         //new P0303Presenter(this.getPresenter().getView().getDesktop());
     }
-    
+
     @Override
-    public void consultarMinhasReceitasEDespesas(){
+    public void consultarMinhasReceitasEDespesas() {
         //new P1001Presenter(this.getPresenter().getView().getDesktop());
     }
-    
+
     @Override
-    public void registrarPagamentoDeReceitaOuDespesa(){
+    public void registrarPagamentoDeReceitaOuDespesa() {
         //new P1002Presenter(this.getPresenter().getView().getDesktop());
     }
 }

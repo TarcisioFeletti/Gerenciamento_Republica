@@ -5,8 +5,7 @@
  */
 package Service;
 
-import java.sql.SQLException;
-import model.Republica;
+import Model.Republica;
 
 /**
  *
@@ -29,7 +28,7 @@ public class ServiceP0101 /*throws SQLException*/ {
 
     public void incluirRepublica(Republica republica) {
         /*try{
-            //DAO.incluiRepublica(republica);
+            new RepublicaDAO().create(novaRepublica);
         }catch(SQLException e){
             throw e;
         }*/
