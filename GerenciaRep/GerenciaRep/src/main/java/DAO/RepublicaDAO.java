@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import model.Republica;
+import Model.Republica;
 
 /**
  *
@@ -24,7 +24,7 @@ public class RepublicaDAO {
 
     private Connection conexao;
 
-    public RepublicaDAO() {
+    RepublicaDAO() {
         conexao = DBConnection.getConexao();
     }
     

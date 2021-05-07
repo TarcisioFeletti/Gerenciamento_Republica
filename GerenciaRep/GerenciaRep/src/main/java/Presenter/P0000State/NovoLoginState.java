@@ -5,12 +5,14 @@
  */
 package Presenter.P0000State;
 
+import Model.SemTeto;
 import Presenter.P0000Presenter;
+import Service.P0002Service;
+import View.LoginCadastro.NovoLoginModalView;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import view.LoginCadastro.P0002ModalView;
 
 /**
  *
@@ -18,12 +20,13 @@ import view.LoginCadastro.P0002ModalView;
  */
 public class NovoLoginState extends P0000AbstractState {
 
-    private P0002ModalView view;
+    private NovoLoginModalView view;
+    private SemTeto pessoa;
 
-    public NovoLoginState(P0000Presenter presenter) {
+    public NovoLoginState(P0000Presenter presenter, SemTeto pessoa) {
         super(presenter);
-        view = new P0002ModalView(new Frame(), true);
-        view.setVisible(true);
+        this.pessoa = pessoa;
+        view = new NovoLoginModalView(new Frame(), true);
         //recria os listeners pra essa tela com addActionListener()
         this.getView().getBotaoCadastrarUsuario().addActionListener(new ActionListener() {
             @Override
@@ -36,14 +39,19 @@ public class NovoLoginState extends P0000AbstractState {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //BOTÃO PARA CANCELAR O CADASTRO
-                sair();
+                fechar();
             }
         });
+        view.setVisible(true);
     }
 
-    public P0002ModalView getView() {
+    public NovoLoginModalView getView() {
         return view;
     }
+
+    public SemTeto getPessoa() {
+        return pessoa;
+    }  
 
     @Override
     public void confirmarCadastro() {
@@ -52,20 +60,29 @@ public class NovoLoginState extends P0000AbstractState {
             if (this.getView().getCampoUsuario().getText().isBlank()) {
                 throw new Exception("Campo usuario vazio");
             }
+            if (this.getView().getCampoSenha().getText().isBlank()) {
+                throw new Exception("Campo senha vazio");
+            }
+            if (this.getView().getCampoSenhaConfirmar().getText().isBlank()) {
+                throw new Exception("Campo senha confirmar vazio");
+            }
+            if (!this.getView().getCampoSenhaConfirmar().getText().equals(this.getView().getCampoSenha().getText())) {
+                throw new Exception("Senhas diferentes.");
+            }
             //chamar a Presenter<->Service<->DAO pra fazer login//
-            //new P0002Service().cadastrarUsuario(this.viewCadastroLogin.getCampoUsuario().getText(), this.viewCadastroLogin.getCampoSenha().getText());
+            new P0002Service().cadastrarUsuario(this.getPessoa(), this.getView().getCampoUsuario().getText(), this.getView().getCampoSenha().getText());
             //retorna ao estado de login
             super.getPresenter().setEstado(new LoginState(this.getPresenter()));
             this.getView().dispose();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(this.getView(), e.getMessage());
+            JOptionPane.showMessageDialog(this.getView(), e.toString());
         }
     }
 
     @Override
-    public void sair() {
+    public void fechar() {
         //volta para o estado anterior
-        super.getPresenter().setEstado(new LoginState(this.getPresenter()));
         this.getView().dispose();
+        super.getPresenter().setEstado(new LoginState(this.getPresenter()));
     }
 }

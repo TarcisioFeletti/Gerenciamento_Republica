@@ -5,7 +5,7 @@
  */
 package Presenter;
 
-import view.ConfirmarSolucao.P0601;
+import View.ConfirmarSolucao.P0601;
 
 /**
  *

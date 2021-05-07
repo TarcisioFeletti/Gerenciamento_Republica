@@ -5,10 +5,10 @@
  */
 package Presenter;
 
-import view.ManterTarefa.P0301;
-import view.ManterTarefa.P0302;
-import view.ManterTarefa.P0303;
-import view.P0000View;
+import View.ManterTarefa.P0301;
+import View.ManterTarefa.P0302;
+import View.ManterTarefa.P0303;
+import View.P0000View;
 
 
 

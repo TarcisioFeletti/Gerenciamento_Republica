@@ -10,9 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.Despesa;
-import model.Pagamento;
-import model.Pessoa;
+import Model.Despesa;
+import Model.Pagamento;
+import Model.Pessoa;
 
 /**
  *

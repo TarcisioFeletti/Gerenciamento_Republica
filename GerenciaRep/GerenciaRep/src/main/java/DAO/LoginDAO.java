@@ -6,16 +6,16 @@
 package DAO;
 
 import DAO.DBConnection.DBConnection;
+import Model.Morador;
+import Model.Pessoa;
+import Model.Representante;
+import Model.Republica;
+import Model.SemTeto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import model.Morador;
-import model.Pessoa;
-import model.Representante;
-import model.Republica;
-import model.SemTeto;
 
 /**
  *
@@ -33,13 +33,14 @@ public class LoginDAO {
     public void create(Pessoa pessoa, String login, String senha) throws SQLException {
         PreparedStatement ps = null;
         try {
+            Pessoa temp = new PessoaDAO().read(pessoa.getNome());
             String query = "INSERT INTO Login\n"
                     + "(login, senha, idPessoa)\n"
                     + "VALUES(?,?,?);";
             ps = conexao.prepareStatement(query);
             ps.setString(1, login);
             ps.setString(2, senha);
-            ps.setInt(3, pessoa.getIdPessoa());
+            ps.setInt(3, temp.getIdPessoa());
             ps.execute();
         } catch (SQLException e) {
             throw e;
@@ -79,7 +80,7 @@ public class LoginDAO {
             if (rs.getBoolean("SemTeto")) {
                 pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                        rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                        rs.getInt("idPessoa"));
             } else if (rs.getBoolean("Morador")) {
                 query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
                 ps = conexao.prepareStatement(query);
@@ -88,7 +89,7 @@ public class LoginDAO {
                 Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                 pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                        rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                        rs.getInt("idPessoa"));
             } else if (rs.getBoolean("Representante")) {
                 query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
                 ps = conexao.prepareStatement(query);
@@ -98,7 +99,7 @@ public class LoginDAO {
                 pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                         LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                         rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
-                        rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                        rs.getString("contato2"), rs.getInt("idPessoa"));
             } else {
                 throw new RuntimeException("Usuário inválido");
             }

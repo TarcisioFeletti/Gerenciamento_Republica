@@ -5,7 +5,7 @@
  */
 package Presenter;
 
-import view.VisualizarGrafico.P1801;
+import View.VisualizarGrafico.P1801;
 
 /**
  *

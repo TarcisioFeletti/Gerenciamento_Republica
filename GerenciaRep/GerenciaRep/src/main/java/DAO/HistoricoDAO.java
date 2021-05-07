@@ -15,9 +15,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import model.Historico;
-import model.Pessoa;
-import model.Republica;
+import Model.Historico;
+import Model.Pessoa;
+import Model.Republica;
 
 /**
  *

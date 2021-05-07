@@ -5,7 +5,7 @@
  */
 package Service;
 
-import model.Republica;
+import Model.Republica;
 
 /**
  *

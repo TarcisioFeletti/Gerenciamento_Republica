@@ -10,9 +10,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import model.Pessoa;
-import view.ManterMoradores.P0201;
-import view.P0000View;
+import Model.Pessoa;
+import View.ManterMoradores.P0201;
+import View.P0000View;
 
 /**
  *

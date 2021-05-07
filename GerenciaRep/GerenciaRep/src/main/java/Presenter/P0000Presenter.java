@@ -7,8 +7,8 @@ package Presenter;
 
 import Presenter.P0000State.LoginState;
 import Presenter.P0000State.P0000AbstractState;
+import View.P0000View;
 import java.awt.event.ActionListener;
-import view.P0000View;
 
 /**
  *
@@ -45,9 +45,14 @@ public class P0000Presenter {
                 this.getView().getBuscarVagaRepublica().removeActionListener(actionListener);
             }
         }
-        if (this.getView().getBotaoSair().getActionListeners() != null) {
-            for (ActionListener actionListener : this.getView().getBotaoSair().getActionListeners()) {
-                this.getView().getBotaoSair().removeActionListener(actionListener);
+        if (this.getView().getLogout().getActionListeners() != null) {
+            for (ActionListener actionListener : this.getView().getLogout().getActionListeners()) {
+                this.getView().getLogout().removeActionListener(actionListener);
+            }
+        }
+        if (this.getView().getFechar().getActionListeners() != null) {
+            for (ActionListener actionListener : this.getView().getFechar().getActionListeners()) {
+                this.getView().getFechar().removeActionListener(actionListener);
             }
         }
         if (this.getView().getConsultarResultadoMensal().getActionListeners() != null) {

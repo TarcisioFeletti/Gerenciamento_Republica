@@ -6,6 +6,11 @@
 package DAO;
 
 import DAO.DBConnection.DBConnection;
+import Model.Morador;
+import Model.Pessoa;
+import Model.Representante;
+import Model.Republica;
+import Model.SemTeto;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -14,11 +19,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import model.Morador;
-import model.Pessoa;
-import model.Representante;
-import model.Republica;
-import model.SemTeto;
 
 /**
  *
@@ -38,8 +38,8 @@ public class PessoaDAO {
         PreparedStatement ps = null;
         try {
             String query = "INSERT INTO Pessoa(nome, apelido, telefone, cpf, redesSociais, contato1, contato2, SemTeto, "
-                    + "Morador, Representante, login, senha)  "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "Morador, Representante)  "
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?)";
             ps = conexao.prepareStatement(query);
             ps.setString(1, semTeto.getNome());
             ps.setString(2, semTeto.getApelido());
@@ -51,8 +51,6 @@ public class PessoaDAO {
             ps.setBoolean(8, true);
             ps.setBoolean(9, false);
             ps.setBoolean(10, false);
-            ps.setString(11, semTeto.getLogin());
-            ps.setString(12, semTeto.getSenha());
             ps.execute();
             Pessoa pessoa = this.read(semTeto.getNome());
             query = "INSERT INTO SemTeto(idPessoa)  "
@@ -116,7 +114,7 @@ public class PessoaDAO {
             if (rs.getBoolean("SemTeto")) {
                 pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                        rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                        rs.getInt("idPessoa"));
             } else if (rs.getBoolean("Morador")) {
                 query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
                 ps = conexao.prepareStatement(query);
@@ -125,7 +123,7 @@ public class PessoaDAO {
                 Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                 pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                        rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                        rs.getInt("idPessoa"));
             } else if (rs.getBoolean("Representante")) {
                 query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
                 ps = conexao.prepareStatement(query);
@@ -135,7 +133,7 @@ public class PessoaDAO {
                 pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                         LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                         rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
-                        rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                        rs.getString("contato2"), rs.getInt("idPessoa"));
             } else {
                 throw new RuntimeException("Usuário inválido");
             }
@@ -168,7 +166,7 @@ public class PessoaDAO {
             if (rs.getBoolean("SemTeto")) {
                 temp = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                        rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                        rs.getInt("idPessoa"));
                 return temp;
             } else if (rs.getBoolean("Morador")) {
                 query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
@@ -178,7 +176,7 @@ public class PessoaDAO {
                 Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                 temp = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                         rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                        rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                        rs.getInt("idPessoa"));
                 return temp;
             } else if (rs.getBoolean("Representante")) {
                 query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
@@ -189,7 +187,7 @@ public class PessoaDAO {
                 temp = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                         LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                         rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
-                        rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                        rs.getString("contato2"), rs.getInt("idPessoa"));
                 return temp;
             } else {
                 throw new RuntimeException("Usuário inválido");
@@ -223,7 +221,7 @@ public class PessoaDAO {
                 if (rs.getBoolean("SemTeto")) {
                     pessoa = new SemTeto(rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getInt("idPessoa"));
                     pessoaCollection.add(pessoa);
                 } else if (rs.getBoolean("Morador")) {
                     query = "SELECT * FROM Morador WHERE (idPessoa = ?);";
@@ -233,7 +231,7 @@ public class PessoaDAO {
                     Republica republica = new RepublicaDAO().read(rst.getInt("idRepublica"));
                     pessoa = new Morador(republica, rs.getString("nome"), rs.getString("apelido"), rs.getString("telefone"),
                             rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"), rs.getString("contato2"),
-                            rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getInt("idPessoa"));
                     pessoaCollection.add(pessoa);
                 } else if (rs.getBoolean("Representante")) {
                     query = "SELECT * FROM Representante WHERE (idPessoa = ?);";
@@ -244,7 +242,7 @@ public class PessoaDAO {
                     pessoa = new Representante(republica, LocalDate.parse(rst.getString("dataInicio")),
                             LocalDate.parse(rst.getString("dataFim")), rs.getString("nome"), rs.getString("apelido"),
                             rs.getString("telefone"), rs.getString("cpf"), rs.getString("redesSociais"), rs.getString("contato1"),
-                            rs.getString("contato2"), rs.getInt("idPessoa"), rs.getString("login"), rs.getString("senha"));
+                            rs.getString("contato2"), rs.getInt("idPessoa"));
                     pessoaCollection.add(pessoa);
                 }
             }
@@ -269,7 +267,7 @@ public class PessoaDAO {
         try {
             String query = "UPDATE Pessoa SET nome = ?, apelido = ?, telefone = ?, cpf = ?, "
                     + "redesSociais = ?, contato1 = ?, contato2 = ?, SemTeto = ?, Morador = ?, "
-                    + "Representante = ?, login = ?, senha = ?"
+                    + "Representante = ?"
                     + "WHERE (nome = ?);";
             ps = conexao.prepareStatement(query);
             ps.setString(1, pessoa.getNome());
@@ -282,8 +280,6 @@ public class PessoaDAO {
             ps.setBoolean(8, pessoa.isSemTeto());
             ps.setBoolean(9, pessoa.isMorador());
             ps.setBoolean(10, pessoa.isRepresentante());
-            ps.setString(11, pessoa.getLogin());
-            ps.setString(12, pessoa.getSenha());
             ps.setString(13, nome);
             ps.execute();
         } catch (SQLException e) {
@@ -301,7 +297,7 @@ public class PessoaDAO {
         try {
             String query = "UPDATE Pessoa SET nome = ?, apelido = ?, telefone = ?, cpf = ?, "
                     + "redesSociais = ?, contato1 = ?, contato2 = ?, SemTeto = ?, Morador = ?, "
-                    + "Representante = ?, login = ?, senha = ?"
+                    + "Representante = ?"
                     + "WHERE (nome = ?);";
             ps = conexao.prepareStatement(query);
             ps.setString(1, pessoa.getNome());
@@ -314,8 +310,6 @@ public class PessoaDAO {
             ps.setBoolean(8, pessoa.isSemTeto());
             ps.setBoolean(9, pessoa.isMorador());
             ps.setBoolean(10, pessoa.isRepresentante());
-            ps.setString(11, pessoa.getLogin());
-            ps.setString(12, pessoa.getSenha());
             ps.setString(13, nome);
             ps.execute();
             Republica republica = new RepublicaDAO().read(pessoa.getRepublicaAtual().getNomeRepublica());
@@ -338,7 +332,7 @@ public class PessoaDAO {
         try {
             String query = "UPDATE Pessoa SET nome = ?, apelido = ?, telefone = ?, cpf = ?, "
                     + "redesSociais = ?, contato1 = ?, contato2 = ?, SemTeto = ?, Morador = ?, "
-                    + "Representante = ?, login = ?, senha = ?"
+                    + "Representante = ?"
                     + "WHERE (nome = ?);";
             ps = conexao.prepareStatement(query);
             ps.setString(1, pessoa.getNome());
@@ -351,8 +345,6 @@ public class PessoaDAO {
             ps.setBoolean(8, pessoa.isSemTeto());
             ps.setBoolean(9, pessoa.isMorador());
             ps.setBoolean(10, pessoa.isRepresentante());
-            ps.setString(11, pessoa.getLogin());
-            ps.setString(12, pessoa.getSenha());
             ps.setString(13, nome);
             ps.execute();
             Republica republica = new RepublicaDAO().read(pessoa.getRepublicaAtual().getNomeRepublica());

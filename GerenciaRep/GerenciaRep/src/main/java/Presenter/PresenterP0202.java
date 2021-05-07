@@ -7,8 +7,8 @@ package Presenter;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import view.ManterMoradores.P0202;
-import view.P0000View;
+import View.ManterMoradores.P0202;
+import View.P0000View;
 
 /**
  *

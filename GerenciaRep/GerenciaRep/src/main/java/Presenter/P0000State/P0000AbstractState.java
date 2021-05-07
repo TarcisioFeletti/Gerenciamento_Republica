@@ -108,10 +108,14 @@ public abstract class P0000AbstractState {
     public void confirmarCadastro(){
         throw new RuntimeException("Não é possivel usar esse metodo neste estado.");
     }
-    
+        
     //GERAL
     
-    public void sair(){
+    public void logout(){
+        throw new RuntimeException("Não é possivel usar esse metodo neste estado.");
+    }
+    
+    public void fechar(){
         throw new RuntimeException("Não é possivel usar esse metodo neste estado.");
     }
 }

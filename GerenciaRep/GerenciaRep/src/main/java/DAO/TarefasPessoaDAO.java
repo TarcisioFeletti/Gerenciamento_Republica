@@ -6,17 +6,17 @@
 package DAO;
 
 import DAO.DBConnection.DBConnection;
+import Model.Morador;
+import Model.Pessoa;
+import Model.Representante;
+import Model.Republica;
+import Model.SemTeto;
+import Model.Tarefa;
+import Model.TarefaPessoa;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import model.Morador;
-import model.Tarefa;
-import model.Pessoa;
-import model.Representante;
-import model.Republica;
-import model.SemTeto;
-import model.TarefaPessoa;
 
 /**
  *
@@ -144,7 +144,7 @@ public class TarefasPessoaDAO {
                 if (rs.getBoolean("SemTeto")) {
                     pessoa = new SemTeto(r.getString("nome"), r.getString("apelido"), r.getString("telefone"),
                             r.getString("cpf"), r.getString("redesSociais"), r.getString("contato1"),
-                            r.getString("contato2"), r.getInt("idPessoa"), r.getString("login"), r.getString("senha"));
+                            r.getString("contato2"), r.getInt("idPessoa"));
                 } else if (rs.getBoolean("Morador")) {
                     String subQuery = "SELECT r.nomeRepublica FROM Morador m inner join Republica r on m.idRepublica = r.idRepublica WHERE(idPessoa = ?);";
                     PreparedStatement p = conexao.prepareStatement(subQuery);
@@ -153,7 +153,7 @@ public class TarefasPessoaDAO {
                     Republica rep = new RepublicaDAO().read(rt.getString("r.nomeRepublica"));
                     pessoa = new Morador(rep, r.getString("nome"), r.getString("apelido"), r.getString("telefone"),
                             r.getString("cpf"), r.getString("redesSociais"), r.getString("contato1"),
-                            r.getString("contato2"), r.getInt("idPessoa"), r.getString("login"), r.getString("senha"));
+                            r.getString("contato2"), r.getInt("idPessoa"));
                 } else if (rs.getBoolean("Representante")) {
                     String subQuery = "SELECT r.nomeRepublica, re.dataInicio, re.dataFim FROM Representante re inner join Republica r on m.idRepublica = r.idRepublica WHERE(idPessoa = ?);";
                     PreparedStatement p = conexao.prepareStatement(subQuery);
@@ -164,7 +164,7 @@ public class TarefasPessoaDAO {
                             LocalDate.parse(rt.getString("dataFim")), r.getString("nome"), r.getString("apelido"),
                             r.getString("telefone"), r.getString("cpf"), r.getString("redesSociais"),
                             r.getString("contato1"),
-                            r.getString("contato2"), r.getInt("idPessoa"), r.getString("login"), r.getString("senha"));
+                            r.getString("contato2"), r.getInt("idPessoa"));
                 }
                 TarefaPessoa tm = new TarefaPessoa(pessoa, tarefa);
                 tmCollection.add(tm);
