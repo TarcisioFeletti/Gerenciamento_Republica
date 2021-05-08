@@ -5,6 +5,7 @@
  */
 package Presenter.TelaInicialState;
 
+import Presenter.BuscarVagasPresenter;
 import Presenter.CriarRepublicaPresenter;
 import Presenter.TelaInicialPresenter;
 import java.awt.event.ActionEvent;
@@ -168,12 +169,12 @@ public class RepresentanteState extends TelaInicialAbstractState {
 
     @Override
     public void criarRepublica() {
-        new CriarRepublicaPresenter(this.getPresenter().getView().getDesktop());
+        new CriarRepublicaPresenter(this.getPresenter().getView().getDesktop(), super.getPresenter().getUsuario());
     }
 
     @Override
     public void buscarRepublica() {
-        //new P1301Presenter(this.getPresenter().getView().getDesktop());
+        new BuscarVagasPresenter(this.getPresenter().getView().getDesktop(), this.getPresenter().getUsuario());
     }
 
     @Override
