@@ -5,8 +5,10 @@
  */
 package Presenter;
 
+import Model.Pessoa;
 import Model.Republica;
-import View.ManterRepublica.P0101View;
+import Service.CriarRepublicaService;
+import View.ManterRepublica.CriarRepublicaView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
@@ -17,15 +19,17 @@ import javax.swing.JOptionPane;
  *
  * @author Lucas Carvalho
  */
-public class P0101Presenter {
+public class CriarRepublicaPresenter {
 
-    private P0101View view;
+    private final CriarRepublicaView view;
+    private final Pessoa usuario;
 
-    public P0101Presenter(JDesktopPane desktop) {
-        view = new P0101View();
+    public CriarRepublicaPresenter(JDesktopPane desktop, Pessoa usuario) {
+        this.usuario = usuario;
+        this.view = new CriarRepublicaView();
         desktop.add(view);
-        view.setVisible(true);
-        view.getConfirmar().addActionListener(new ActionListener() {
+        this.view.setVisible(true);
+        this.view.getConfirmar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //BOTÃO DE CONFIRMAR A INCLUSÃO
@@ -34,8 +38,12 @@ public class P0101Presenter {
         });
     }
 
-    public P0101View getView() {
+    public CriarRepublicaView getView() {
         return view;
+    }
+
+    public Pessoa getUsuario() {
+        return usuario;
     }
 
     private void confirmar() {
@@ -43,6 +51,33 @@ public class P0101Presenter {
             //tratamentos dos campos//
             if (this.getView().getNome().getText().isBlank()) {
                 throw new Exception("O campo nome não pode ficar vazio.");
+            }
+            if (this.getView().getDataFundacao().getText().isBlank()) {
+                throw new Exception("O campo de data de fundação não pode ficar vazio.");
+            }
+            if (this.getView().getDespesasMediasMorador().getText().isBlank()) {
+                throw new Exception("O campo despesas médias por morador não pode ficar vazio.");
+            }
+            if (this.getView().getTotalVagas().getText().isBlank()) {
+                throw new Exception("O campo total de vagas não pode ficar vazio.");
+            }
+            if (this.getView().getVantagens().getText().isBlank()) {
+                throw new Exception("O campo vantagens não pode ficar vazio.");
+            }
+            if (this.getView().getEndereco().getText().isBlank()) {
+                throw new Exception("O campo logradouro não pode ficar vazio.");
+            }
+            if (this.getView().getBairro().getText().isBlank()) {
+                throw new Exception("O campo bairro não pode ficar vazio.");
+            }
+            if (this.getView().getPontoDeReferencia().getText().isBlank()) {
+                throw new Exception("O campo ponto de referencia não pode ficar vazio.");
+            }
+            if (this.getView().getCep().getText().isBlank()) {
+                throw new Exception("O campo CEP não pode ficar vazio.");
+            }
+            if (this.getView().getNumero().getText().isBlank()) {
+                throw new Exception("O campo número não pode ficar vazio.");
             }
             //criação da novaRepublica com os campos//
             Republica novaRepublica = new Republica(
@@ -63,9 +98,8 @@ public class P0101Presenter {
                     Double.parseDouble(this.getView().getCep().getText()),
                     0
             );
-            //NA SERVICE: new RepublicaDAO().create(novaRepublica);
             //chamar a Presenter<->Service<->DAO pra salvar//
-            //new P0101Service().incluirRepublica(novaRepublica/*, representante*/);
+            new CriarRepublicaService().incluirRepublica(novaRepublica, this.getUsuario());
             this.getView().dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this.getView(), e.getMessage());

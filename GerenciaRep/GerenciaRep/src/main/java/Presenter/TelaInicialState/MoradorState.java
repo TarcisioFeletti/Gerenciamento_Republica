@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presenter.P0000State;
+package Presenter.TelaInicialState;
 
-import Presenter.P0000Presenter;
-import Presenter.P0101Presenter;
+import Presenter.CriarRepublicaPresenter;
+import Presenter.TelaInicialPresenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,9 +14,9 @@ import java.awt.event.ActionListener;
  *
  * @author Lucas Carvalho
  */
-public class MoradorState extends P0000AbstractState {
+public class MoradorState extends TelaInicialAbstractState {
 
-    public MoradorState(P0000Presenter presenter) {
+    public MoradorState(TelaInicialPresenter presenter) {
         super(presenter);
         //remove listener da tela principal, caso existam
         super.getPresenter().removeListeners();
@@ -45,7 +45,7 @@ public class MoradorState extends P0000AbstractState {
         super.getPresenter().getView().getFechar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //BOTÃO PARA TROCAR DE USUÁRIO
+                //BOTÃO PARA FECHAR O PROGRAMA
                 fechar();
             }
         });
@@ -119,7 +119,7 @@ public class MoradorState extends P0000AbstractState {
 
     @Override
     public void criarRepublica() {
-        new P0101Presenter(this.getPresenter().getView().getDesktop());
+        new CriarRepublicaPresenter(this.getPresenter().getView().getDesktop());
     }
 
     @Override

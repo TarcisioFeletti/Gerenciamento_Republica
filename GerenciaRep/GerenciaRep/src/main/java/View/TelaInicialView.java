@@ -13,12 +13,12 @@ import javax.swing.JMenuItem;
  *
  * @author Davidson
  */
-public class P0000View extends javax.swing.JFrame {
+public class TelaInicialView extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaInicial
      */
-    public P0000View() {
+    public TelaInicialView() {
         initComponents();
         setLocationRelativeTo(getParent());
         setExtendedState(JFrame.MAXIMIZED_BOTH);

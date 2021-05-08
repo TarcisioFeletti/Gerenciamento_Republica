@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presenter.P0000State;
+package Presenter.TelaInicialState;
 
-import Presenter.P0000Presenter;
-import Service.P0001Service;
+import Presenter.TelaInicialPresenter;
+import Service.LoginService;
 import View.LoginCadastro.LoginModalView;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -17,14 +17,14 @@ import javax.swing.JOptionPane;
  *
  * @author Lucas Carvalho
  */
-public class LoginState extends P0000AbstractState {
+public class LoginState extends TelaInicialAbstractState {
 
     private LoginModalView view;
 
-    public LoginState(P0000Presenter presenter) {
+    public LoginState(TelaInicialPresenter presenter) {
         super(presenter);
         view = new LoginModalView(new Frame(), true);
-        //faz um removeActionListener() em cada listener da P0000Presenter
+        //faz um removeActionListener() em cada listener da TelaInicialPresenter
         super.getPresenter().removeListeners();
         //recria os listeners pra essa tela com addActionListener()
         this.getView().getBotaoConfirmar().addActionListener(new ActionListener() {
@@ -67,13 +67,13 @@ public class LoginState extends P0000AbstractState {
                 throw new Exception("Campo senha não pode ficar vazio");
             }
             //chamar a Presenter<->Service<->DAO pra fazer login//
-            var login = new P0001Service().efetuarLogin(this.getView().getCampoUsuario().getText(), this.getView().getCampoSenha().getText());
+            super.getPresenter().setUsuario(new LoginService().efetuarLogin(this.getView().getCampoUsuario().getText(), this.getView().getCampoSenha().getText()));
             //troca de estado
-            if(login.isSemTeto()){
+            if(super.getPresenter().getUsuario().isSemTeto()){
                 this.getPresenter().setEstado(new SemTetoState(this.getPresenter()));
-            }else if(login.isMorador()){
+            }else if(super.getPresenter().getUsuario().isMorador()){
                 this.getPresenter().setEstado(new MoradorState(this.getPresenter()));
-            }else if(login.isRepresentante()){
+            }else if(super.getPresenter().getUsuario().isRepresentante()){
                 this.getPresenter().setEstado(new RepresentanteState(this.getPresenter()));
             }
             this.getView().dispose();

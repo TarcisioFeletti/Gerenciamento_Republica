@@ -13,12 +13,12 @@ import javax.swing.JTextField;
  *
  * @author Davidson
  */
-public class P0101View extends javax.swing.JInternalFrame {
+public class CriarRepublicaView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form P0101
      */
-    public P0101View() {
+    public CriarRepublicaView() {
         initComponents();
     }
 
@@ -31,19 +31,6 @@ public class P0101View extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        endereco = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        bairro = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        cep = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        pontoDeReferencia = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        localizacaoGeografica = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        numero = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         nome = new javax.swing.JTextField();
@@ -64,69 +51,22 @@ public class P0101View extends javax.swing.JInternalFrame {
         codigoEtica = new javax.swing.JTextArea();
         jLabel13 = new javax.swing.JLabel();
         confirmar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        endereco = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        bairro = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        cep = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        pontoDeReferencia = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        localizacaoGeografica = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        numero = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
 
         setClosable(true);
         setMaximizable(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        endereco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enderecoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(endereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 33, 619, -1));
-
-        jLabel3.setText("Logradouro:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, -1, -1));
-
-        bairro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bairroActionPerformed(evt);
-            }
-        });
-        jPanel1.add(bairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 81, 711, -1));
-
-        jLabel6.setText("Bairro:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 64, -1, -1));
-
-        cep.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cepActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cep, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 177, 206, -1));
-
-        jLabel4.setText("CEP:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 160, -1, -1));
-
-        pontoDeReferencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pontoDeReferenciaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(pontoDeReferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 129, 711, -1));
-
-        jLabel5.setText("Ponto de Referência:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 112, -1, -1));
-
-        localizacaoGeografica.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                localizacaoGeograficaActionPerformed(evt);
-            }
-        });
-        jPanel1.add(localizacaoGeografica, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 177, 499, -1));
-
-        jLabel7.setText("Localização Geográfica:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 160, -1, -1));
-        jPanel1.add(numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(641, 33, 86, -1));
-
-        jLabel14.setText("Número");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(641, 16, -1, -1));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 740, 210));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados da República"));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -206,12 +146,10 @@ public class P0101View extends javax.swing.JInternalFrame {
         codigoEtica.setRows(5);
         jScrollPane2.setViewportView(codigoEtica);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 137, 346, 140));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 137, 360, 140));
 
         jLabel13.setText("Código de Ética:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(368, 117, -1, -1));
-
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 2, 730, 290));
 
         confirmar.setText("Confirmar");
         confirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -219,7 +157,86 @@ public class P0101View extends javax.swing.JInternalFrame {
                 confirmarActionPerformed(evt);
             }
         });
-        getContentPane().add(confirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 510, 100, -1));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        endereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enderecoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(endereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 33, 619, -1));
+
+        jLabel3.setText("Logradouro:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, -1, -1));
+
+        bairro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bairroActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 81, 711, -1));
+
+        jLabel6.setText("Bairro:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 64, -1, -1));
+
+        cep.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cepActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cep, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 177, 206, -1));
+
+        jLabel4.setText("CEP:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 160, -1, -1));
+
+        pontoDeReferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pontoDeReferenciaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(pontoDeReferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 129, 711, -1));
+
+        jLabel5.setText("Ponto de Referência:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 112, -1, -1));
+
+        localizacaoGeografica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                localizacaoGeograficaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(localizacaoGeografica, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 177, 499, -1));
+
+        jLabel7.setText("Localização Geográfica:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 160, -1, -1));
+        jPanel1.add(numero, new org.netbeans.lib.awtextra.AbsoluteConstraints(641, 33, 86, -1));
+
+        jLabel14.setText("Número");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(641, 16, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 735, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(confirmar)
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(confirmar)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

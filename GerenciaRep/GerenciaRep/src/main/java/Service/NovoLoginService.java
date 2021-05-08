@@ -14,7 +14,7 @@ import java.sql.SQLException;
  *
  * @author Lucas Carvalho
  */
-public class P0002Service {
+public class NovoLoginService {
 
     public void cadastrarUsuario(SemTeto pessoa, String nomeUsuario, String senha) throws SQLException {
         try{

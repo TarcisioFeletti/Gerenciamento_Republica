@@ -5,31 +5,41 @@
  */
 package Presenter;
 
-import Presenter.P0000State.LoginState;
-import Presenter.P0000State.P0000AbstractState;
-import View.P0000View;
+import Model.Pessoa;
+import Presenter.TelaInicialState.LoginState;
+import Presenter.TelaInicialState.TelaInicialAbstractState;
+import View.TelaInicialView;
 import java.awt.event.ActionListener;
 
 /**
  *
  * @author Davidson
  */
-public class P0000Presenter {
+public class TelaInicialPresenter {
 
-    private P0000View view;
-    private P0000AbstractState estado;
+    private TelaInicialView view;
+    private TelaInicialAbstractState estado;
+    private Pessoa usuario;
 
-    public P0000Presenter() {
-        this.view = new P0000View();
+    public TelaInicialPresenter() {
+        this.view = new TelaInicialView();
         this.view.setVisible(true);
         this.estado = new LoginState(this);
     }
 
-    public P0000View getView() {
+    public TelaInicialView getView() {
         return view;
     }
 
-    public void setEstado(P0000AbstractState estado) {
+    public Pessoa getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Pessoa usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setEstado(TelaInicialAbstractState estado) {
         this.estado = estado;
     }
 
