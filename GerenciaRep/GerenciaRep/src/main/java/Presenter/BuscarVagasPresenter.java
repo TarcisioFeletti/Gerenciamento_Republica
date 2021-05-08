@@ -7,6 +7,7 @@ package Presenter;
 
 import Model.Pessoa;
 import Model.Republica;
+import Model.VagaRepublicaModel;
 import Service.BuscarVagasService;
 import View.RepublicasDisponiveis.BuscarVagasView;
 import java.awt.event.ActionEvent;
@@ -124,11 +125,16 @@ public class BuscarVagasPresenter {
     }
 
     public void solicitarMoradia() {
-        //verificação de elemento selecionado
-        //pegar elemento selecionado
-        //criar uma model de solicitacao com usuario (pessoa), republica desejada
-        //solicitar inserção na DAO
-        //retornar caixa de dialogo com "solicitação realizada"
+        try {
+            if(this.getView().getTabelaBusca().getSelectedRow()==-1){
+               throw new Exception("Nenhuma republuica selecionada."); 
+            }
+            var republica = new BuscarVagasService().getRepublicaSelecionadaPorNome(this.getView().getTabelaBusca().getValueAt(this.getView().getTabelaBusca().getSelectedRow(), 0).toString());
+            new BuscarVagasService().solicitarMoradia(new VagaRepublicaModel(this.getUsuario().getIdPessoa(), republica.getIdRepublica()));
+            JOptionPane.showMessageDialog(this.getView(), "Solicitação realizada!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(view, e.getMessage());
+        }
     }
 
     public void verInformacoes() {

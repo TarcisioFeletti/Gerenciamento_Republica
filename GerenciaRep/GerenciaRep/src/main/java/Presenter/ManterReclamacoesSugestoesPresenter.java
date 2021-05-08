@@ -5,9 +5,13 @@
  */
 package Presenter;
 
-import View.ManterReclamacoesSugestoes.P0801View;
+import Model.Pessoa;
+import Model.ReclamacaoSugestao;
+import Service.ManterReclamacoesSugestoesService;
+import View.ManterReclamacoesSugestoes.ManterReclamacoesSugestoesView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
@@ -15,14 +19,17 @@ import javax.swing.JOptionPane;
  *
  * @author gabri
  */
-public class P0801Presenter {
+public class ManterReclamacoesSugestoesPresenter {
 
-    private P0801View view;
+    private ManterReclamacoesSugestoesView view;
+    private Pessoa usuario;
 
-    public P0801Presenter(JDesktopPane desktop) {
-        this.view = new P0801View();
+    public ManterReclamacoesSugestoesPresenter(JDesktopPane desktop, Pessoa usuario) {
+        this.usuario = usuario;
+        this.view = new ManterReclamacoesSugestoesView();
         desktop.add(view);
         this.view.setVisible(true);
+        refinarBusca();
         this.getView().getBuscarReclamacao().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,20 +74,23 @@ public class P0801Presenter {
         });
     }
 
-    public P0801View getView() {
+    public ManterReclamacoesSugestoesView getView() {
         return view;
+    }
+
+    public Pessoa getUsuario() {
+        return usuario;
     }
 
     public void refinarBusca() {
         try {
-            
-            //tratamento
+            List<ReclamacaoSugestao> lista;
             if (this.getView().getCampoBusca().getText().isBlank()) {
-                //mostrar todos
+                lista = new ManterReclamacoesSugestoesService().getAllReclamacoesSugestoes(this.getUsuario());
+            } else if (this.getView().getTipoBusca().toString().equals("Pessoa")) {
+                lista = new ManterReclamacoesSugestoesService().getReclamacoesSugestoesPorPessoa(this.getView().getCampoBusca().getText());
             } else {
-                //pego o tipo de busca
-                //pego o campo de busca
-                //faço a busca com a service
+                lista = new ManterReclamacoesSugestoesService().getReclamacoesSugestoesPorDescricao(this.getView().getCampoBusca().getText());
             }
             //exibo o resultado na tabela
         } catch (Exception e) {

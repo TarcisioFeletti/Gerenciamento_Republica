@@ -5,7 +5,10 @@
  */
 package Presenter.TelaInicialState;
 
+import Presenter.BuscarVagasPresenter;
+import Presenter.ConsultarResultadoMensalPresenter;
 import Presenter.CriarRepublicaPresenter;
+import Presenter.ManterReclamacoesSugestoesPresenter;
 import Presenter.TelaInicialPresenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -119,12 +122,12 @@ public class MoradorState extends TelaInicialAbstractState {
 
     @Override
     public void criarRepublica() {
-        new CriarRepublicaPresenter(this.getPresenter().getView().getDesktop());
+        new CriarRepublicaPresenter(this.getPresenter().getView().getDesktop(), super.getPresenter().getUsuario());
     }
 
     @Override
     public void buscarRepublica() {
-        //new P1301Presenter(this.getPresenter().getView().getDesktop());
+        new BuscarVagasPresenter(this.getPresenter().getView().getDesktop(), this.getPresenter().getUsuario());
     }
 
     @Override
@@ -139,12 +142,12 @@ public class MoradorState extends TelaInicialAbstractState {
 
     @Override
     public void consultarResultadoMensal() {
-        //new P1101Presenter(this.getPresenter().getView().getDesktop());
+        new ConsultarResultadoMensalPresenter(this.getPresenter().getView().getDesktop(), this.getPresenter().getUsuario());
     }
 
     @Override
     public void manterReclamacoesSugestoes() {
-        //new P0801Presenter(this.getPresenter().getView().getDesktop());
+        new ManterReclamacoesSugestoesPresenter(this.getPresenter().getView().getDesktop(), this.getPresenter().getUsuario());
     }
 
     @Override

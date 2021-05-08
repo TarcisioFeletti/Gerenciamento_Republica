@@ -7,6 +7,7 @@ package Service;
 
 import DAO.RepublicaDAO;
 import Model.Republica;
+import Model.VagaRepublicaModel;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -27,6 +28,14 @@ public class BuscarVagasService {
     public Republica getRepublicaSelecionadaPorNome(String nome) throws SQLException {
         try {
             return new RepublicaDAO().read(nome);
+        } catch (SQLException e) {
+            throw e;
+        }
+    }
+
+    public void solicitarMoradia(VagaRepublicaModel vagaRepublicaModel) throws SQLException {
+        try {
+            new RequisitarMoradiaDAO().create(vagaRepublicaModel);
         } catch (SQLException e) {
             throw e;
         }
