@@ -6,6 +6,7 @@
 package DAO;
 
 import DAO.DBConnection.DBConnection;
+import Model.Republica;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -14,7 +15,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import Model.Republica;
 
 /**
  *
@@ -24,7 +24,7 @@ public class RepublicaDAO {
 
     private Connection conexao;
 
-    RepublicaDAO() {
+    public void RepublicaDAO() {
         conexao = DBConnection.getConexao();
     }
     

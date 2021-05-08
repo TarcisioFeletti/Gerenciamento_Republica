@@ -12,7 +12,7 @@ import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import Model.Pessoa;
 import View.ManterMoradores.P0201;
-import View.P0000View;
+import View.TelaInicialView;
 
 /**
  *
@@ -32,7 +32,7 @@ public class PresenterP0201 {
     }
 
     //BOTÃO MANTER MORADOR - P0201
-    public void manterMorador(P0000View Desktop) {
+    public void manterMorador(TelaInicialView Desktop) {
         Desktop.getDesktop().add(viewManterMorador);
         viewManterMorador.setVisible(true);
         viewManterMorador.getConvidarMoradorSemTeto().addActionListener(new ActionListener() {

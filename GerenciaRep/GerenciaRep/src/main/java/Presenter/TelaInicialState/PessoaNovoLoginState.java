@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presenter.P0000State;
+package Presenter.TelaInicialState;
 
 import Model.SemTeto;
-import Presenter.P0000Presenter;
+import Presenter.TelaInicialPresenter;
 import View.LoginCadastro.PessoaNovoLoginModalView;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -17,11 +17,11 @@ import javax.swing.JOptionPane;
  *
  * @author Lucas Carvalho
  */
-public class PessoaNovoLoginState extends P0000AbstractState {
+public class PessoaNovoLoginState extends TelaInicialAbstractState {
 
     private PessoaNovoLoginModalView view;
 
-    public PessoaNovoLoginState(P0000Presenter presenter) {
+    public PessoaNovoLoginState(TelaInicialPresenter presenter) {
         super(presenter);
         view = new PessoaNovoLoginModalView(new Frame(), true);
         //recria os listeners pra essa tela com addActionListener()

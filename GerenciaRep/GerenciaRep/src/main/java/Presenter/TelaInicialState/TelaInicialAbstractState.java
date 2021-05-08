@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presenter.P0000State;
+package Presenter.TelaInicialState;
 
-import Presenter.P0000Presenter;
+import Presenter.TelaInicialPresenter;
 
 /**
  *
  * @author Lucas Carvalho
  */
-public abstract class P0000AbstractState {
+public abstract class TelaInicialAbstractState {
     
-    private final P0000Presenter presenter;
+    private final TelaInicialPresenter presenter;
     
-    public P0000AbstractState(P0000Presenter presenter){
+    public TelaInicialAbstractState(TelaInicialPresenter presenter){
         this.presenter = presenter;
     }
 
-    public P0000Presenter getPresenter() {
+    public TelaInicialPresenter getPresenter() {
         return presenter;
     }
     

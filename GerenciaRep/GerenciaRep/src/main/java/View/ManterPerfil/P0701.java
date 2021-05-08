@@ -5,7 +5,7 @@
  */
 package View.ManterPerfil;
 
-import View.P0000View;
+import View.TelaInicialView;
 
 /**
  *
@@ -199,7 +199,7 @@ public class P0701 extends javax.swing.JInternalFrame {
 
     private void editarPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPerfilActionPerformed
         P0702 a = new P0702();
-        P0000View.Desktop.add(a);
+        TelaInicialView.Desktop.add(a);
         a.setVisible(true);
     }//GEN-LAST:event_editarPerfilActionPerformed
 

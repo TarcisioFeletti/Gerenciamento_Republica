@@ -5,21 +5,22 @@
  */
 package Service;
 
-import DAO.LoginDAO;
+import DAO.RepublicaDAO;
 import Model.Pessoa;
+import Model.Republica;
 import java.sql.SQLException;
 
 /**
  *
  * @author Lucas Carvalho
  */
-public class P0001Service {
-    
-    public Pessoa efetuarLogin(String nomeUsuario, String senha) throws SQLException {
+public class CriarRepublicaService {
+
+    public void incluirRepublica(Republica republica, Pessoa representante) throws SQLException {
         try {
-            return new LoginDAO().read(nomeUsuario, senha);
-        } catch (SQLException ex) {
-            throw ex;
+            new RepublicaDAO().create(republica, representante);
+        } catch (SQLException e) {
+            throw e;
         }
     }
 }

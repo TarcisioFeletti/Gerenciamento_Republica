@@ -7,7 +7,7 @@ package Presenter;
 
 import View.ManterPerfil.P0701;
 import View.ManterPerfil.P0702;
-import View.P0000View;
+import View.TelaInicialView;
 
 /**
  *
@@ -34,7 +34,7 @@ public class PresenterManterPerfil {
     
     private void editarPerfilActionPerformed(java.awt.event.ActionEvent evt) {                                             
         P0702 a = new P0702();
-        P0000View.Desktop.add(a);
+        TelaInicialView.Desktop.add(a);
         a.setVisible(true);
     } 
     

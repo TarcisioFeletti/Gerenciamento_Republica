@@ -5,8 +5,8 @@
  */
 package Presenter;
 
-import View.RepublicasDisponiveis.P1301;
-import View.RepublicasDisponiveis.VerInformacoesRepublica;
+import View.RepublicasDisponiveis.BuscarVagasView;
+import View.RepublicasDisponiveis.VerInformacoesRepublicaView;
 
 
 /**
@@ -15,15 +15,15 @@ import View.RepublicasDisponiveis.VerInformacoesRepublica;
  */
 public class PresenterRepublicasDisponiveis {
     
-    private P1301 viewSolicitarMoradia;
-    private VerInformacoesRepublica viewInformacoesRepublica;
+    private BuscarVagasView viewSolicitarMoradia;
+    private VerInformacoesRepublicaView viewInformacoesRepublica;
 
     public PresenterRepublicasDisponiveis() {
-        this.viewSolicitarMoradia = new P1301();
-        this.viewInformacoesRepublica = new VerInformacoesRepublica();
+        this.viewSolicitarMoradia = new BuscarVagasView();
+        this.viewInformacoesRepublica = new VerInformacoesRepublicaView();
     }
     
-    //TELAS P1301
+    //TELAS BuscarVagasView
     private void buscarRepublicaActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
     } 

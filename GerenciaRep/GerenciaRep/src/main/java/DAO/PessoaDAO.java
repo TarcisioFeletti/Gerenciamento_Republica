@@ -151,7 +151,7 @@ public class PessoaDAO {
         }
         return pessoa;
     }
-    
+
     public Pessoa read(int idPessoa) throws SQLException, RuntimeException {
         PreparedStatement ps = null;
         ResultSet rs = null;

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presenter.P0000State;
+package Presenter.TelaInicialState;
 
-import Presenter.P0000Presenter;
-import Presenter.P0101Presenter;
+import Presenter.BuscarVagasPresenter;
+import Presenter.CriarRepublicaPresenter;
+import Presenter.TelaInicialPresenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,9 +15,9 @@ import java.awt.event.ActionListener;
  *
  * @author Lucas Carvalho
  */
-public class SemTetoState extends P0000AbstractState {
+public class SemTetoState extends TelaInicialAbstractState {
 
-    public SemTetoState(P0000Presenter presenter) {
+    public SemTetoState(TelaInicialPresenter presenter) {
         super(presenter);
         //remove listener da tela principal, caso existam
         super.getPresenter().removeListeners();
@@ -45,7 +46,7 @@ public class SemTetoState extends P0000AbstractState {
         super.getPresenter().getView().getFechar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                //BOTÃO PARA TROCAR DE USUÁRIO
+                //BOTÃO PARA FECHAR O PROGRAMA
                 fechar();
             }
         });
@@ -70,12 +71,12 @@ public class SemTetoState extends P0000AbstractState {
 
     @Override
     public void criarRepublica() {
-        new P0101Presenter(this.getPresenter().getView().getDesktop());
+        new CriarRepublicaPresenter(this.getPresenter().getView().getDesktop(), super.getPresenter().getUsuario());
     }
 
     @Override
     public void buscarRepublica() {
-        //new P1301Presenter(this.getPresenter().getView().getDesktop());
+        new BuscarVagasPresenter(this.getPresenter().getView().getDesktop(), this.getPresenter().getUsuario());
     }
 
     @Override

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Presenter.P0000State;
+package Presenter.TelaInicialState;
 
 import Model.SemTeto;
-import Presenter.P0000Presenter;
-import Service.P0002Service;
+import Presenter.TelaInicialPresenter;
+import Service.NovoLoginService;
 import View.LoginCadastro.NovoLoginModalView;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
@@ -18,12 +18,12 @@ import javax.swing.JOptionPane;
  *
  * @author Lucas Carvalho
  */
-public class NovoLoginState extends P0000AbstractState {
+public class NovoLoginState extends TelaInicialAbstractState {
 
     private NovoLoginModalView view;
     private SemTeto pessoa;
 
-    public NovoLoginState(P0000Presenter presenter, SemTeto pessoa) {
+    public NovoLoginState(TelaInicialPresenter presenter, SemTeto pessoa) {
         super(presenter);
         this.pessoa = pessoa;
         view = new NovoLoginModalView(new Frame(), true);
@@ -51,7 +51,7 @@ public class NovoLoginState extends P0000AbstractState {
 
     public SemTeto getPessoa() {
         return pessoa;
-    }  
+    }
 
     @Override
     public void confirmarCadastro() {
@@ -70,10 +70,10 @@ public class NovoLoginState extends P0000AbstractState {
                 throw new Exception("Senhas diferentes.");
             }
             //chamar a Presenter<->Service<->DAO pra fazer login//
-            new P0002Service().cadastrarUsuario(this.getPessoa(), this.getView().getCampoUsuario().getText(), this.getView().getCampoSenha().getText());
+            new NovoLoginService().cadastrarUsuario(this.getPessoa(), this.getView().getCampoUsuario().getText(), this.getView().getCampoSenha().getText());
             //retorna ao estado de login
-            super.getPresenter().setEstado(new LoginState(this.getPresenter()));
             this.getView().dispose();
+            super.getPresenter().setEstado(new LoginState(this.getPresenter()));
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this.getView(), e.toString());
         }
