@@ -5,12 +5,8 @@
  */
 package Service;
 
-import DAO.ReclamacaoSugestaoDAO;
-import DAO.RepublicaDAO;
 import Model.Pessoa;
 import Model.ReclamacaoSugestao;
-import Model.Republica;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -19,13 +15,13 @@ import java.util.List;
  */
 public class ManterReclamacoesSugestoesService {
 
-    public List<ReclamacaoSugestao> getAllReclamacoesSugestoes(Pessoa usuario) throws SQLException {
-        try {
+    public List<ReclamacaoSugestao> getAllReclamacoesSugestoes(Pessoa usuario) /*throws SQLException*/ {
+        /*try {
             Republica republica = new RepublicaDAO().getRepublicaPorIdUsuario(usuario.getIdPessoa());
             return new ReclamacaoSugestaoDAO().getAllRepublicaId(republica.getIdRepublica());
         } catch (SQLException e) {
             throw e;
-        }
+        }*/return null;
     }
 
     public List<ReclamacaoSugestao> getReclamacoesSugestoesPorPessoa(String pessoa) {
