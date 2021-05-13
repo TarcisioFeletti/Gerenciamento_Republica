@@ -33,11 +33,11 @@ public class BuscarVagasService {
         }
     }
 
-    public void solicitarMoradia(VagaRepublicaModel vagaRepublicaModel) throws SQLException {
-        try {
+    public void solicitarMoradia(VagaRepublicaModel vagaRepublicaModel) /*throws SQLException*/ {
+        /*try {
             new RequisitarMoradiaDAO().create(vagaRepublicaModel);
         } catch (SQLException e) {
             throw e;
-        }
+        }*/
     }
 }

@@ -5,10 +5,8 @@
  */
 package Service;
 
-import DAO.RepublicaDAO;
 import Model.Pessoa;
 import Model.Republica;
-import java.sql.SQLException;
 
 /**
  *
@@ -16,11 +14,11 @@ import java.sql.SQLException;
  */
 public class CriarRepublicaService {
 
-    public void incluirRepublica(Republica republica, Pessoa representante) throws SQLException {
-        try {
+    public void incluirRepublica(Republica republica, Pessoa representante) /*throws SQLException*/ {
+        /*try {
             new RepublicaDAO().create(republica, representante);
         } catch (SQLException e) {
             throw e;
-        }
+        }*/
     }
 }
